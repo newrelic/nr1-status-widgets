@@ -17,6 +17,12 @@
       "type": "nrql"
     },
     {
+      "name": "enableFlash",
+      "title": "Enable flash/pulse effect when not healthy",
+      "description": "",
+      "type": "boolean"
+    },
+    {
       "name": "timelineBucket",
       "title": "Bucket size in minutes (default 1 minute)",
       "description": "This value is used for the since clause and for the timeseries query",
