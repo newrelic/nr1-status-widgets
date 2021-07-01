@@ -1,6 +1,6 @@
 {
   "schemaType": "NERDPACK",
-  "id": "",
-  "displayName": "{{NERDPACK_NAME}}",
-  "description": "My new nerdpack"
+  "id": "8f1bb0ed-1fc6-4f4a-b495-296fed675e1c",
+  "displayName": "NRQL Status Widget",
+  "description": "NRQL powered status widget"
 }

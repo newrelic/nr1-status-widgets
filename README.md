@@ -1,63 +1,25 @@
 [![New Relic Experimental header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#new-relic-experimental)
 
-_Note: DELETE FROM HERE._
+# NRQL Status Widget
 
-# Using this Nerdpack Template
+NRQL Powered Status Widget
 
-1. Delete this first section containing these instructions from the README.
-2. After cloning the repo that you created from this [template repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository), execute the following commands to initiate the Nerdpack.
+![NRQL Status Widget](catalog/screenshots/nrql-status-widget-1.png)
 
-```bash
-git clone https://github.com/[ORG_NAME]/[REPO_NAME].git
-cd [REPO_NAME]
-nr1 nerdpack:uuid -gf
-```
+## Features
 
-Code away.
-
-_Note: DELETE TO HERE._
-
-# {{ NERDPACK_NAME }}
-
-> This template includes advice on how to craft a great README for your app. This template is just a starting point: feel free to change or add sections to suit your project. A few sections are standard across all projects. Don't change the text of those sections, except to customize the Explorer's Hub URL and the Contributing email alias. The standard sections are: "Open source License," "Support," "Community," "Issues / enhancement requests," and "Contributing."
->
-> If you need advice creating your README, ping @hero in the [#documentation](https://newrelic.slack.com/messages/documentation) channel or contact the Open Source Office.
->
-> Before you publish, remove all the commments (the block quotes beginning with `>`), then follow the [standard Nerdpack README review process](https://docs.google.com/document/d/1xUg1NnNJriC0mrUE1hqcHcs5dqzyLoSYE25qjwBaWQE/edit).
-
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/{{ NERDPACK_NAME }}?include_prereleases&sort=semver) [![Snyk](https://snyk.io/test/github/newrelic/{{ NERDPACK_NAME }}/badge.svg)](https://snyk.io/test/github/newrelic/{{ NERDPACK_NAME }})
-
-## About this Nerdpack
-
-> Write one or two short paragraphs that describe what your app does—and more importantly, why users should care. Avoid too much technical jargon: Your content should be understandable to someone who doesn't have much knowledge of New Relic's technologies. And include links to New Relic docs or other apps.
->
-> For example:
-
-This application analyzes your cloud environment, and figures out where you're wasting money on excess cloud capacity. The application compares the size of your instances to their utilization, and estimates how much you could save by optimizing the size.
-
-> Include at least one screenshot. Remove any sensitive data like customer data, NR-only tools, and system information like hostnames (for a full list, see [Docs site security guidelines for images](https://newrelic.jiveon.com/docs/DOC-8362) on Jive).
-
-![Screenshot #1](screenshots/screenshot_01.png)
-![Screenshot #2](screenshots/screenshot_02.png)
+- Custom labelling for critical, warning, healthy
+- Metric suffixes and labels
+- Timeline
+- Togglability for all features
+- Regex matching for string values
+- Configurable OnClick actions to url or Modal
+- Modal can be provided any number of additional NRQL queries to be displayed
 
 ## Open source license
 
 This project is distributed under the [Apache 2 license](LICENSE).
 
-## What do you need to make this work?
-
-> List any prerequisites for using your app, and include links to other New Relic features when necessary.
->
-> For example:
-
-Required:
-
-- [New Relic Infrastructure agent(s) installed](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent#infra-install) on your cloud computing devices and the related access to [New Relic One](https://newrelic.com/platform).
-
-You'll get the best possible data out of this application if you also:
-
-- [Activate the EC2 integration](https://docs.newrelic.com/docs/integrations/amazon-integrations/get-started/connect-aws-infrastructure) to group by your cloud provider account.
-- [Install APM on your applications](https://docs.newrelic.com/docs/agents/manage-apm-agents/installation/install-agent#apm-install) to group by application.
 
 ## Getting started
 
@@ -117,7 +79,7 @@ Issues and enhancement requests can be submitted in the [Issues tab of this repo
 
 ## Security
 
-As noted in our [security policy](https://github.com/newrelic/{{ NERDPACK_NAME }}/security/policy), New Relic is committed to the privacy and security of our customers and their data. We believe that providing coordinated disclosure by security researchers and engaging with the security community are important means to achieve our security goals.
+As noted in our [security policy](https://github.com/newrelic/nr1-status-widget/security/policy), New Relic is committed to the privacy and security of our customers and their data. We believe that providing coordinated disclosure by security researchers and engaging with the security community are important means to achieve our security goals.
 
 If you believe you have found a security vulnerability in this project or any of New Relic's products or websites, we welcome and greatly appreciate you reporting it to New Relic through [HackerOne](https://hackerone.com/newrelic).
 
