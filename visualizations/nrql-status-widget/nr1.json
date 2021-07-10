@@ -202,6 +202,12 @@
       "type": "nrql"
     },
     {
+      "name": "enableFlashLeft",
+      "title": "Bottom Left Metric - Enable flash/pulse effect when not healthy",
+      "description": "",
+      "type": "boolean"
+    },
+    {
       "name": "thresholdDirectionLeft",
       "title": "Bottom Left Metric - Threshold Direction: above or below (default: above)",
       "description": "value must be above or below",
@@ -260,6 +266,12 @@
       "title": "Bottom Right Metric - Add an additional query to the bottom Right of the widget",
       "description": "",
       "type": "nrql"
+    },
+    {
+      "name": "enableFlashRight",
+      "title": "Bottom Right Metric - Enable flash/pulse effect when not healthy",
+      "description": "",
+      "type": "boolean"
     },
     {
       "name": "thresholdDirectionRight",

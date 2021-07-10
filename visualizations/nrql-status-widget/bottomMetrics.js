@@ -26,7 +26,9 @@ export default class BottomMetrics extends React.Component {
       metricSuffixLeft,
       decimalPlacesLeft,
       metricSuffixRight,
-      decimalPlacesRight
+      decimalPlacesRight,
+      enableFlashLeft,
+      enableFlashRight
     } = mainProps;
 
     let {
@@ -71,6 +73,7 @@ export default class BottomMetrics extends React.Component {
             fullWidth={fullWidth}
             width={width}
             query={queryLeft}
+            enableFlash={enableFlashLeft}
             accountId={accountId}
             configuration={leftMetric.configuration}
             altConfiguration={rightMetric?.configuration || {}}
@@ -89,6 +92,7 @@ export default class BottomMetrics extends React.Component {
             fullWidth={fullWidth}
             width={width}
             query={queryRight}
+            enableFlash={enableFlashRight}
             accountId={accountId}
             configuration={rightMetric.configuration}
             altConfiguration={leftMetric?.configuration || {}}

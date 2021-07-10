@@ -19,6 +19,7 @@ export default class NrqlMetric extends React.Component {
       fullWidth,
       width,
       query,
+      enableFlash,
       accountId,
       configuration,
       decimalPlaces,
@@ -111,7 +112,9 @@ export default class NrqlMetric extends React.Component {
           return (
             <div
               style={{ width: availWidth }}
-              className={`${status}-bg flex-container`}
+              className={`${status}${
+                enableFlash ? '' : '-solid'
+              }-bg flex-container`}
             >
               <div className="flex-col">
                 <div

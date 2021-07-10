@@ -63,6 +63,7 @@ export default class StatusWidget extends React.Component {
       height,
       accountId,
       query,
+      enableFlash,
       timelineBucket,
       untilClause,
       displayTimeline,
@@ -267,7 +268,9 @@ export default class StatusWidget extends React.Component {
                   maxWidth: width,
                   maxHeight: height
                 }}
-                className={`${status}-bg flex-container`}
+                className={`${status}${
+                  enableFlash ? '' : '-solid'
+                }-bg flex-container`}
               >
                 <div className="flex-col">
                   {displayMetric && (
