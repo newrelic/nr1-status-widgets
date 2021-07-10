@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "nr1-nrql-status-widget",
+  "name": "nr1-status-widgets",
   "version": "1.9.10",
   "scripts": {
     "start": "nr1 nerdpack:serve",
