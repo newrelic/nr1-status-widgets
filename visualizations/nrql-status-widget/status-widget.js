@@ -5,8 +5,8 @@ import {
   generateErrorsAndConfig,
   generateSloErrors
 } from './utils';
-import EmptyState from './emptyState';
-import ErrorState from './errorState';
+import EmptyState from '../shared/emptyState';
+import ErrorState from '../shared/errorState';
 import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
 import ModalCharts from './modalCharts';

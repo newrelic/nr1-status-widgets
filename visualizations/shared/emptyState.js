@@ -3,19 +3,23 @@ import { Card, CardBody, HeadingText } from 'nr1';
 
 export default class EmptyState extends React.Component {
   render() {
-    const { errors } = this.props;
+    const { errors, isEntity } = this.props;
 
     return (
       <Card className="EmptyState">
         <CardBody className="EmptyState-cardBody">
-          <HeadingText
-            spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-            type={HeadingText.TYPE.HEADING_3}
-          >
-            Status widget supports both numeric and string evaluation. String
-            evaluation is performed with regex.
-          </HeadingText>
-          <br />
+          {!isEntity && (
+            <>
+              <HeadingText
+                spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+                type={HeadingText.TYPE.HEADING_3}
+              >
+                Status widget supports both numeric and string evaluation.
+                String evaluation is performed with regex.
+              </HeadingText>
+              <br />
+            </>
+          )}
           <HeadingText
             spacingType={[HeadingText.SPACING_TYPE.LARGE]}
             type={HeadingText.TYPE.HEADING_3}

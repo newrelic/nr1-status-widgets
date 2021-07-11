@@ -2,7 +2,7 @@
   "schemaType": "VISUALIZATION",
   "id": "nrql-status-widget",
   "displayName": "NRQL Status Widget",
-  "description": "NRQL powered status widget",
+  "description": "NRQL driven status widget",
   "configuration": [
     {
       "name": "accountId",

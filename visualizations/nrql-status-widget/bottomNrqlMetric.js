@@ -1,6 +1,6 @@
 import React from 'react';
 import { NrqlQuery, Spinner } from 'nr1';
-import ErrorState from './errorState';
+import ErrorState from '../shared/errorState';
 import { deriveValues } from './utils';
 
 export default class NrqlMetric extends React.Component {

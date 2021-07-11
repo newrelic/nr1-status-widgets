@@ -1,0 +1,103 @@
+{
+  "schemaType": "VISUALIZATION",
+  "id": "entity-status-widget",
+  "displayName": "Entity Status Widget",
+  "description": "Entity driven status widget",
+  "configuration": [
+    {
+      "name": "trackHealthy",
+      "title": "Track entities in healthy state",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "trackCritical",
+      "title": "Track entities in critical state",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "trackWarning",
+      "title": "Track entities in warning state",
+      "description": "",
+      "type": "boolean"
+    },    
+    {
+      "name": "trackNotConfigured",
+      "title": "Track entities with no alerts configured",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "trackNotReporting",
+      "title": "Track entities not reporting",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "enableFlash",
+      "title": "Enable flash/pulse effect when not healthy",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "viewMode",
+      "title": "View mode",
+      "description": "How do you wish to view the queried entities",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Summarized",
+          "value": "summarized"
+        },
+        {
+          "title": "Table",
+          "value": "table"
+        }
+      ]
+    },
+    {
+      "name": "pollInterval",
+      "title": "Poll interval in milliseconds (default 30000ms)",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "name": "entitySearchQuery",
+      "title": "Custom entity search query",
+      "description": "Use a custom entity search query", 
+      "type": "string"
+    },
+    {
+      "name": "entityGuids",
+      "title": "Entity Guids to query",
+      "type": "collection",
+      "items": [
+        {
+          "name": "guid",
+          "title": "GUID",
+          "description": "",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "healthyLabel",
+      "title": "Optional: Healthy Label (summarized mode only)",
+      "description": "Optionally render this label if healthy",
+      "type": "string"
+    },
+    {
+      "name": "warningLabel",
+      "title": "Optional: Warning Label (summarized mode only)",
+      "description": "Optionally render this label if warning",
+      "type": "string"
+    },
+    {
+      "name": "criticalLabel",
+      "title": "Optional: Critical Label (summarized mode only)",
+      "description": "Optionally render this label if critical",
+      "type": "string"
+    }
+  ]
+}

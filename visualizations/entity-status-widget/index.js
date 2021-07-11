@@ -1,8 +1,8 @@
 import React from 'react';
 import { PlatformStateContext, AutoSizer } from 'nr1';
-import StatusWidget from './status-widget';
+import EntityStatusWidget from './entity-status-widget';
 
-export default class NrqlStatusWidgetRoot extends React.Component {
+export default class EntityStatusWidgetRoot extends React.Component {
   render() {
     return (
       <AutoSizer>
@@ -10,7 +10,7 @@ export default class NrqlStatusWidgetRoot extends React.Component {
           <PlatformStateContext.Consumer>
             {platformState => {
               return (
-                <StatusWidget
+                <EntityStatusWidget
                   timeRange={platformState.timeRange}
                   width={width}
                   height={height}
