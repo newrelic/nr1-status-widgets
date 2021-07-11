@@ -31,8 +31,18 @@
     {
       "name": "thresholdDirection",
       "title": "Threshold Direction: above or below (default: above)",
-      "description": "value must be above or below",
-      "type": "string"
+      "description": "Threshold Direction: above or below (default: above)",
+      "type": "enum",
+      "items": [
+        {
+          "title": "above",
+          "value": "above"
+        },
+        {
+          "title": "below",
+          "value": "below"
+        }
+      ]
     },
     {
       "name": "criticalThreshold",
@@ -210,8 +220,18 @@
     {
       "name": "thresholdDirectionLeft",
       "title": "Bottom Left Metric - Threshold Direction: above or below (default: above)",
-      "description": "value must be above or below",
-      "type": "string"
+      "description": "Threshold Direction: above or below (default: above)",
+      "type": "enum",
+      "items": [
+        {
+          "title": "above",
+          "value": "above"
+        },
+        {
+          "title": "below",
+          "value": "below"
+        }
+      ]
     },
     {
       "name": "criticalThresholdLeft",
@@ -276,8 +296,18 @@
     {
       "name": "thresholdDirectionRight",
       "title": "Bottom Right Metric - Threshold Direction: above or below (default: above)",
-      "description": "value must be above or below",
-      "type": "string"
+      "description": "Threshold Direction: above or below (default: above)",
+      "type": "enum",
+      "items": [
+        {
+          "title": "above",
+          "value": "above"
+        },
+        {
+          "title": "below",
+          "value": "below"
+        }
+      ]
     },
     {
       "name": "criticalThresholdRight",
