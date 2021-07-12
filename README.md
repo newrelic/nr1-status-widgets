@@ -63,7 +63,7 @@ nr1 nerdpack:serve
 
 Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) to launch your app locally.
 
-## Deploying this Nerdpack
+## Deploying this Nerdpack manually
 
 Open a command prompt in the app's directory and run the following commands.
 
@@ -72,11 +72,19 @@ Open a command prompt in the app's directory and run the following commands.
 # nr1 nerdpack:uuid -g [--profile=your_profile_name]
 # to see a list of APIkeys / profiles available in your development environment, run nr1 credentials:list
 nr1 nerdpack:publish [--profile=your_profile_name]
-nr1 nerdpack:deploy [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
-nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
+nr1 nerdpack:tag [-t [CURRENT]] [--profile=your_profile_name]
 ```
 
 Visit [https://one.newrelic.com](https://one.newrelic.com), and launch your app in New Relic.
+
+## Manual dashboard deployment
+
+https://developer.newrelic.com/build-apps/build-visualization#deploy-and-use-your-visualization
+
+```
+This needs to be deployed into your account so that the custom visualizations can be added to dashboards.
+After this has been deployed, ensure you navigate to the app and add to the account.
+```
 
 # Support
 
