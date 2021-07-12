@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.1.0...v1.2.0) (2021-07-12)
+
+
+### Features
+
+* pass timeRangeResult to deriveValues ([ea3b46c](https://github.com/newrelic/nr1-status-widgets/commit/ea3b46c488dffc3d4e318f8eb90907ce3832672d))
+
 # [1.1.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.0.0...v1.1.0) (2021-07-12)
 
 
