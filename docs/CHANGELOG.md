@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.2.0...v2.0.0) (2021-07-12)
+
+
+* Merge pull request #3 from newrelic/kav/updates ([06fc3b7](https://github.com/newrelic/nr1-status-widgets/commit/06fc3b7e2c7777a4cb9da78a7128a7dd310195bb)), closes [#3](https://github.com/newrelic/nr1-status-widgets/issues/3)
+
+
+### BREAKING CHANGES
+
+* version bump
+
 # [1.2.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.1.0...v1.2.0) (2021-07-12)
 
 
