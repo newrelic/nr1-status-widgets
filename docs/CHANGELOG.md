@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.0.0...v1.1.0) (2021-07-12)
+
+
+### Features
+
+* update newrelic discuss link ([26836e7](https://github.com/newrelic/nr1-status-widgets/commit/26836e77ab5e4d90080f06e61998f9604cf563cd))
+* update readme ([1e0cf78](https://github.com/newrelic/nr1-status-widgets/commit/1e0cf784b0d1c70c1d13e029cfafb82bd91b4928))
+* update readme ([1c0bf27](https://github.com/newrelic/nr1-status-widgets/commit/1c0bf271c0100bbb1c59b43356a09cb92854daf5))
+
 # 1.0.0 (2021-07-12)
 
 
