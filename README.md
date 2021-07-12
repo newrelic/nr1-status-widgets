@@ -1,12 +1,16 @@
 [![New Relic Experimental header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#new-relic-experimental)
 
-# NRQL Status Widget
+# Status Widget Pack
 
-NRQL Powered Status Widget
+This nerdpack contains two status widget custom visualizations to be used with dashboards.
+- NRQL Status Widget
+- Entity Status Widget (2 modes: Summary & Table)
+
+## NRQL Status Widget
 
 ![NRQL Status Widget](catalog/screenshots/nrql-status-widget-1.png)
 
-## Features
+## NRQL Widget Features
 
 - Custom labelling for critical, warning, healthy
 - Metric suffixes and labels
@@ -15,6 +19,20 @@ NRQL Powered Status Widget
 - Regex matching for string values
 - Configurable OnClick actions to url or Modal
 - Modal can be provided any number of additional NRQL queries to be displayed
+- Toggle flash/pulse effect
+
+## Entity Status Widget
+
+![Entity Status Widget](catalog/screenshots/entity-status-widget-table.png)
+
+## Entity Widget Features
+
+- Track specific alerting states
+- Set custom labels
+- Provides a summary and table view mode
+- Toggle flash/pulse effect
+- Define custom entity search query
+- Define specific entity guids
 
 ## Open source license
 
