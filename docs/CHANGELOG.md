@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.1.0...v2.2.0) (2021-07-12)
+
+
+### Features
+
+* update catalog info ([d517f2a](https://github.com/newrelic/nr1-status-widgets/commit/d517f2ae6af440d3529c8ff7920281600fe047f4))
+
 # [2.1.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.0.0...v2.1.0) (2021-07-12)
 
 
