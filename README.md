@@ -9,6 +9,7 @@ This nerdpack contains two status widget custom visualizations to be used with d
 ## NRQL Status Widget
 
 ![NRQL Status Widget](catalog/screenshots/nrql-status-widget-1.png)
+<img src="catalog/screenshots/nrql-status-widget-2.png" alt="statuswidget2" width="300"/>
 
 ## NRQL Widget Features
 
@@ -20,10 +21,15 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Configurable OnClick actions to url or Modal
 - Modal can be provided any number of additional NRQL queries to be displayed
 - Toggle flash/pulse effect
-
+- Define bottom left and right metrics
+---
 ## Entity Status Widget
 
-![Entity Status Widget](catalog/screenshots/entity-status-widget-table.png)
+### Summary
+<img src="catalog/screenshots/entity-status-widget-summarized-1.png" alt="Entity Status Widget 1" width="700"/>
+
+### Table
+<img src="catalog/screenshots/entity-status-widget-table.png" alt="Entity Status Widget 2" width="700"/>
 
 ## Entity Widget Features
 
@@ -33,7 +39,7 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Toggle flash/pulse effect
 - Define custom entity search query
 - Define specific entity guids
-
+---
 ## Open source license
 
 This project is distributed under the [Apache 2 license](LICENSE).
