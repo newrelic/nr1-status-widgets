@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Sat Jul 10 2021 12:40:14 GMT+1000 (Australian Eastern Standard Time)",
+  "lastUpdated": "Mon Jul 12 2021 16:47:05 GMT+0000 (Coordinated Universal Time)",
   "projectName": "Status Widgets",
   "projectUrl": "https://github.com/newrelic/nr1-status-widgets",
   "includeDev": true,
@@ -15,6 +15,18 @@
       "licenseUrl": "https://github.com/newrelic/nr1-community/blob/v1.2.0/LICENSE",
       "licenseTextSource": "file",
       "publisher": "newrelic"
+    },
+    "async@3.2.0": {
+      "name": "async",
+      "version": "3.2.0",
+      "range": "^3.2.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/caolan/async",
+      "versionedRepoUrl": "https://github.com/caolan/async/tree/v3.2.0",
+      "licenseFile": "node_modules/async/LICENSE",
+      "licenseUrl": "https://github.com/caolan/async/blob/v3.2.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Caolan McMahon"
     },
     "prop-types@15.7.2": {
       "name": "prop-types",
