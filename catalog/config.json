@@ -1,7 +1,7 @@
 {
-  "tagline": "[30 characters]",
+  "tagline": "Status widgets for dashboards",
   "repository": "https://github.com/newrelic/nr1-status-widgets.git",
-  "details": "[]",
+  "details": "Configurable status widgets powered by NRQL or entity data for dashboards",
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-status-widgets/issues"
@@ -10,7 +10,7 @@
       "address": "opensource+nr1-status-widgets@newrelic.com"
     },
     "community": {
-      "url": "https://discuss.newrelic.com/t/nr1-status-widgets"
+      "url": "https://discuss.newrelic.com/t/status-widget-visualizations-nerdpack-for-dashboards/154721"
     }
   },
   "whatsNew": "\n-Initial release"
