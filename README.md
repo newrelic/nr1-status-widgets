@@ -47,8 +47,6 @@ This project is distributed under the [Apache 2 license](LICENSE).
 
 ## Getting started
 
-> Include a step-by-step procedure on how to get your app installed and deployed. The clone and deploy steps are similar across all apps. If your app has additional steps required to get started, include them here or in their own section.
-
 1. Ensure that you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [NPM](https://www.npmjs.com/get-npm) installed. If you're unsure whether you have one or both of them installed, run the following commands. (If you have them installed, these commands return a version number; if not, the commands aren't recognized.)
 ```bash
 git --version
@@ -66,8 +64,6 @@ nr1 nerdpack:serve
 Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) to launch your app locally.
 
 ## Deploying this Nerdpack
-
-> Include the necessary steps to deploy your app. Generally, you shouldn't need to change any of these steps.
 
 Open a command prompt in the app's directory and run the following commands.
 
@@ -90,8 +86,6 @@ We encourage you to bring your experiences and questions to the [Explorers Hub](
 
 ## Community
 
-> Work with the Explorer's Hub team to create a tag for your app, then update the link below.
-
 New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
 
 https://discuss.newrelic.com/t/nr1-status-widgets
@@ -108,8 +102,6 @@ As noted in our [security policy](https://github.com/newrelic/nr1-status-widget/
 If you believe you have found a security vulnerability in this project or any of New Relic's products or websites, we welcome and greatly appreciate you reporting it to New Relic through [HackerOne](https://hackerone.com/newrelic).
 
 # Contributing
-
-> Work with the Open Source Office to update the email alias below.
 
 Contributions are encouraged! If you submit an enhancement request, we'll invite you to contribute the change yourself. Please review our [Contributors Guide](CONTRIBUTING.md).
 
