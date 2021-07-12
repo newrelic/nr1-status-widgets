@@ -1,4 +1,4 @@
-export const deriveValues = (nrqlData, config) => {
+export const deriveValues = (nrqlData, config, timeRangeResult) => {
   const values = { timeseries: [] };
   (nrqlData || []).forEach(d => {
     const groupDisplayName =
@@ -45,6 +45,10 @@ export const deriveValues = (nrqlData, config) => {
         currentValue.value = value[groupDisplayName];
       } else if (selectedGroup === 'groupValue') {
         currentValue.value = value[groupValue];
+      }
+      if (timeRangeResult) {
+        currentValue.value = timeRangeResult;
+        currentValue.y = timeRangeResult;
       }
       assessValue(currentValue, config);
       values.timeseries.push(currentValue);

@@ -236,7 +236,11 @@ export default class StatusWidget extends React.Component {
               }, 5000);
             }
 
-            const derivedValues = deriveValues(data, configuration);
+            const derivedValues = deriveValues(
+              data,
+              configuration,
+              timeRangeResult
+            );
 
             const {
               status,
