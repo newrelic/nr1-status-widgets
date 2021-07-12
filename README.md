@@ -3,7 +3,7 @@
 # Status Widget Pack
 
 This nerdpack contains two status widget custom visualizations to be used with dashboards.
-- NRQL Status Widget
+- NRQL Status Widget (Configurable variations)
 - Entity Status Widget (2 modes: Summary & Table)
 
 ## NRQL Status Widget
@@ -94,7 +94,7 @@ We encourage you to bring your experiences and questions to the [Explorers Hub](
 
 New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
 
-https://discuss.newrelic.com/t/{{ APP_NAME }}
+https://discuss.newrelic.com/t/nr1-status-widgets
 *(Note: This URL is subject to change before GA)*
 
 ## Issues / enhancement requests
@@ -113,4 +113,4 @@ If you believe you have found a security vulnerability in this project or any of
 
 Contributions are encouraged! If you submit an enhancement request, we'll invite you to contribute the change yourself. Please review our [Contributors Guide](CONTRIBUTING.md).
 
-Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource+{{ APP_NAME }}@newrelic.com.
+Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource+statuswidgets@newrelic.com.
