@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.0.0...v2.1.0) (2021-07-12)
+
+
+### Features
+
+* remove recharts from package.json ([57a8bd9](https://github.com/newrelic/nr1-status-widgets/commit/57a8bd98d21cf4b0e020187f214ed5cc6ae28e82))
+
 # [2.0.0](https://github.com/newrelic/nr1-status-widgets/compare/v1.2.0...v2.0.0) (2021-07-12)
 
 
