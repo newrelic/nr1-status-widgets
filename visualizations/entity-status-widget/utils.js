@@ -24,8 +24,15 @@ export const generateErrors = props => {
   return errors;
 };
 
+export const alertLevels = {
+  NOT_CONFIGURED: 0,
+  NOT_ALERTING: 1,
+  WARNING: 2,
+  CRITICAL: 3
+};
+
 // filter entities
-export const filterEntities = (props, entities) => {
+export const filterAndSortEntities = (props, entities) => {
   const {
     trackCritical,
     trackWarning,
@@ -42,7 +49,9 @@ export const filterEntities = (props, entities) => {
     return false;
   });
 
-  return filterEntities;
+  return filterEntities.sort(
+    (a, b) => alertLevels[b.alertSeverity] - alertLevels[a.alertSeverity]
+  );
 };
 
 // chunking for batching nerdgraph calls

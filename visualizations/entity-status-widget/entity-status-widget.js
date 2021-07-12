@@ -1,7 +1,12 @@
 import React from 'react';
 import { Spinner, ngql, NerdGraphQuery } from 'nr1';
 import EmptyState from '../shared/emptyState';
-import { generateErrors, chunk, filterEntities } from './utils';
+import {
+  generateErrors,
+  chunk,
+  filterAndSortEntities,
+  alertLevels
+} from './utils';
 import queue from 'async/queue';
 import Summarized from './views/summarized';
 import EntityTable from './views/entity-table';
@@ -67,13 +72,6 @@ const entityQuery = (query, cursor, limit) => {
       }
     }
   }`;
-};
-
-const alertLevels = {
-  NOT_CONFIGURED: 0,
-  NOT_ALERTING: 1,
-  WARNING: 2,
-  CRITICAL: 3
 };
 
 const deriveHealthStatus = data => {
@@ -272,7 +270,10 @@ export default class EntityStatusWidget extends React.Component {
             });
           });
 
-          const filteredEntities = filterEntities(props, completeEntities);
+          const filteredEntities = filterAndSortEntities(
+            props,
+            completeEntities
+          );
           const entityData = {};
           filteredEntities.forEach(e => {
             entityData[e.guid] = { ...e };

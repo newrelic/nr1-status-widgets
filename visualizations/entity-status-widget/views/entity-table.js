@@ -18,7 +18,7 @@ export default class EntityTable extends React.Component {
   render() {
     const { searchText } = this.state;
     const { width, height, entities, isFetching } = this.props;
-    const filteredEntities = entities.filter(e =>
+    const searchedEntities = entities.filter(e =>
       e.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
@@ -39,7 +39,7 @@ export default class EntityTable extends React.Component {
           />
         </div>
 
-        <Table items={filteredEntities}>
+        <Table items={searchedEntities}>
           <TableHeader>
             <TableHeaderCell>Entity</TableHeaderCell>
           </TableHeader>
