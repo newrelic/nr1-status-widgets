@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.3.0...v2.3.1) (2021-07-15)
+
+
+### Bug Fixes
+
+* **catalog:** tidy up catalog docs ([95399c5](https://github.com/newrelic/nr1-status-widgets/commit/95399c53b97717bd2900242bb2c0655047d0a2ff))
+
 # [2.3.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.2.0...v2.3.0) (2021-07-12)
 
 
