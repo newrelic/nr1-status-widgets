@@ -1,14 +1,11 @@
-[![New Relic One Catalog Project header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/New_Relic_One_Catalog_Project.png)](https://opensource.newrelic.com/oss-category/#new-relic-one-catalog-project)
-
-# Status Widget Pack
+## Status Widget Pack
 
 This nerdpack contains two status widget custom visualizations to be used with dashboards.
+
 - NRQL Status Widget (Configurable variations)
 - Entity Status Widget (2 modes: Summary & Table)
 
-## NRQL Status Widget
-
-## NRQL Widget Features
+## NRQL Status Widget Features
 
 - Custom labelling for critical, warning, healthy
 - Metric suffixes and labels
@@ -19,10 +16,10 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Modal can be provided any number of additional NRQL queries to be displayed
 - Toggle flash/pulse effect
 - Define bottom left and right metrics
----
-## Entity Status Widget
 
-## Entity Widget Features
+---
+
+## Entity Status Widget Features
 
 - Track specific alerting states
 - Set custom labels
@@ -30,20 +27,25 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Toggle flash/pulse effect
 - Define custom entity search query
 - Define specific entity guids
----
-## Open source license
 
-This project is distributed under the [Apache 2 license](LICENSE).
+---
+
+## Open Source License
+
+This project is distributed under the [Apache 2 license](https://github.com/newrelic/nr1-status-widgets/blob/main/LICENSE).
 
 
 ## Getting started
 
 1. Ensure that you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [NPM](https://www.npmjs.com/get-npm) installed. If you're unsure whether you have one or both of them installed, run the following commands. (If you have them installed, these commands return a version number; if not, the commands aren't recognized.)
+
 ```bash
 git --version
 npm -v
 ```
+
 2. Install the [NR1 CLI](https://one.newrelic.com/launcher/developer-center.launcher) by going to [the developer center](https://one.newrelic.com/launcher/developer-center.launcher), and following the instructions to install and set up your New Relic development environment. This should take about 5 minutes.
+
 3. Execute the following command to clone this repository and run the code locally against your New Relic data:
 
 ```bash
@@ -72,12 +74,12 @@ Visit [https://one.newrelic.com](https://one.newrelic.com), and launch your app 
 
 https://developer.newrelic.com/build-apps/build-visualization#deploy-and-use-your-visualization
 
-```
+```bash
 This needs to be deployed into your account so that the custom visualizations can be added to dashboards.
 After this has been deployed, ensure you navigate to the app and add to the account.
 ```
 
-# Support
+## Support
 
 New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
 
@@ -91,7 +93,7 @@ https://discuss.newrelic.com/t/status-widget-visualizations-nerdpack-for-dashboa
 
 ## Issues / enhancement requests
 
-Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
+Issues and enhancement requests can be submitted in the [Issues tab of this repository](https://github.com/newrelic/nr1-status-widgets/issues). Please search for and review the existing open issues before submitting a new issue.
 
 ## Security
 
@@ -99,8 +101,8 @@ As noted in our [security policy](https://github.com/newrelic/nr1-status-widget/
 
 If you believe you have found a security vulnerability in this project or any of New Relic's products or websites, we welcome and greatly appreciate you reporting it to New Relic through [HackerOne](https://hackerone.com/newrelic).
 
-# Contributing
+## Contributing
 
-Contributions are encouraged! If you submit an enhancement request, we'll invite you to contribute the change yourself. Please review our [Contributors Guide](CONTRIBUTING.md).
+Contributions are encouraged! If you submit an enhancement request, we'll invite you to contribute the change yourself. Please review our [Contributors Guide](https://github.com/newrelic/nr1-status-widgets/blob/main/CONTRIBUTING.md).
 
 Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource+statuswidgets@newrelic.com.
