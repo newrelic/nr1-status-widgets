@@ -33,7 +33,7 @@ export default class Summarized extends React.Component {
         statusLabel = warningLabel;
         break;
       }
-      case 'UNCONFIGURED': {
+      case 'NOT_CONFIGURED': {
         healthStatus = 'unknown';
         break;
       }
