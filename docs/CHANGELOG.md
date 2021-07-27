@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.0...v2.4.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* update UNCONFIGURED to NOT_CONFIGURED ([8881d8b](https://github.com/newrelic/nr1-status-widgets/commit/8881d8ba7c46d065c8a264ae3557b259fc255660))
+
 # [2.4.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.3.1...v2.4.0) (2021-07-27)
 
 
