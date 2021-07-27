@@ -231,7 +231,11 @@ export default class StatusWidget extends React.Component {
             if (initialized === true && error) {
               setTimeout(() => {
                 // eslint-disable-next-line
-                console.log(`NRQL error for ${finalQuery} \nError: ${JSON.stringify(error)}\nReloading...`);
+                console.log(
+                  `NRQL error for ${finalQuery} \nError: ${JSON.stringify(
+                    error
+                  )}\nReloading...`
+                );
                 window.location.reload();
               }, 5000);
             }
@@ -256,7 +260,7 @@ export default class StatusWidget extends React.Component {
 
             if (metricValue === undefined || metricValue === null) {
               // eslint-disable-next-line
-                  console.log(
+              console.log(
                 `${finalQuery} : returning null\nvalue: ${latestValue}\ndata: ${data}\nError: ${JSON.stringify(
                   error
                 )}`
@@ -280,7 +284,7 @@ export default class StatusWidget extends React.Component {
                   {displayMetric && (
                     <div
                       onClick={chartOnClick}
-                      title={timeRangeResult || metricValue}
+                      title={metricValue}
                       className="flex-item"
                       style={{
                         color: 'white',
@@ -292,7 +296,7 @@ export default class StatusWidget extends React.Component {
                         cursor: chartOnClick ? 'pointer' : 'default'
                       }}
                     >
-                      {timeRangeResult || metricValue}
+                      {metricValue}
                       {metricSuffix && (
                         <div
                           style={{

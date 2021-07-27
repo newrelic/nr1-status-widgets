@@ -34,6 +34,11 @@ export const deriveValues = (nrqlData, config, timeRangeResult) => {
       selectedGroup = 'groupValue';
     }
 
+    if (timeRangeResult) {
+      values.latestValue = timeRangeResult;
+      values.value = timeRangeResult;
+    }
+
     assessValue(values, config);
 
     // perform decorations and calculations on existing values
@@ -138,6 +143,14 @@ export const generateErrorsAndConfig = (
       errors.push(
         `Modal query ${i + 1} - should not contain TIMESERIES keyword`
       );
+    }
+
+    if (q.query.toLowerCase().includes('since')) {
+      errors.push(`Modal query ${i + 1} - should not contain SINCE keyword`);
+    }
+
+    if (q.query.toLowerCase().includes('until')) {
+      errors.push(`Modal query ${i + 1} - should not contain UNTIL keyword`);
     }
   });
 
