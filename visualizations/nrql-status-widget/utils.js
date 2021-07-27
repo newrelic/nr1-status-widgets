@@ -34,6 +34,11 @@ export const deriveValues = (nrqlData, config, timeRangeResult) => {
       selectedGroup = 'groupValue';
     }
 
+    if (timeRangeResult) {
+      values.latestValue = timeRangeResult;
+      values.value = timeRangeResult;
+    }
+
     assessValue(values, config);
 
     // perform decorations and calculations on existing values
