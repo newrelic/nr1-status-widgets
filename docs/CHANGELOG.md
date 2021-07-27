@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.3.1...v2.4.0) (2021-07-27)
+
+
+### Features
+
+* add additional time picker ranges ([090b568](https://github.com/newrelic/nr1-status-widgets/commit/090b5681f9b18b44f20c87623c42d65711a147f5))
+* pass timeRangeResult to assessValue ([57e39a4](https://github.com/newrelic/nr1-status-widgets/commit/57e39a4c4351341522f272a38fc7b1e3354bf417))
+* update icon ([b6b30da](https://github.com/newrelic/nr1-status-widgets/commit/b6b30da03a933089f7db21675ab2ab49b924ceb0))
+
 ## [2.3.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.3.0...v2.3.1) (2021-07-15)
 
 
