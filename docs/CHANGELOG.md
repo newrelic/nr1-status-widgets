@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.5.0...v2.6.0) (2021-07-28)
+
+
+### Features
+
+* use platformState timeRange ([91cd658](https://github.com/newrelic/nr1-status-widgets/commit/91cd658877450d53b550f449d6918ffa73428c8c))
+
 # [2.5.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.2...v2.5.0) (2021-07-28)
 
 
