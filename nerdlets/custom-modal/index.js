@@ -15,7 +15,8 @@ import {
   JsonChart,
   TableChart,
   FunnelChart,
-  ScatterChart
+  ScatterChart,
+  platform
 } from 'nr1';
 import Select from 'react-select';
 
@@ -180,7 +181,117 @@ export default class CustomModalNerdlet extends React.Component {
         {({ width, height }) => (
           <NerdletStateContext.Consumer>
             {nerdletState => {
-              const { queries, accountId } = nerdletState;
+              const { queries, accountId, timeRange } = nerdletState;
+              const { time } = this.state;
+              const timeOptions = [
+                {
+                  key: 'platform',
+                  label: 'Platform time selection',
+                  text: 'platform',
+                  value: { ...timeRange }
+                },
+                {
+                  key: '5',
+                  label: '5 minutes',
+                  text: '5',
+                  value: {
+                    begin_time: null,
+                    duration: 5 * MINUTE,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '15',
+                  label: '15 minutes',
+                  text: '15',
+                  value: {
+                    begin_time: null,
+                    duration: 15 * MINUTE,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '30',
+                  label: '30 minutes',
+                  text: '30',
+                  value: {
+                    begin_time: null,
+                    duration: 30 * MINUTE,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '60',
+                  label: '60 minutes',
+                  text: '60',
+                  value: {
+                    begin_time: null,
+                    duration: 60 * MINUTE,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '3',
+                  label: '3 hours',
+                  text: '3',
+                  value: {
+                    begin_time: null,
+                    duration: 3 * HOUR,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '6',
+                  label: '6 hours',
+                  text: '6',
+                  value: {
+                    begin_time: null,
+                    duration: 6 * HOUR,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '12',
+                  label: '12 hours',
+                  text: '12',
+                  value: {
+                    begin_time: null,
+                    duration: 12 * HOUR,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '24',
+                  label: '24 hours',
+                  text: '24',
+                  value: {
+                    begin_time: null,
+                    duration: 24 * HOUR,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '3d',
+                  label: '3 days',
+                  text: '3d',
+                  value: {
+                    begin_time: null,
+                    duration: 3 * DAY,
+                    end_time: null
+                  }
+                },
+                {
+                  key: '7d',
+                  label: '7 days',
+                  text: '7d',
+                  value: {
+                    begin_time: null,
+                    duration: 7 * DAY,
+                    end_time: null
+                  }
+                }
+              ];
+              const selectedTime = time || timeOptions[0];
               width = width * 0.95;
 
               let widgetsPerCol = 3;
@@ -195,112 +306,15 @@ export default class CustomModalNerdlet extends React.Component {
                     <div className="react-select-input-group">
                       <label>Time Picker</label>
                       <Select
-                        options={[
-                          {
-                            key: '5',
-                            label: '5 minutes',
-                            text: '5',
-                            value: {
-                              begin_time: null,
-                              duration: 5 * MINUTE,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '15',
-                            label: '15 minutes',
-                            text: '15',
-                            value: {
-                              begin_time: null,
-                              duration: 15 * MINUTE,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '30',
-                            label: '30 minutes',
-                            text: '30',
-                            value: {
-                              begin_time: null,
-                              duration: 30 * MINUTE,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '60',
-                            label: '60 minutes',
-                            text: '60',
-                            value: {
-                              begin_time: null,
-                              duration: 60 * MINUTE,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '3',
-                            label: '3 hours',
-                            text: '3',
-                            value: {
-                              begin_time: null,
-                              duration: 3 * HOUR,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '6',
-                            label: '6 hours',
-                            text: '6',
-                            value: {
-                              begin_time: null,
-                              duration: 6 * HOUR,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '12',
-                            label: '12 hours',
-                            text: '12',
-                            value: {
-                              begin_time: null,
-                              duration: 12 * HOUR,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '24',
-                            label: '24 hours',
-                            text: '24',
-                            value: {
-                              begin_time: null,
-                              duration: 24 * HOUR,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '3d',
-                            label: '3 days',
-                            text: '3d',
-                            value: {
-                              begin_time: null,
-                              duration: 3 * DAY,
-                              end_time: null
-                            }
-                          },
-                          {
-                            key: '7d',
-                            label: '7 days',
-                            text: '7d',
-                            value: {
-                              begin_time: null,
-                              duration: 7 * DAY,
-                              end_time: null
-                            }
-                          }
-                        ]}
+                        options={timeOptions}
                         placeholder="Select a time..."
                         isClearable
-                        onChange={time => this.setState({ time })}
-                        value={this.state.time}
+                        onChange={time => {
+                          this.setState({ time }, () =>
+                            platform.setUrlState({ timeRange: time.value })
+                          );
+                        }}
+                        value={selectedTime}
                         classNamePrefix="react-select"
                       />
                     </div>
@@ -339,7 +353,7 @@ export default class CustomModalNerdlet extends React.Component {
                           q.query,
                           height,
                           width,
-                          this.state.time
+                          selectedTime
                         )}
                       </div>
                     );
