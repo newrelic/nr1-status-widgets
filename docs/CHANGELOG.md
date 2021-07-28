@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.2...v2.5.0) (2021-07-28)
+
+
+### Features
+
+* bidirectional timepicker ([d0dd262](https://github.com/newrelic/nr1-status-widgets/commit/d0dd26220007470e4f7c819ee4007f92931fd42a))
+
 ## [2.4.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.1...v2.4.2) (2021-07-28)
 
 
