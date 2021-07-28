@@ -135,7 +135,7 @@ export const generateErrorsAndConfig = (
   }
 
   (modalQueries || []).forEach((q, i) => {
-    if (['line', 'area', 'sparkline'].includes(q.chartType)) {
+    if (['line', 'area', 'sparkline', 'stackedbar'].includes(q.chartType)) {
       if (!q.query.toLowerCase().includes('timeseries')) {
         errors.push(`Modal query ${i + 1} - missing TIMESERIES keyword`);
       }
