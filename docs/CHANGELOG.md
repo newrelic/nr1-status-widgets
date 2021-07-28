@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.1...v2.4.2) (2021-07-28)
+
+
+### Bug Fixes
+
+* allow timeseries keyword for stacked bar chart ([b8e65c8](https://github.com/newrelic/nr1-status-widgets/commit/b8e65c8be5d3869b21f9bc6d5d019bd638b038e7))
+
 ## [2.4.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.4.0...v2.4.1) (2021-07-27)
 
 
