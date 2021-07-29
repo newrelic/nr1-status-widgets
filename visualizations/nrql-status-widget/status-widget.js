@@ -11,6 +11,9 @@ import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
 import ModalCharts from './modalCharts';
 
+// if the width is below this figure particular features will be disable
+export const reducedFeatureWidth = 175;
+
 export default class StatusWidget extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +69,6 @@ export default class StatusWidget extends React.Component {
       enableFlash,
       timelineBucket,
       untilClause,
-      displayTimeline,
       thresholdDirection,
       criticalThreshold,
       criticalLabel,
@@ -74,7 +76,6 @@ export default class StatusWidget extends React.Component {
       warningLabel,
       healthyLabel,
       displayMetric,
-      metricLabel,
       metricSuffix,
       decimalPlaces,
       onClickUrl,
@@ -100,6 +101,7 @@ export default class StatusWidget extends React.Component {
       sloBar,
       sloDaysToView
     } = this.props;
+    let { displayTimeline, metricLabel } = this.props;
     const validModalQueries = modalQueries.filter(
       q => q.query && q.chartType && q.query.length > 5
     );
@@ -158,7 +160,12 @@ export default class StatusWidget extends React.Component {
     const sloErrors = generateSloErrors(sloConfig);
 
     if (errors.length > 0 || sloErrors.length > 0) {
-      return <EmptyState errors={[...errors, ...sloErrors]} />;
+      return (
+        <EmptyState
+          errors={[...errors, ...sloErrors]}
+          reducedFeatureWidth={reducedFeatureWidth}
+        />
+      );
     }
 
     const bucketValue =
@@ -200,6 +207,14 @@ export default class StatusWidget extends React.Component {
       chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
     }
 
+    let fontSizeMultiplier = 1;
+    let hideLabels = false;
+    if (width <= reducedFeatureWidth) {
+      hideLabels = true;
+      displayTimeline = false;
+      fontSizeMultiplier *= 1.4;
+    }
+
     return (
       <>
         <ModalCharts
@@ -220,7 +235,11 @@ export default class StatusWidget extends React.Component {
 
             if (error && initialized === false) {
               return (
-                <ErrorState error={error.message || ''} query={finalQuery} />
+                <ErrorState
+                  error={error.message || ''}
+                  query={finalQuery}
+                  reducedFeatureWidth={reducedFeatureWidth}
+                />
               );
             }
 
@@ -246,12 +265,8 @@ export default class StatusWidget extends React.Component {
               timeRangeResult
             );
 
-            const {
-              status,
-              statusLabel,
-              latestValue,
-              timeseries
-            } = derivedValues;
+            const { status, latestValue, timeseries } = derivedValues;
+            const statusLabel = hideLabels ? '' : derivedValues.statusLabel;
 
             let metricValue = latestValue;
             if (!isNaN(latestValue) && decimalPlaces !== undefined) {
@@ -274,7 +289,8 @@ export default class StatusWidget extends React.Component {
                   width,
                   height,
                   maxWidth: width,
-                  maxHeight: height
+                  maxHeight: height,
+                  overflow: 'hidden'
                 }}
                 className={`${status}${
                   enableFlash ? '' : '-solid'
@@ -288,7 +304,7 @@ export default class StatusWidget extends React.Component {
                       className="flex-item"
                       style={{
                         color: 'white',
-                        fontSize: '17vh',
+                        fontSize: `${17 * fontSizeMultiplier}vh`,
                         width,
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
@@ -301,7 +317,7 @@ export default class StatusWidget extends React.Component {
                         <div
                           style={{
                             display: 'inline',
-                            fontSize: '14vh',
+                            fontSize: `${14 * fontSizeMultiplier}vh`,
                             verticalAlign: 'top',
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
@@ -314,7 +330,7 @@ export default class StatusWidget extends React.Component {
                         <div
                           style={{
                             marginTop: '-5vh',
-                            fontSize: '6vh',
+                            fontSize: `${6 * fontSizeMultiplier}vh`,
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
                           }}
@@ -340,12 +356,14 @@ export default class StatusWidget extends React.Component {
                 </div>
 
                 <BottomMetrics
+                  hideLabels={hideLabels}
                   leftMetric={leftMetric}
                   rightMetric={rightMetric}
                   displayTimeline={displayTimeline}
                   width={width}
                   height={height}
                   mainProps={this.props}
+                  fontSizeMultiplier={fontSizeMultiplier}
                 />
 
                 {displayTimeline && (

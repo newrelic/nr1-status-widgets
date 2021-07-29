@@ -19,7 +19,8 @@ export default class Timeline extends React.Component {
           // backgroundColor: "black",
           backgroundColor: '#272727',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          overflow: 'hidden'
         }}
       >
         {timeseries.map((ts, i) => {

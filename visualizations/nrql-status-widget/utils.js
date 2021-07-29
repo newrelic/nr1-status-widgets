@@ -196,7 +196,7 @@ export const generateErrorsAndConfig = (
   }
 
   if (!accountId) errors.push('Required: Account ID');
-  if (!query) {
+  if (!query || query.length < 6) {
     errors.push('Required: Query eg. FROM TransactionError SELECT count(*)');
   } else {
     const lowerQuery = query.toLowerCase();
