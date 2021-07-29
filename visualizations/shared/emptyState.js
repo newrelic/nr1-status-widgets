@@ -3,7 +3,7 @@ import { Card, CardBody, HeadingText } from 'nr1';
 
 export default class EmptyState extends React.Component {
   render() {
-    const { errors, isEntity } = this.props;
+    const { errors, isEntity, reducedFeatureWidth } = this.props;
 
     return (
       <Card className="EmptyState">
@@ -16,6 +16,14 @@ export default class EmptyState extends React.Component {
               >
                 Status widget supports both numeric and string evaluation.
                 String evaluation is performed with regex.
+              </HeadingText>
+              <HeadingText
+                spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+                type={HeadingText.TYPE.HEADING_3}
+              >
+                If the widget width is below {reducedFeatureWidth}px, particular
+                features will be disabled so that font sizing can be dynamically
+                increased.
               </HeadingText>
               <br />
             </>

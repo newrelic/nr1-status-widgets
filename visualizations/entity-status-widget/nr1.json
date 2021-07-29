@@ -57,6 +57,34 @@
       ]
     },
     {
+      "name": "displayValue",
+      "title": "Summarized View: Display Value",
+      "description": "What value do you wish to display? Summarized view only.",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Nothing",
+          "value": null
+        },
+        {
+          "title": "Total number of entities",
+          "value": "noOfEntities"
+        },
+        {
+          "title": "Number of entities grouped by alert severity",
+          "value": "entitiesGroupedByAlert"
+        },
+        {
+          "title": "Total number of entities that are NOT healthy",
+          "value": "notHealthyEntities"
+        },
+        {
+          "title": "Percentage of healthy entities",
+          "value": "percentageOfHealthyEntities"
+        }
+      ]
+    },
+    {
       "name": "pollInterval",
       "title": "Poll interval in milliseconds (default 30000ms)",
       "description": "",

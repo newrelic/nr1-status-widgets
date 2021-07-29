@@ -18,7 +18,9 @@ export default class BottomMetrics extends React.Component {
       rightMetric,
       width,
       mainProps,
-      displayTimeline
+      displayTimeline,
+      hideLabels,
+      fontSizeMultiplier
     } = this.props;
 
     const {
@@ -52,13 +54,18 @@ export default class BottomMetrics extends React.Component {
     if (metricLabelRight && !metricLabelLeft) metricLabelLeft = '';
     if (metricLabelLeft && !metricLabelRight) metricLabelRight = '';
 
+    if (hideLabels) {
+      metricLabelLeft = '';
+      metricLabelRight = '';
+    }
+
     return (
       <div
         className="flex-item"
         style={{
           position: 'absolute',
           bottom: displayTimeline ? '6.75vh' : '0px',
-          fontSize: '10vh',
+          fontSize: `${10 * fontSizeMultiplier}vh`,
           display: 'inline-flex',
           paddingTop: '2vh',
           paddingBottom: displayTimeline ? '2vh' : '0px',
@@ -71,6 +78,7 @@ export default class BottomMetrics extends React.Component {
           <NrqlMetric
             direction="left"
             fullWidth={fullWidth}
+            fontSizeMultiplier={fontSizeMultiplier}
             width={width}
             query={queryLeft}
             enableFlash={enableFlashLeft}
@@ -84,12 +92,14 @@ export default class BottomMetrics extends React.Component {
             rightStatus={this.state.rightStatus}
             leftStatus={this.state.leftStatus}
             metricLabelRight={metricLabelRight}
+            hideLabels={hideLabels}
           />
         )}
         {queryRight && (
           <NrqlMetric
             direction="right"
             fullWidth={fullWidth}
+            fontSizeMultiplier={fontSizeMultiplier}
             width={width}
             query={queryRight}
             enableFlash={enableFlashRight}
@@ -103,6 +113,7 @@ export default class BottomMetrics extends React.Component {
             rightStatus={this.state.rightStatus}
             leftStatus={this.state.leftStatus}
             metricLabelLeft={metricLabelLeft}
+            hideLabels={hideLabels}
           />
         )}
       </div>

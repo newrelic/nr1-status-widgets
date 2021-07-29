@@ -13,5 +13,5 @@
       "url": "https://discuss.newrelic.com/t/status-widget-visualizations-nerdpack-for-dashboards/154721"
     }
   },
-  "whatsNew": "\n-Add time picker for modal\n-Pass time range result to value assessment"
+  "whatsNew": "\n- Automatic font resizing for NRQL Status Widget\n- On click actions for entity status widget\n- Display value options for entity summary view\n- Add type to entity table"
 }

@@ -26,7 +26,9 @@ export default class NrqlMetric extends React.Component {
       metricSuffix,
       updateState,
       metricLabelLeft,
-      metricLabelRight
+      metricLabelRight,
+      hideLabels,
+      fontSizeMultiplier = { fontSizeMultiplier }
     } = this.props;
     let { metricLabel } = this.props;
 
@@ -54,7 +56,11 @@ export default class NrqlMetric extends React.Component {
           if (initialized === true && error) {
             setTimeout(() => {
               // eslint-disable-next-line
-              console.log(`NRQL error for ${query} \nError: ${JSON.stringify(error)}\nReloading...`);
+              console.log(
+                `NRQL error for ${query} \nError: ${JSON.stringify(
+                  error
+                )}\nReloading...`
+              );
               window.location.reload();
             }, 5000);
           }
@@ -122,7 +128,7 @@ export default class NrqlMetric extends React.Component {
                   className="flex-item"
                   style={{
                     color: 'white',
-                    fontSize: '11vh',
+                    fontSize: `${11 * fontSizeMultiplier}vh`,
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
                     width: availWidth
@@ -142,35 +148,39 @@ export default class NrqlMetric extends React.Component {
                       &nbsp;{metricSuffix}
                     </div>
                   )}
-                  {metricLabel !== null && metricLabel !== undefined && (
+                  {metricLabel !== null &&
+                    metricLabel !== undefined &&
+                    !hideLabels && (
+                      <div
+                        style={{
+                          marginTop: '-4vh',
+                          fontSize: '6vh',
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden'
+                        }}
+                      >
+                        {metricLabel || <span>&nbsp;</span>}
+                      </div>
+                    )}
+                </div>
+                {statusLabel !== null &&
+                  statusLabel !== undefined &&
+                  !hideLabels && (
                     <div
+                      className="flex-item"
                       style={{
-                        marginTop: '-4vh',
-                        fontSize: '6vh',
+                        marginTop: '-3.5vh',
+                        marginBottom: '1.3vh',
+                        color: 'white',
+                        fontSize: '9vh',
                         textOverflow: 'ellipsis',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        width: availWidth
                       }}
                     >
-                      {metricLabel || <span>&nbsp;</span>}
+                      {statusLabel || <span>&nbsp;</span>}
                     </div>
                   )}
-                </div>
-                {statusLabel !== null && statusLabel !== undefined && (
-                  <div
-                    className="flex-item"
-                    style={{
-                      marginTop: '-3.5vh',
-                      marginBottom: '1.3vh',
-                      color: 'white',
-                      fontSize: '9vh',
-                      textOverflow: 'ellipsis',
-                      overflow: 'hidden',
-                      width: availWidth
-                    }}
-                  >
-                    {statusLabel || <span>&nbsp;</span>}
-                  </div>
-                )}
               </div>
             </div>
           );

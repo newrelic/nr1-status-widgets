@@ -4,6 +4,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
+  TableRowCell,
   EntityTitleTableRowCell,
   navigation,
   TextField
@@ -25,7 +26,7 @@ export default class EntityTable extends React.Component {
     return (
       <div
         style={{
-          width: width - 20,
+          width: width ? width - 20 : '100%',
           height
         }}
       >
@@ -42,6 +43,7 @@ export default class EntityTable extends React.Component {
         <Table items={searchedEntities}>
           <TableHeader>
             <TableHeaderCell>Entity</TableHeaderCell>
+            <TableHeaderCell>Type</TableHeaderCell>
           </TableHeader>
 
           {({ item }) => (
@@ -50,6 +52,7 @@ export default class EntityTable extends React.Component {
                 value={item}
                 onClick={() => navigation.openStackedEntity(item.guid)}
               />
+              <TableRowCell>{item.type}</TableRowCell>
             </TableRow>
           )}
         </Table>

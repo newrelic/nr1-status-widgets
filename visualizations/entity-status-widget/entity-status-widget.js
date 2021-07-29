@@ -200,7 +200,7 @@ export default class EntityStatusWidget extends React.Component {
       console.log('updating state', stateUpdate);
 
       // eslint-disable-next-line
-      this.setState(stateUpdate,()=>{
+      this.setState(stateUpdate, () => {
         if (this.widgetPoll) {
           // eslint-disable-next-line
           console.log('resetting interval');
@@ -362,7 +362,9 @@ export default class EntityStatusWidget extends React.Component {
     const completeErrors = [...errors];
 
     if (filteredEntities.length === 0 && !isFetching && firstLoadComplete) {
-      completeErrors.push('No entities found...');
+      completeErrors.push(
+        'No entities found... Check if you are tracking the required status conditions.'
+      );
     }
 
     entitySearchErrors.forEach(e =>
