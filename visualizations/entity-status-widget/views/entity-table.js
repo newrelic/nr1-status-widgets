@@ -25,7 +25,7 @@ export default class EntityTable extends React.Component {
     return (
       <div
         style={{
-          width: width - 20,
+          width: width ? width - 20 : '100%',
           height
         }}
       >

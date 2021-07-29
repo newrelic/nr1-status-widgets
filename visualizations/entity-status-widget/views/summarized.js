@@ -1,7 +1,15 @@
 import React from 'react';
-import { Spinner } from 'nr1';
+import { navigation, Spinner, Modal, HeadingText } from 'nr1';
+import EntityTable from './entity-table';
 
 export default class Summarized extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hidden: true };
+  }
+
+  onClose = () => this.setState({ hidden: true });
+
   render() {
     const {
       width,
@@ -11,7 +19,8 @@ export default class Summarized extends React.Component {
       healthyLabel,
       warningLabel,
       criticalLabel,
-      isFetching
+      isFetching,
+      entities
     } = this.props;
 
     let healthStatus = '';
@@ -41,16 +50,38 @@ export default class Summarized extends React.Component {
 
     const displayMetric = false;
 
+    let onClick;
+    if (entities.length === 1) {
+      onClick = () => navigation.openStackedEntity(entities[0].guid);
+    } else if (entities.length > 1) {
+      onClick = () => this.setState({ hidden: false });
+    }
+
     return (
       <div
+        onClick={onClick}
         className={`${healthStatus}${
           enableFlash ? '' : '-solid'
         }-bg flex-container`}
         style={{
           width,
-          height
+          height,
+          cursor: onClick ? 'pointer' : 'text'
         }}
       >
+        {entities.length > 1 && (
+          <Modal hidden={this.state.hidden} onClose={this.onClose}>
+            <HeadingText type={HeadingText.TYPE.HEADING_1}>
+              Entities
+            </HeadingText>
+            <EntityTable
+              isFetching={isFetching}
+              height="100%"
+              entities={entities}
+            />
+          </Modal>
+        )}
+
         <div className="flex-col">
           {isFetching && <Spinner />}
 
