@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.6.0...v2.7.0) (2021-07-29)
+
+
+### Features
+
+* add additional display values to entity widget ([701002f](https://github.com/newrelic/nr1-status-widgets/commit/701002f629932b4e5eed8a33e1e351ac8a23f04e))
+* nsw add dynamic sizing ([d70b77b](https://github.com/newrelic/nr1-status-widgets/commit/d70b77b6a06066f4b876a317ac878c83889e5054))
+* on click actions for entity status widget ([1a17554](https://github.com/newrelic/nr1-status-widgets/commit/1a175543c8b8c13db2b877392b41f9056f291b4e))
+
 # [2.6.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.5.0...v2.6.0) (2021-07-28)
 
 
