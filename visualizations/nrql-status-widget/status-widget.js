@@ -69,6 +69,7 @@ export default class StatusWidget extends React.Component {
       enableFlash,
       timelineBucket,
       untilClause,
+      thresholdEmptyHandling,
       thresholdDirection,
       criticalThreshold,
       criticalLabel,
@@ -156,6 +157,7 @@ export default class StatusWidget extends React.Component {
       onClickUrl,
       validModalQueries
     );
+    configuration.thresholdEmptyHandling = thresholdEmptyHandling;
 
     const sloErrors = generateSloErrors(sloConfig);
 

@@ -29,6 +29,30 @@
       "type": "number"
     },
     {
+      "name": "thresholdEmptyHandling",
+      "title": "Threshold NULL & ZERO handling",
+      "description": "Null and zero handling",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Default",
+          "value": null
+        },
+        {
+          "title": "Return critical if zero / 0",
+          "value": "critIfZero"
+        },
+        {
+          "title": "Return critical if null",
+          "value": "critIfNull"
+        },
+        {
+          "title": "Return critical if null or zero",
+          "value": "critIfEither"
+        }
+      ]
+    },
+    {
       "name": "thresholdDirection",
       "title": "Threshold Direction: above or below (default: above)",
       "description": "Threshold Direction: above or below (default: above)",
