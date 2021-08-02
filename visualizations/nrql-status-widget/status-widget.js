@@ -130,6 +130,9 @@ export default class StatusWidget extends React.Component {
         accountId,
         queryLeft
       );
+      if (leftMetric.configuration) {
+        leftMetric.configuration.thresholdEmptyHandling = thresholdEmptyHandling;
+      }
     }
 
     if (queryRight) {
@@ -143,6 +146,9 @@ export default class StatusWidget extends React.Component {
         accountId,
         queryRight
       );
+      if (rightMetric.configuration) {
+        rightMetric.configuration.thresholdEmptyHandling = thresholdEmptyHandling;
+      }
     }
 
     const { errors, configuration } = generateErrorsAndConfig(
