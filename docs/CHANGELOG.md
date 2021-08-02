@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.7.0...v2.8.0) (2021-08-02)
+
+
+### Features
+
+* add null & zero handling ([89c876b](https://github.com/newrelic/nr1-status-widgets/commit/89c876bb5cd3410a37dbee836606cbc632502fa3))
+
 # [2.7.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.6.0...v2.7.0) (2021-07-29)
 
 
