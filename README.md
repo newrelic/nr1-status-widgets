@@ -39,6 +39,8 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Toggle flash/pulse effect
 - Define custom entity search query
 - Define specific entity guids
+- Set custom display values
+- On click to stacked entity or modal to many entities
 ---
 ## Open source license
 

@@ -89,6 +89,32 @@ export const assessValue = (value, config) => {
         value.statusLabel = config.criticalLabel;
       }
     }
+
+    if (config.thresholdEmptyHandling) {
+      switch (config.thresholdEmptyHandling) {
+        case 'critIfZero': {
+          if (value.value === 0) {
+            value.status = 'critical';
+            value.statusLabel = config.criticalLabel;
+          }
+          break;
+        }
+        case 'critIfNull': {
+          if (value.value === null) {
+            value.status = 'critical';
+            value.statusLabel = config.criticalLabel;
+          }
+          break;
+        }
+        case 'critIfEither': {
+          if (value.value === null || value.value === 0) {
+            value.status = 'critical';
+            value.statusLabel = config.criticalLabel;
+          }
+          break;
+        }
+      }
+    }
   } else if (config.thresholdType === 'regex') {
     const warningRegex = new RegExp(config.warningThreshold);
     if (warningRegex.test(value.y)) {
