@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.8.0...v2.9.0) (2021-08-02)
+
+
+### Features
+
+* threshold empty handling for bottom metrics ([9b38150](https://github.com/newrelic/nr1-status-widgets/commit/9b38150ee7fdc4b880e95fd7a88279044d887892))
+
 # [2.8.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.7.0...v2.8.0) (2021-08-02)
 
 
