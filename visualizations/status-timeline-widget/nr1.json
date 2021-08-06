@@ -1,0 +1,87 @@
+{
+  "schemaType": "VISUALIZATION",
+  "id": "status-timeline-widget",
+  "displayName": "Status Timeline Widget",
+  "description": "",
+  "configuration": [
+    {
+      "name": "accountId",
+      "title": "Account ID",
+      "description": "Account ID to be associated with the query",
+      "type": "number"
+    },
+    {
+      "name": "query",
+      "title": "Query (do not use timeseries)",
+      "description": "NRQL query eg. FROM Transaction SELECT count(*) FACET appName, hourOf(timestamp) ORDER BY timestamp LIMIT MAX",
+      "type": "nrql"
+    },
+    {
+      "name": "thresholds",
+      "title": "Thresholds (at least one value parameter required)",
+      "type": "collection",
+      "items": [
+        {
+          "name": "priority",
+          "title": "Validation priority (0 is highest) (optional)",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "name",
+          "title": "Name (label)",
+          "description": "",
+          "type": "string"
+        }, 
+        {
+          "name": "valueEqual",
+          "title": "Value equal =",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "valueAbove",
+          "title": "Value above >",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "valueBelow",
+          "title": "Value below <",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "bgColor",
+          "title": "Background Color",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "fontColor",
+          "title": "Font Color",
+          "description": "",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "showKey",
+      "title": "Show Key",
+      "description": "",
+      "type": "boolean"
+    },
+    {
+      "name": "displayMetrics",
+      "title": "Display Metrics",
+      "description": "Display metrics",
+      "type": "boolean"
+    },
+    {
+      "name": "decimalPlaces",
+      "title": "Decimal Places",
+      "description": "Set decimal places on metric",
+      "type": "number"
+    }
+  ]
+}
