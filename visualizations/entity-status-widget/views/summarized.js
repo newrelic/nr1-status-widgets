@@ -1,7 +1,7 @@
 import React from 'react';
 import { navigation, Spinner, Modal, HeadingText } from 'nr1';
 import EntityTable from './entity-table';
-import _ from 'lodash';
+import groupBy from 'lodash.groupby';
 
 export default class Summarized extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ export default class Summarized extends React.Component {
       }
       case 'entitiesGroupedByAlert': {
         displayValueFontSize = '12vh';
-        const alertGroupedEntities = _.groupBy(entities, e =>
+        const alertGroupedEntities = groupBy(entities, e =>
           e.alertSeverity === 'NOT_ALERTING' ? 'HEALTHY' : e.alertSeverity
         );
 
