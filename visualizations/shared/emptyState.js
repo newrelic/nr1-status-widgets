@@ -3,31 +3,32 @@ import { Card, CardBody, HeadingText } from 'nr1';
 
 export default class EmptyState extends React.Component {
   render() {
-    const { errors, isEntity, reducedFeatureWidth } = this.props;
+    const { errors, isEntity, reducedFeatureWidth, isTimeline } = this.props;
 
     return (
       <Card className="EmptyState">
         <CardBody className="EmptyState-cardBody">
-          {!isEntity && (
-            <>
-              <HeadingText
-                spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-                type={HeadingText.TYPE.HEADING_3}
-              >
-                Status widget supports both numeric and string evaluation.
-                String evaluation is performed with regex.
-              </HeadingText>
-              <HeadingText
-                spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-                type={HeadingText.TYPE.HEADING_3}
-              >
-                If the widget width is below {reducedFeatureWidth}px, particular
-                features will be disabled so that font sizing can be dynamically
-                increased.
-              </HeadingText>
-              <br />
-            </>
-          )}
+          {!isEntity ||
+            (!isTimeline && (
+              <>
+                <HeadingText
+                  spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+                  type={HeadingText.TYPE.HEADING_3}
+                >
+                  Status widget supports both numeric and string evaluation.
+                  String evaluation is performed with regex.
+                </HeadingText>
+                <HeadingText
+                  spacingType={[HeadingText.SPACING_TYPE.LARGE]}
+                  type={HeadingText.TYPE.HEADING_3}
+                >
+                  If the widget width is below {reducedFeatureWidth}px,
+                  particular features will be disabled so that font sizing can
+                  be dynamically increased.
+                </HeadingText>
+                <br />
+              </>
+            ))}
           <HeadingText
             spacingType={[HeadingText.SPACING_TYPE.LARGE]}
             type={HeadingText.TYPE.HEADING_3}
