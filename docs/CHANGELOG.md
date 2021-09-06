@@ -1,3 +1,12 @@
+# [2.10.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.9.0...v2.10.0) (2021-09-06)
+
+
+### Features
+
+* add key toggle to timeline status ([e236a19](https://github.com/newrelic/nr1-status-widgets/commit/e236a19ee995db91033df62fccaf117e09efdcf6))
+* add status timeline widget info ([3e10f49](https://github.com/newrelic/nr1-status-widgets/commit/3e10f4984a69db3a0ab34c468fdaa8c719f01fe0))
+* switch to lodash.groupby ([b3cbe8d](https://github.com/newrelic/nr1-status-widgets/commit/b3cbe8d943744c42e5d86a8628d497bdfb14e29d))
+
 # [2.9.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.8.0...v2.9.0) (2021-08-02)
 
 
