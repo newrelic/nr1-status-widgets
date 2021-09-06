@@ -2,8 +2,9 @@
 
 # Status Widget Pack
 
-This nerdpack contains two status widget custom visualizations to be used with dashboards.
+This nerdpack contains three status widget custom visualizations to be used with dashboards.
 - NRQL Status Widget (Configurable variations)
+- NRQL Status Timeline Widget
 - Entity Status Widget (2 modes: Summary & Table)
 
 ## NRQL Status Widget
@@ -11,7 +12,7 @@ This nerdpack contains two status widget custom visualizations to be used with d
 ![NRQL Status Widget](screenshots/nrql-status-widget-1.png)
 <img src="screenshots/nrql-status-widget-2.png" alt="statuswidget2" width="300"/>
 
-## NRQL Widget Features
+## NRQL Status Widget Features
 
 - Custom labelling for critical, warning, healthy
 - Metric suffixes and labels
@@ -22,6 +23,21 @@ This nerdpack contains two status widget custom visualizations to be used with d
 - Modal can be provided any number of additional NRQL queries to be displayed
 - Toggle flash/pulse effect
 - Define bottom left and right metrics
+---
+
+## NRQL Status Timeline Widget
+
+![NRQL Status Widget](screenshots/nrql-status-timeline-widget-1.png)
+
+
+## NRQL Status Timeline Widget Features
+Example query: `FROM Transaction SELECT count(*) FACET appName, hourOf(timestamp) ORDER BY timestamp LIMIT MAX`
+
+- Custom thresholds
+  - Configurable background and font colors
+- Toggle Key
+- Toggle Metrics
+- Set decimal places
 ---
 ## Entity Status Widget
 
@@ -48,6 +64,8 @@ This project is distributed under the [Apache 2 license](LICENSE).
 
 
 ## Getting started
+
+This project is automatically available in the New Relic One Catalog under custom visualizations. If you would like to develop or deploy your own version follow the steps below.
 
 1. Ensure that you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [NPM](https://www.npmjs.com/get-npm) installed. If you're unsure whether you have one or both of them installed, run the following commands. (If you have them installed, these commands return a version number; if not, the commands aren't recognized.)
 ```bash
