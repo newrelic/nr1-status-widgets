@@ -118,6 +118,10 @@ export const generateErrorsAndConfig = (
     }
   });
 
+  if ((thresholds || []).length === 0) {
+    errors.push('At least one threshold should be defined');
+  }
+
   (thresholds || []).forEach((t, i) => {
     if (t.name) {
       if (!t.bgColor) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NrqlQuery, Spinner, navigation } from 'nr1';
+import { NrqlQuery, Spinner } from 'nr1';
 import { generateErrorsAndConfig, buildOrderedData } from './utils';
 import EmptyState from '../shared/emptyState';
 import ErrorState from '../shared/errorState';
@@ -13,48 +13,48 @@ export default class StatusWidget extends React.Component {
     super(props);
     this.state = {
       modalOpen: false,
-      initialized: false,
-      timeRange: undefined,
-      timeRangeResult: null
+      initialized: false
+      // timeRange: undefined,
+      // timeRangeResult: null
     };
   }
 
-  componentDidMount() {
-    this.handleTime(this.props.timeRange);
-  }
+  // componentDidMount() {
+  //   this.handleTime(this.props.timeRange);
+  // }
 
-  componentDidUpdate() {
-    this.handleTime(this.props.timeRange);
-  }
+  // componentDidUpdate() {
+  //   this.handleTime(this.props.timeRange);
+  // }
 
-  handleTime = async incomingTimeRange => {
-    const currentTimeRange = this.state.timeRange;
-    const currentTimeRangeStr = JSON.stringify(currentTimeRange);
-    const incomingTimeRangeStr = JSON.stringify(incomingTimeRange);
+  // handleTime = async incomingTimeRange => {
+  //   const currentTimeRange = this.state.timeRange;
+  //   const currentTimeRangeStr = JSON.stringify(currentTimeRange);
+  //   const incomingTimeRangeStr = JSON.stringify(incomingTimeRange);
 
-    if (!incomingTimeRange && incomingTimeRangeStr !== currentTimeRangeStr) {
-      this.setState({ timeRange: undefined, timeRangeResult: null });
-    } else if (
-      JSON.stringify(currentTimeRange) !== JSON.stringify(incomingTimeRange)
-    ) {
-      const stateUpdate = { timeRange: incomingTimeRange };
-      const { query, accountId } = this.props;
-      const nrqlResult = await NrqlQuery.query({
-        query,
-        accountId,
-        timeRange: incomingTimeRange
-      });
-      stateUpdate.timeRangeResult = nrqlResult?.data?.[0]?.data?.[0]?.y || null;
-      this.setState(stateUpdate);
-    }
-  };
+  //   if (!incomingTimeRange && incomingTimeRangeStr !== currentTimeRangeStr) {
+  //     this.setState({ timeRange: undefined, timeRangeResult: null });
+  //   } else if (
+  //     JSON.stringify(currentTimeRange) !== JSON.stringify(incomingTimeRange)
+  //   ) {
+  //     const stateUpdate = { timeRange: incomingTimeRange };
+  //     const { query, accountId } = this.props;
+  //     const nrqlResult = await NrqlQuery.query({
+  //       query,
+  //       accountId,
+  //       timeRange: incomingTimeRange
+  //     });
+  //     stateUpdate.timeRangeResult = nrqlResult?.data?.[0]?.data?.[0]?.y || null;
+  //     this.setState(stateUpdate);
+  //   }
+  // };
 
   modalClose = () => {
     this.setState({ modalOpen: false });
   };
 
   render() {
-    const { modalOpen, initialized, timeRange, timeRangeResult } = this.state;
+    const { modalOpen, initialized } = this.state;
     const {
       width,
       height,
@@ -63,9 +63,11 @@ export default class StatusWidget extends React.Component {
       thresholds,
       onClickUrl,
       modalQueries,
-      displayMetrics
+      hideMetrics,
+      decimalPlaces,
+      hideKey
     } = this.props;
-    const validModalQueries = modalQueries.filter(
+    const validModalQueries = (modalQueries || []).filter(
       q => q.query && q.chartType && q.query.length > 5
     );
 
@@ -79,7 +81,11 @@ export default class StatusWidget extends React.Component {
 
     if (errors.length > 0) {
       return (
-        <EmptyState errors={errors} reducedFeatureWidth={reducedFeatureWidth} />
+        <EmptyState
+          errors={errors}
+          reducedFeatureWidth={reducedFeatureWidth}
+          isTimeline
+        />
       );
     }
 
@@ -104,20 +110,20 @@ export default class StatusWidget extends React.Component {
     //   chartOnClick = () => window.open(onClickUrl, '_blank');
     // }
 
-    if (validModalQueries.length > 0) {
-      const nerdlet = {
-        id: 'custom-modal',
-        urlState: {
-          accountId: parseInt(accountId),
-          queries: validModalQueries,
-          timeRange,
-          height,
-          width
-        }
-      };
+    // if (validModalQueries.length > 0) {
+    //   const nerdlet = {
+    //     id: 'custom-modal',
+    //     urlState: {
+    //       accountId: parseInt(accountId),
+    //       queries: validModalQueries,
+    //       timeRange,
+    //       height,
+    //       width
+    //     }
+    //   };
 
-      chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
-    }
+    //   chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
+    // }
 
     return (
       <>
@@ -166,15 +172,23 @@ export default class StatusWidget extends React.Component {
                   maxHeight: height
                 }}
               >
-                <table style={{ width: '100%' }}>
+                <table
+                  style={{
+                    width: '100%',
+                    bottom: hideKey ? undefined : '30px'
+                  }}
+                >
                   {Object.keys(orderedData).map(key => {
                     const data = orderedData[key];
                     return (
                       <tr key={key}>
                         <td>{key === 'undefined' ? 'Other' : key}</td>
                         {Object.keys(data).map(key2 => {
-                          const { value, bgColor, fontColor } = data[key2];
-                          // console.log(data[key2]);
+                          const { bgColor, fontColor } = data[key2];
+                          let value = data[key2].value;
+                          if (decimalPlaces)
+                            value = value.toFixed(parseInt(decimalPlaces));
+
                           return (
                             <td
                               key={key2}
@@ -183,7 +197,7 @@ export default class StatusWidget extends React.Component {
                                 color: fontColor
                               }}
                             >
-                              {displayMetrics && value}
+                              {!hideMetrics && value}
                             </td>
                           );
                         })}
@@ -194,7 +208,7 @@ export default class StatusWidget extends React.Component {
                     <td
                       style={{
                         position: 'sticky',
-                        bottom: '0px'
+                        bottom: hideKey ? '0px' : '30px'
                       }}
                     />
                     {xLabels.map(label => {
@@ -203,7 +217,7 @@ export default class StatusWidget extends React.Component {
                           key={label}
                           style={{
                             position: 'sticky',
-                            bottom: '0px'
+                            bottom: hideKey ? '0px' : '30px'
                           }}
                         >
                           {label}
@@ -212,6 +226,71 @@ export default class StatusWidget extends React.Component {
                     })}
                   </tr>
                 </table>
+
+                {!hideKey && (
+                  <div
+                    style={{
+                      position: 'sticky',
+                      bottom: '0px',
+                      textAlign: 'center',
+                      padding: '10px',
+                      backgroundColor: 'white'
+                    }}
+                  >
+                    {thresholds.map(t => {
+                      const value = {};
+                      const { bgColor, fontColor } = t;
+
+                      if (bgColor === 'healthy' || bgColor === 'green') {
+                        value.bgColor = '#01b076';
+                        value.fontColor = 'white';
+                      }
+
+                      if (fontColor === 'healthy' || fontColor === 'green') {
+                        value.fontColor = '#01b076';
+                      }
+
+                      if (bgColor === 'critical' || bgColor === 'red') {
+                        value.bgColor = '#f5554b';
+                        value.fontColor = 'white';
+                      }
+
+                      if (fontColor === 'critical' || fontColor === 'red') {
+                        value.fontColor = '#f5554b';
+                      }
+
+                      if (bgColor === 'warning' || bgColor === 'orange') {
+                        value.bgColor = '#f0b400';
+                        value.fontColor = 'white';
+                      }
+
+                      if (fontColor === 'warning' || fontColor === 'orange') {
+                        value.fontColor = '#f0b400';
+                      }
+
+                      if (bgColor === 'unknown' || bgColor === 'grey') {
+                        value.bgColor = '#9fa5a5';
+                      }
+
+                      if (fontColor === 'unknown' || fontColor === 'grey') {
+                        value.fontColor = '#9fa5a5';
+                      }
+
+                      return (
+                        <>
+                          <div style={{ display: 'inline' }}>
+                            <span style={{ color: value.bgColor }}>
+                              &#9632;
+                            </span>
+                            &nbsp;
+                            {t.name}
+                          </div>
+                          &nbsp;&nbsp;&nbsp;
+                        </>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             );
           }}

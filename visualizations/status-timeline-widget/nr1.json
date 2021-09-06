@@ -66,15 +66,15 @@
       ]
     },
     {
-      "name": "showKey",
-      "title": "Show Key",
+      "name": "hideKey",
+      "title": "Hide Key",
       "description": "",
       "type": "boolean"
     },
     {
-      "name": "displayMetrics",
-      "title": "Display Metrics",
-      "description": "Display metrics",
+      "name": "hideMetrics",
+      "title": "Hide Metrics",
+      "description": "Hide metrics",
       "type": "boolean"
     },
     {
