@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.10.0...v2.11.0) (2021-09-06)
+
+
+### Features
+
+* add status timeline widget to catalog screenshots ([2163872](https://github.com/newrelic/nr1-status-widgets/commit/21638726b3e395ba3eacc46a7ca6969c9d160e37))
+
 # [2.10.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.9.0...v2.10.0) (2021-09-06)
 
 
