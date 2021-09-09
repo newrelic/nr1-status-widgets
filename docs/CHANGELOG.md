@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.12.0...v2.12.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* handle when left or right query is null ([193cdf3](https://github.com/newrelic/nr1-status-widgets/commit/193cdf30e2209fae849690e00900d9d7cc191676))
+
 # [2.12.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.11.0...v2.12.0) (2021-09-09)
 
 
