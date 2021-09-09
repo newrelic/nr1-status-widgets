@@ -13,5 +13,5 @@
       "url": "https://discuss.newrelic.com/t/status-widget-visualizations-nerdpack-for-dashboards/154721"
     }
   },
-  "whatsNew": "\n- Switch to lodash.groupby\n- Add status timeline widget"
+  "whatsNew": "\n- Add font size multiplier to status widget"
 }

@@ -186,8 +186,12 @@ export default class StatusWidget extends React.Component {
                         {Object.keys(data).map(key2 => {
                           const { bgColor, fontColor } = data[key2];
                           let value = data[key2].value;
-                          if (decimalPlaces)
+                          if (
+                            decimalPlaces !== null &&
+                            decimalPlaces !== undefined
+                          ) {
                             value = value.toFixed(parseInt(decimalPlaces));
+                          }
 
                           return (
                             <td
