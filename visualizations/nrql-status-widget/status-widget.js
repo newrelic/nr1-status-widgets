@@ -103,11 +103,11 @@ export default class StatusWidget extends React.Component {
     } = this.props;
     let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
 
-    if (queryRight.length <= 5) queryRight = '';
-    if (queryLeft.length <= 5) queryLeft = '';
+    if ((queryRight || '').length <= 5) queryRight = '';
+    if ((queryLeft || '').length <= 5) queryLeft = '';
 
     const validModalQueries = modalQueries.filter(
-      q => q.query && q.chartType && q.query.length > 5
+      q => q.query && q.chartType && (q.query || '').length > 5
     );
 
     const sloConfig = {
