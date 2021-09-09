@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.11.0...v2.12.0) (2021-09-09)
+
+
+### Features
+
+* add fontSizeMultiplier & adjust defaults ([d0d1669](https://github.com/newrelic/nr1-status-widgets/commit/d0d1669682d5b30b47b3366e72d6607ce8a0ed04))
+
 # [2.11.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.10.0...v2.11.0) (2021-09-06)
 
 
