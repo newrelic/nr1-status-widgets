@@ -41,8 +41,8 @@ export default class BottomMetrics extends React.Component {
     } = mainProps;
 
     // force null since custom viz props don't clear properly and leave a FROM clause
-    if ((queryRight || '').length <= 4) queryRight = null;
-    if ((queryLeft || '').length <= 4) queryLeft = null;
+    if ((queryRight || '').length <= 5) queryRight = null;
+    if ((queryLeft || '').length <= 5) queryLeft = null;
 
     if (queryRight === null && queryLeft === null) {
       return '';
@@ -65,7 +65,7 @@ export default class BottomMetrics extends React.Component {
         style={{
           position: 'absolute',
           bottom: displayTimeline ? '6.75vh' : '0px',
-          fontSize: `${10 * fontSizeMultiplier}vh`,
+          fontSize: `${20 * fontSizeMultiplier}vh`,
           display: 'inline-flex',
           paddingTop: '2vh',
           paddingBottom: displayTimeline ? '2vh' : '0px',

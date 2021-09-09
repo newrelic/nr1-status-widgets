@@ -89,7 +89,11 @@ export default class NrqlMetric extends React.Component {
           }
 
           let metricValue = latestValue;
-          if (!isNaN(latestValue) && decimalPlaces !== undefined) {
+          if (
+            !isNaN(latestValue) &&
+            decimalPlaces !== undefined &&
+            decimalPlaces !== null
+          ) {
             metricValue = latestValue.toFixed(decimalPlaces);
           }
 
@@ -128,7 +132,7 @@ export default class NrqlMetric extends React.Component {
                   className="flex-item"
                   style={{
                     color: 'white',
-                    fontSize: `${11 * fontSizeMultiplier}vh`,
+                    fontSize: `${18 * fontSizeMultiplier}vh`,
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
                     width: availWidth

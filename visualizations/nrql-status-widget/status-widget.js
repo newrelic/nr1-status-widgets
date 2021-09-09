@@ -80,14 +80,12 @@ export default class StatusWidget extends React.Component {
       metricSuffix,
       decimalPlaces,
       onClickUrl,
-      queryLeft,
       thresholdDirectionLeft,
       criticalThresholdLeft,
       criticalLabelLeft,
       warningThresholdLeft,
       warningLabelLeft,
       healthyLabelLeft,
-      queryRight,
       thresholdDirectionRight,
       criticalThresholdRight,
       criticalLabelRight,
@@ -100,9 +98,14 @@ export default class StatusWidget extends React.Component {
       sloTarget,
       sloBudget,
       sloBar,
-      sloDaysToView
+      sloDaysToView,
+      fontMultiplier
     } = this.props;
-    let { displayTimeline, metricLabel } = this.props;
+    let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
+
+    if (queryRight.length <= 5) queryRight = '';
+    if (queryLeft.length <= 5) queryLeft = '';
+
     const validModalQueries = modalQueries.filter(
       q => q.query && q.chartType && q.query.length > 5
     );
@@ -215,7 +218,7 @@ export default class StatusWidget extends React.Component {
       chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
     }
 
-    let fontSizeMultiplier = 1;
+    let fontSizeMultiplier = fontMultiplier || 1;
     let hideLabels = false;
     if (width <= reducedFeatureWidth) {
       hideLabels = true;
@@ -277,7 +280,11 @@ export default class StatusWidget extends React.Component {
             const statusLabel = hideLabels ? '' : derivedValues.statusLabel;
 
             let metricValue = latestValue;
-            if (!isNaN(latestValue) && decimalPlaces !== undefined) {
+            if (
+              !isNaN(latestValue) &&
+              decimalPlaces !== undefined &&
+              decimalPlaces !== null
+            ) {
               metricValue = latestValue.toFixed(decimalPlaces);
             }
 
@@ -312,11 +319,14 @@ export default class StatusWidget extends React.Component {
                       className="flex-item"
                       style={{
                         color: 'white',
-                        fontSize: `${17 * fontSizeMultiplier}vh`,
+                        fontSize: `${20 * fontSizeMultiplier}vh`,
                         width,
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
-                        marginTop: queryRight || queryLeft ? '-19vh' : '0px',
+                        marginTop:
+                          queryRight || queryLeft
+                            ? `${-25 * fontSizeMultiplier}vh`
+                            : '0px',
                         cursor: chartOnClick ? 'pointer' : 'default'
                       }}
                     >
@@ -325,7 +335,7 @@ export default class StatusWidget extends React.Component {
                         <div
                           style={{
                             display: 'inline',
-                            fontSize: `${14 * fontSizeMultiplier}vh`,
+                            fontSize: `${17 * fontSizeMultiplier}vh`,
                             verticalAlign: 'top',
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
@@ -338,7 +348,7 @@ export default class StatusWidget extends React.Component {
                         <div
                           style={{
                             marginTop: '-5vh',
-                            fontSize: `${6 * fontSizeMultiplier}vh`,
+                            fontSize: `${9 * fontSizeMultiplier}vh`,
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
                           }}
@@ -353,7 +363,7 @@ export default class StatusWidget extends React.Component {
                       className="flex-item"
                       style={{
                         color: 'white',
-                        fontSize: displayMetric ? '10vh' : '17vh',
+                        fontSize: displayMetric ? '13vh' : '20vh',
                         textOverflow: 'ellipsis',
                         overflow: 'hidden'
                       }}

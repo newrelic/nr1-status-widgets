@@ -21,6 +21,11 @@
       "title": "Enable flash/pulse effect when not healthy",
       "description": "",
       "type": "boolean"
+    },    {
+      "name": "fontMultiplier",
+      "title": "Font multiplier - increase the font size (default: 1)",
+      "description": "",
+      "type": "number"
     },
     {
       "name": "timelineBucket",
