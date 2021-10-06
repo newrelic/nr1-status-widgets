@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.12.1...v2.13.0) (2021-10-06)
+
+
+### Features
+
+* update semantic release with node ([b20ce23](https://github.com/newrelic/nr1-status-widgets/commit/b20ce231feee2a4012f9dbff33c30642256f95ed))
+
 ## [2.12.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.12.0...v2.12.1) (2021-09-09)
 
 
