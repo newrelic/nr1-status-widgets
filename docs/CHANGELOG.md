@@ -1,3 +1,10 @@
+## [2.14.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.14.0...v2.14.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* catalog images to proper sizing ([22a9861](https://github.com/newrelic/nr1-status-widgets/commit/22a9861918a582c98dda11e92dae8fb1b08ff93f))
+
 # [2.13.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.12.1...v2.13.0) (2021-10-06)
 
 
