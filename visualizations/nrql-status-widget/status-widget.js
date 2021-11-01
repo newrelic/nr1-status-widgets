@@ -101,12 +101,18 @@ export default class StatusWidget extends React.Component {
       sloDaysToView,
       fontMultiplier
     } = this.props;
-    let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
+    let {
+      displayTimeline,
+      metricLabel,
+      queryLeft,
+      queryRight,
+      columns
+    } = this.props;
 
     if ((queryRight || '').length <= 5) queryRight = '';
     if ((queryLeft || '').length <= 5) queryLeft = '';
 
-    const validModalQueries = modalQueries.filter(
+    const validModalQueries = (modalQueries || []).filter(
       q => q.query && q.chartType && (q.query || '').length > 5
     );
 

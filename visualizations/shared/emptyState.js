@@ -7,7 +7,10 @@ export default class EmptyState extends React.Component {
 
     return (
       <Card className="EmptyState">
-        <CardBody className="EmptyState-cardBody">
+        <CardBody
+          className="EmptyState-cardBody"
+          style={{ marginTop: '0px', marginBottom: '0px' }}
+        >
           {!isEntity ||
             (!isTimeline && (
               <>
