@@ -2,6 +2,8 @@
   "tagline": "Status widgets for dashboards",
   "repository": "https://github.com/newrelic/nr1-status-widgets.git",
   "details": "Configurable status widgets powered by NRQL or entity data for dashboards",
+  "categoryTerms": [],
+  "keywords": ["visualizations"],
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-status-widgets/issues"
