@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.14.1...v2.15.0) (2021-11-05)
+
+
+### Features
+
+* add catalog keywords and categoryTerms ([011d559](https://github.com/newrelic/nr1-status-widgets/commit/011d55990792e27279ff8153c4f82de80b7988d9))
+
 ## [2.14.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.14.0...v2.14.1) (2021-10-22)
 
 
