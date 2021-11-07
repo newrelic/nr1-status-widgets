@@ -11,6 +11,8 @@ import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
 import ModalCharts from './modalCharts';
 
+const numeral = require('numeral');
+
 // if the width is below this figure particular features will be disable
 export const reducedFeatureWidth = 175;
 
@@ -99,15 +101,16 @@ export default class StatusWidget extends React.Component {
       sloBudget,
       sloBar,
       sloDaysToView,
-      fontMultiplier
+      fontMultiplier,
+      isTile,
+      row,
+      rows,
+      adjustBasicWidget,
+      numberFormat,
+      numberFormatLeft,
+      numberFormatRight
     } = this.props;
-    let {
-      displayTimeline,
-      metricLabel,
-      queryLeft,
-      queryRight,
-      columns
-    } = this.props;
+    let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
 
     if ((queryRight || '').length <= 5) queryRight = '';
     if ((queryLeft || '').length <= 5) queryLeft = '';
@@ -142,6 +145,7 @@ export default class StatusWidget extends React.Component {
       if (leftMetric.configuration) {
         leftMetric.configuration.thresholdEmptyHandling = thresholdEmptyHandling;
       }
+      leftMetric.numberFormat = numberFormatLeft;
     }
 
     if (queryRight) {
@@ -158,6 +162,7 @@ export default class StatusWidget extends React.Component {
       if (rightMetric.configuration) {
         rightMetric.configuration.thresholdEmptyHandling = thresholdEmptyHandling;
       }
+      rightMetric.numberFormat = numberFormatRight;
     }
 
     const { errors, configuration } = generateErrorsAndConfig(
@@ -224,12 +229,17 @@ export default class StatusWidget extends React.Component {
       chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
     }
 
-    let fontSizeMultiplier = fontMultiplier || 1;
+    let fontSizeMultiplier = fontMultiplier || 0.75;
     let hideLabels = false;
     if (width <= reducedFeatureWidth) {
       hideLabels = true;
       displayTimeline = false;
       fontSizeMultiplier *= 1.4;
+    }
+
+    // unsupported tiling features
+    if (isTile) {
+      displayTimeline = false;
     }
 
     return (
@@ -304,6 +314,25 @@ export default class StatusWidget extends React.Component {
               metricValue = 'null';
             }
 
+            let marginTop =
+              queryRight || queryLeft ? `${-25 * fontSizeMultiplier}vh` : '0px';
+
+            if (adjustBasicWidget) {
+              marginTop = `${-25 * fontSizeMultiplier}vh`;
+            }
+
+            let bottom = 0;
+
+            if (rows === row) {
+              bottom = 10;
+            } else {
+              bottom = rows * height - height * row + 140;
+            }
+
+            if (numberFormat) {
+              metricValue = numeral(metricValue).format(numberFormat);
+            }
+
             return (
               <div
                 style={{
@@ -317,7 +346,7 @@ export default class StatusWidget extends React.Component {
                   enableFlash ? '' : '-solid'
                 }-bg flex-container`}
               >
-                <div className="flex-col">
+                <div className="flex-col" style={{}}>
                   {displayMetric && (
                     <div
                       onClick={chartOnClick}
@@ -329,14 +358,11 @@ export default class StatusWidget extends React.Component {
                         width,
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
-                        marginTop:
-                          queryRight || queryLeft
-                            ? `${-25 * fontSizeMultiplier}vh`
-                            : '0px',
+                        marginTop,
                         cursor: chartOnClick ? 'pointer' : 'default'
                       }}
                     >
-                      {metricValue}
+                      <div>{adjustBasicWidget ? <>&nbsp;</> : metricValue}</div>
                       {metricSuffix && (
                         <div
                           style={{
@@ -379,13 +405,88 @@ export default class StatusWidget extends React.Component {
                   )}
                 </div>
 
+                {displayMetric && adjustBasicWidget && (
+                  <div
+                    className="flex-item"
+                    style={{
+                      position: 'absolute',
+                      bottom: `${bottom}px`,
+                      fontSize: `${20 * fontSizeMultiplier}vh`,
+                      display: 'inline-flex',
+                      paddingTop: '2vh',
+                      // paddingBottom: displayTimeline ? '2vh' : '0px',
+                      width,
+                      // alignItems: 'center',
+                      justifyContent: 'space-around'
+                    }}
+                  >
+                    <div
+                      onClick={chartOnClick}
+                      title={metricValue}
+                      className="flex-item"
+                      style={{
+                        color: 'white',
+                        fontSize: `${20 * fontSizeMultiplier}vh`,
+                        width,
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
+                        marginTop,
+                        cursor: chartOnClick ? 'pointer' : 'default'
+                      }}
+                    >
+                      <div>{metricValue}</div>
+                      {metricSuffix && (
+                        <div
+                          style={{
+                            display: 'inline',
+                            fontSize: `${17 * fontSizeMultiplier}vh`,
+                            verticalAlign: 'top',
+                            textOverflow: 'ellipsis',
+                            overflow: 'hidden'
+                          }}
+                        >
+                          &nbsp;{metricSuffix}
+                        </div>
+                      )}
+                      {metricLabel && (
+                        <div
+                          style={{
+                            marginTop: '-5vh',
+                            fontSize: `${9 * fontSizeMultiplier}vh`,
+                            textOverflow: 'ellipsis',
+                            overflow: 'hidden'
+                          }}
+                        >
+                          {metricLabel}
+                        </div>
+                      )}
+                    </div>
+
+                    {statusLabel && (
+                      <div
+                        className="flex-item"
+                        style={{
+                          color: 'white',
+                          fontSize: displayMetric ? '13vh' : '20vh',
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden'
+                        }}
+                      >
+                        {statusLabel}
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <BottomMetrics
                   hideLabels={hideLabels}
                   leftMetric={leftMetric}
                   rightMetric={rightMetric}
                   displayTimeline={displayTimeline}
                   width={width}
-                  height={height}
+                  height={height + 4}
+                  row={row}
+                  rows={rows}
                   mainProps={this.props}
                   fontSizeMultiplier={fontSizeMultiplier}
                 />
@@ -395,6 +496,9 @@ export default class StatusWidget extends React.Component {
                     displayMetric={displayMetric}
                     timeseries={timeseries}
                     width={width}
+                    height={height + 4}
+                    row={row}
+                    rows={rows}
                   />
                 )}
               </div>

@@ -15,6 +15,7 @@
     "@newrelic/nr1-community": "^1.2.0",
     "async": "^3.2.0",
     "lodash.groupby": "^4.6.0",
+    "numeral": "^2.0.6",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

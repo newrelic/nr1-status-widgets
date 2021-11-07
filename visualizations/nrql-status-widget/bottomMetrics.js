@@ -20,7 +20,10 @@ export default class BottomMetrics extends React.Component {
       mainProps,
       displayTimeline,
       hideLabels,
-      fontSizeMultiplier
+      fontSizeMultiplier,
+      row,
+      rows,
+      height
     } = this.props;
 
     const {
@@ -59,16 +62,28 @@ export default class BottomMetrics extends React.Component {
       metricLabelRight = '';
     }
 
+    let bottom = 0;
+
+    if (rows === row) {
+      bottom = 0;
+    } else {
+      bottom = rows * height - height * row + 20;
+    }
+
+    // bottom += row === 0 ? 20 : 0;
+
+    const defaultFontSize = 20;
+
     return (
       <div
         className="flex-item"
         style={{
           position: 'absolute',
-          bottom: displayTimeline ? '6.75vh' : '0px',
-          fontSize: `${20 * fontSizeMultiplier}vh`,
+          bottom: `${bottom}px`,
+          fontSize: `${defaultFontSize * fontSizeMultiplier}vh`,
           display: 'inline-flex',
           paddingTop: '2vh',
-          paddingBottom: displayTimeline ? '2vh' : '0px',
+          // paddingBottom: displayTimeline ? '2vh' : '0px',
           width,
           // alignItems: 'center',
           justifyContent: 'space-around'
@@ -84,6 +99,7 @@ export default class BottomMetrics extends React.Component {
             enableFlash={enableFlashLeft}
             accountId={accountId}
             configuration={leftMetric.configuration}
+            numberFormat={leftMetric?.numberFormat}
             altConfiguration={rightMetric?.configuration || {}}
             decimalPlaces={decimalPlacesLeft}
             metricSuffix={metricSuffixLeft}
@@ -93,6 +109,7 @@ export default class BottomMetrics extends React.Component {
             leftStatus={this.state.leftStatus}
             metricLabelRight={metricLabelRight}
             hideLabels={hideLabels}
+            displayTimeline={displayTimeline}
           />
         )}
         {queryRight && (
@@ -105,6 +122,7 @@ export default class BottomMetrics extends React.Component {
             enableFlash={enableFlashRight}
             accountId={accountId}
             configuration={rightMetric.configuration}
+            numberFormat={rightMetric?.numberFormat}
             altConfiguration={leftMetric?.configuration || {}}
             decimalPlaces={decimalPlacesRight}
             metricSuffix={metricSuffixRight}
@@ -114,6 +132,7 @@ export default class BottomMetrics extends React.Component {
             leftStatus={this.state.leftStatus}
             metricLabelLeft={metricLabelLeft}
             hideLabels={hideLabels}
+            displayTimeline={displayTimeline}
           />
         )}
       </div>

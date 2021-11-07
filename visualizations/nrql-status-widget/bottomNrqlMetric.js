@@ -3,6 +3,8 @@ import { NrqlQuery, Spinner } from 'nr1';
 import ErrorState from '../shared/errorState';
 import { deriveValues } from './utils';
 
+const numeral = require('numeral');
+
 export default class NrqlMetric extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +30,7 @@ export default class NrqlMetric extends React.Component {
       metricLabelLeft,
       metricLabelRight,
       hideLabels,
+      numberFormat,
       fontSizeMultiplier = { fontSizeMultiplier }
     } = this.props;
     let { metricLabel } = this.props;
@@ -118,6 +121,10 @@ export default class NrqlMetric extends React.Component {
           }
 
           const availWidth = fullWidth ? width : width / 2;
+
+          if (numberFormat) {
+            metricValue = numeral(metricValue).format(numberFormat);
+          }
 
           return (
             <div

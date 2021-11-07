@@ -17,15 +17,16 @@
       "type": "nrql"
     },
     {
+      "name": "numberFormat",
+      "title": "Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+      "description": "",
+      "type": "string"
+    },
+    {
       "name": "enableFlash",
       "title": "Enable flash/pulse effect when not healthy",
       "description": "",
       "type": "boolean"
-    },    {
-      "name": "fontMultiplier",
-      "title": "Font multiplier - increase the font size (default: 1)",
-      "description": "",
-      "type": "number"
     },
     {
       "name": "timelineBucket",
@@ -102,12 +103,6 @@
       "title": "Optional: Healthy Label",
       "description": "Optionally render this label instead of the value when healthy",
       "type": "string"
-    },
-    {
-      "name": "displayTimeline",
-      "title": "Display Timeline Status",
-      "description": "If defined a timeline will be rendered below with the configured bucket size",
-      "type": "boolean"
     },
     {
       "name": "displayMetric",
@@ -241,6 +236,12 @@
       "type": "nrql"
     },
     {
+      "name": "numberFormatLeft",
+      "title": "Bottom Left Metric - Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+      "description": "",
+      "type": "string"
+    },
+    {
       "name": "enableFlashLeft",
       "title": "Bottom Left Metric - Enable flash/pulse effect when not healthy",
       "description": "",
@@ -315,6 +316,12 @@
       "title": "Bottom Right Metric - Add an additional query to the bottom Right of the widget",
       "description": "",
       "type": "nrql"
+    },
+    {
+      "name": "numberFormatRight",
+      "title": "Bottom Right Metric - Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+      "description": "",
+      "type": "string"
     },
     {
       "name": "enableFlashRight",

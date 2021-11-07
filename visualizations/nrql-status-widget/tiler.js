@@ -45,21 +45,78 @@ export default class Tiler extends React.Component {
       return 'No widgets defined...';
     }
 
-    return (documentValue?.widgets || []).map((widget, i) => {
-      return (
-        <div
-          key={i}
-          style={{ display: 'inline-block', border: '1px solid white' }}
-        >
-          <StatusWidget
-            timeRange={timeRange}
-            width={width / columns - 11}
-            height={height}
-            {...widget}
-            columns={columns}
-          />
-        </div>
-      );
-    });
+    // const columnSpan = 12 / columns;
+    const rows = Math.ceil(widgets.length / columns);
+    const widgetHeight = height / rows - 11;
+    const widgetWidth = width / columns - 25;
+
+    return (
+      <div>
+        {widgets.map((widget, i) => {
+          const row = Math.ceil((i + 1) / columns);
+          const endPos = row * columns;
+          const startPos = endPos - (columns - 1);
+
+          let adjustBasicWidget = false;
+
+          // check if there is a widget to left or right
+          if (!widget.queryLeft && !widget.queryRight) {
+            //  check left
+            if (i + 1 > startPos && widgets[i - 1]) {
+              if (widgets[i + 1].queryLeft || widgets[i + 1].queryRight) {
+                adjustBasicWidget = true;
+              }
+            }
+            //  check right
+            if (i + 1 < endPos && widgets[i + 1]) {
+              if (widgets[i - 1].queryLeft || widgets[i + -1].queryRight) {
+                adjustBasicWidget = true;
+              }
+            }
+          }
+
+          return (
+            <div
+              key={i}
+              style={{
+                display: 'inline-block',
+                width: widgetWidth,
+                padding: '3px'
+              }}
+            >
+              {widget.dummy ? (
+                <div
+                  style={{
+                    width: width / columns - 11,
+                    maxWidth: widgetWidth,
+                    height: widgetHeight,
+                    maxHeight: widgetHeight,
+                    overflow: 'hidden',
+                    marginTop: '-5vh'
+                  }}
+                  className="flex-container"
+                >
+                  <div className="flex-col">
+                    <div className="flex-item" />
+                  </div>
+                </div>
+              ) : (
+                <StatusWidget
+                  isTile
+                  adjustBasicWidget={adjustBasicWidget}
+                  timeRange={timeRange}
+                  width={widgetWidth}
+                  height={widgetHeight}
+                  {...widget}
+                  columns={columns.length}
+                  row={row}
+                  rows={rows}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
   }
 }

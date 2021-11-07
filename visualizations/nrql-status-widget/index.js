@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlatformStateContext, AutoSizer } from 'nr1';
-import StatusWidget from './status-widget';
+// import StatusWidget from './status-widget';
 import EditMode from './edit';
 import Tiler from './tiler';
 

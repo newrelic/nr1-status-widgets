@@ -72,7 +72,7 @@ export default class EditMode extends React.Component {
           columns: documentValue?.columns || 1,
           widgets: documentValue?.widgets || []
         }
-      }).then(v => {
+      }).then(() => {
         this.setState({
           savingDocument: false
         });
@@ -141,7 +141,8 @@ export default class EditMode extends React.Component {
     field,
     value,
     collectionIndex,
-    collectionName
+    collectionName,
+    save
   ) => {
     const { documentValue } = this.state;
     const widgets = documentValue.widgets || [];
@@ -156,7 +157,31 @@ export default class EditMode extends React.Component {
 
     widgets[index] = currentWidget;
     documentValue.widgets = widgets;
-    this.setState({ documentValue });
+    this.setState({ documentValue }, () => {
+      if (save) this.saveDocument();
+    });
+  };
+
+  moveWidgetUp = index => {
+    const { documentValue } = this.state;
+    const widgets = documentValue.widgets || [];
+    const currentWidget = widgets[index];
+    const widgetAbove = widgets[index - 1];
+    widgets[index - 1] = currentWidget;
+    widgets[index] = widgetAbove;
+    documentValue.widgets = widgets;
+    this.setState({ documentValue }, () => this.saveDocument());
+  };
+
+  moveWidgetDown = index => {
+    const { documentValue } = this.state;
+    const widgets = documentValue.widgets || [];
+    const currentWidget = widgets[index];
+    const widgetBelow = widgets[index + 1];
+    widgets[index + 1] = currentWidget;
+    widgets[index] = widgetBelow;
+    documentValue.widgets = widgets;
+    this.setState({ documentValue }, () => this.saveDocument());
   };
 
   renderConfiguration = (c, ci, w, i, collectionIndex, collectionName) => {
@@ -175,7 +200,8 @@ export default class EditMode extends React.Component {
                 'accountId',
                 a,
                 collectionIndex,
-                collectionName
+                collectionName,
+                true
               )
             }
           />
@@ -185,7 +211,7 @@ export default class EditMode extends React.Component {
       return (
         <TextField
           key={ci}
-          placeholder="SELECT count(*) FROM Transaction"
+          placeholder={`${i + 1}: SELECT count(*) FROM Transaction`}
           label={c.title}
           info={c.description || undefined}
           value={value}
@@ -207,7 +233,7 @@ export default class EditMode extends React.Component {
           key={ci}
           checked={value}
           info={c.description || undefined}
-          label={c.title}
+          label={`${i + 1}: ${c.title}`}
           style={{ paddingLeft }}
           onChange={e =>
             this.updateWidgetValue(
@@ -215,7 +241,8 @@ export default class EditMode extends React.Component {
               c.name,
               e.target.checked,
               collectionIndex,
-              collectionName
+              collectionName,
+              true
             )
           }
         />
@@ -226,7 +253,7 @@ export default class EditMode extends React.Component {
           key={ci}
           placeholder="Enter a number"
           info={c.description || undefined}
-          label={c.title}
+          label={`${i + 1}: ${c.title}`}
           value={value}
           style={{ width: defaultFormWidth, paddingLeft }}
           onChange={e =>
@@ -245,7 +272,7 @@ export default class EditMode extends React.Component {
         <TextField
           key={ci}
           info={c.description || undefined}
-          label={c.title}
+          label={`${i + 1}: ${c.title}`}
           value={value}
           style={{ width: defaultFormWidth, paddingLeft }}
           onChange={e =>
@@ -264,7 +291,7 @@ export default class EditMode extends React.Component {
         <Select
           key={ci}
           info={c.description || undefined}
-          label={c.title}
+          label={`${i + 1}: ${c.title}`}
           style={{ width: defaultFormWidth, paddingLeft }}
           value={value}
           onChange={(e, value) =>
@@ -273,7 +300,8 @@ export default class EditMode extends React.Component {
               c.name,
               value,
               collectionIndex,
-              collectionName
+              collectionName,
+              true
             )
           }
         >
@@ -290,7 +318,7 @@ export default class EditMode extends React.Component {
       return (
         <React.Fragment key={ci}>
           <h4 type={HeadingText.TYPE.HEADING_4}>
-            {c.title} - {(value || []).length}
+            {i + 1}: {c.title} - {(value || []).length}
           </h4>
 
           <Button
@@ -418,21 +446,83 @@ export default class EditMode extends React.Component {
                   return (
                     <React.Fragment key={i}>
                       <Form>
+                        <br />
+                        <Switch
+                          checked={w.dummy}
+                          info="Dummy/Blank Widget"
+                          label="Dummy/Blank Widget"
+                          onChange={e =>
+                            this.updateWidgetValue(
+                              i,
+                              'dummy',
+                              e.target.checked,
+                              null,
+                              null,
+                              true
+                            )
+                          }
+                        />
                         {configuration.map((c, ci) => {
                           return this.renderConfiguration(c, ci, w, i, null);
                         })}
-
-                        <Button
-                          type={Button.TYPE.DESTRUCTIVE}
-                          sizeType={Button.SIZE_TYPE.SMALL}
-                          spacingType={[
-                            HeadingText.SPACING_TYPE.EXTRA_LARGE,
-                            HeadingText.SPACING_TYPE.NONE
-                          ]}
-                          onClick={() => this.removeWidget(i)}
-                        >
-                          Remove widget
-                        </Button>
+                        <div style={{ display: 'inline-block' }}>
+                          {i !== 0 && widgets.length > 1 && (
+                            <>
+                              <Button
+                                onClick={() => this.moveWidgetUp(i)}
+                                type={Button.TYPE.PRIMARY}
+                                iconType={
+                                  Button.ICON_TYPE.INTERFACE__ARROW__ARROW_TOP
+                                }
+                                sizeType={Button.SIZE_TYPE.SMALL}
+                                loading={savingDocument}
+                              >
+                                Move widget up
+                              </Button>
+                              &nbsp;
+                            </>
+                          )}
+                          {i + 1 !== widgets.length && widgets.length > 1 && (
+                            <>
+                              <Button
+                                onClick={() => this.moveWidgetDown(i)}
+                                type={Button.TYPE.PRIMARY}
+                                iconType={
+                                  Button.ICON_TYPE
+                                    .INTERFACE__ARROW__ARROW_BOTTOM
+                                }
+                                sizeType={Button.SIZE_TYPE.SMALL}
+                                loading={savingDocument}
+                              >
+                                Move widget down
+                              </Button>
+                              &nbsp;
+                            </>
+                          )}
+                          <Button
+                            onClick={() => this.saveDocument()}
+                            type={Button.TYPE.PRIMARY}
+                            iconType={
+                              Button.ICON_TYPE.INTERFACE__SIGN__CHECKMARK
+                            }
+                            sizeType={Button.SIZE_TYPE.SMALL}
+                            loading={savingDocument}
+                          >
+                            Save widget
+                          </Button>
+                          &nbsp;&nbsp;&nbsp;
+                          <Button
+                            type={Button.TYPE.DESTRUCTIVE}
+                            sizeType={Button.SIZE_TYPE.SMALL}
+                            iconType={
+                              Button.ICON_TYPE.INTERFACE__OPERATIONS__CLOSE
+                            }
+                            onClick={() => this.removeWidget(i)}
+                          >
+                            Remove widget
+                          </Button>
+                        </div>
+                        <br />
                       </Form>
                       <hr className="solid" />
                     </React.Fragment>

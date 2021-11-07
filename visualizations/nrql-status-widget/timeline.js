@@ -3,14 +3,22 @@ import { Tooltip } from 'nr1';
 
 export default class Timeline extends React.Component {
   render() {
-    const { displayMetric, timeseries, width } = this.props;
+    const { displayMetric, timeseries, width, height, row, rows } = this.props;
+
+    let bottom = 0;
+
+    if (rows === row) {
+      bottom = 0;
+    } else {
+      bottom = rows * height - height * row + 20;
+    }
 
     return (
       <div
         className="flex-item"
         style={{
           position: 'absolute',
-          bottom: '0px',
+          bottom: `${bottom}px`,
           fontSize: displayMetric ? '10vh' : '12vh',
           display: 'inline-flex',
           paddingTop: '2vh',
