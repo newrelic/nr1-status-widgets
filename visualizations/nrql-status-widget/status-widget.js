@@ -78,7 +78,7 @@ export default class StatusWidget extends React.Component {
       warningThreshold,
       warningLabel,
       healthyLabel,
-      displayMetric,
+      // displayMetric,
       metricSuffix,
       decimalPlaces,
       onClickUrl,
@@ -332,6 +332,8 @@ export default class StatusWidget extends React.Component {
             if (numberFormat) {
               metricValue = numeral(metricValue).format(numberFormat);
             }
+
+            const displayMetric = true;
 
             return (
               <div

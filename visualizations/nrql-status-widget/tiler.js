@@ -63,16 +63,35 @@ export default class Tiler extends React.Component {
           if (!widget.queryLeft && !widget.queryRight) {
             //  check left
             if (i + 1 > startPos && widgets[i - 1]) {
-              if (widgets[i + 1].queryLeft || widgets[i + 1].queryRight) {
+              if (widgets[i + 1]?.queryLeft || widgets[i + 1]?.queryRight) {
                 adjustBasicWidget = true;
               }
             }
             //  check right
             if (i + 1 < endPos && widgets[i + 1]) {
-              if (widgets[i - 1].queryLeft || widgets[i + -1].queryRight) {
+              if (widgets[i - 1]?.queryLeft || widgets[i + -1]?.queryRight) {
                 adjustBasicWidget = true;
               }
             }
+          }
+
+          const fontSizeMultiplier = 0.75;
+
+          let marginTop =
+            widget.queryRight || widget.queryLeft || widget.dummy
+              ? `${-25 * fontSizeMultiplier}vh`
+              : '0px';
+
+          if (adjustBasicWidget) {
+            marginTop = `${-25 * fontSizeMultiplier}vh`;
+          }
+
+          let bottom = 0;
+
+          if (rows === row) {
+            bottom = 10;
+          } else {
+            bottom = rows * height - height * row + 140;
           }
 
           return (
@@ -86,18 +105,31 @@ export default class Tiler extends React.Component {
             >
               {widget.dummy ? (
                 <div
+                  className="flex-item"
                   style={{
-                    width: width / columns - 11,
-                    maxWidth: widgetWidth,
-                    height: widgetHeight,
-                    maxHeight: widgetHeight,
-                    overflow: 'hidden',
-                    marginTop: '-5vh'
+                    position: 'absolute',
+                    bottom: `${bottom}px`,
+                    fontSize: `${20 * fontSizeMultiplier}vh`,
+                    display: 'inline-flex',
+                    paddingTop: '2vh',
+                    // paddingBottom: displayTimeline ? '2vh' : '0px',
+                    width,
+                    // alignItems: 'center',
+                    justifyContent: 'space-around'
                   }}
-                  className="flex-container"
                 >
-                  <div className="flex-col">
-                    <div className="flex-item" />
+                  <div
+                    className="flex-item"
+                    style={{
+                      color: 'white',
+                      fontSize: `${20 * fontSizeMultiplier}vh`,
+                      width,
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      marginTop
+                    }}
+                  >
+                    <div>&nbsp;</div>
                   </div>
                 </div>
               ) : (

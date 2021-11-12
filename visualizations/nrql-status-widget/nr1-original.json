@@ -105,12 +105,6 @@
       "type": "string"
     },
     {
-      "name": "displayMetric",
-      "title": "Display Metric",
-      "description": "Display the metric",
-      "type": "boolean"
-    },
-    {
       "name": "decimalPlaces",
       "title": "Decimal Places",
       "description": "Set decimal places on metric",

@@ -1,7 +1,7 @@
 {
   "schemaType": "VISUALIZATION",
   "id": "entity-status-widget",
-  "displayName": "Entity Status Widget",
+  "displayName": "Entity Status Widget (Toko custom)",
   "description": "Entity driven status widget",
   "configuration": [
     {

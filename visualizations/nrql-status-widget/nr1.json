@@ -1,7 +1,7 @@
 {
   "schemaType": "VISUALIZATION",
   "id": "nrql-status-widget",
-  "displayName": "NRQL Status Widget",
+  "displayName": "NRQL Status Widget (Toko custom)",
   "description": "NRQL driven status widget",
   "configuration": [
     {

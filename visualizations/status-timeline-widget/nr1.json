@@ -1,7 +1,7 @@
 {
   "schemaType": "VISUALIZATION",
   "id": "status-timeline-widget",
-  "displayName": "Status Timeline Widget",
+  "displayName": "Status Timeline Widget (Toko custom)",
   "description": "",
   "configuration": [
     {
