@@ -45,10 +45,11 @@ export default class Tiler extends React.Component {
       return 'No widgets defined...';
     }
 
-    // const columnSpan = 12 / columns;
+    console.log(width);
     const rows = Math.ceil(widgets.length / columns);
-    const widgetHeight = height / rows - 11;
-    const widgetWidth = width / columns - 25;
+    const widgetHeight = height / rows;
+    // const widgetWidth = (width - 25) / columns - columns * 1.5;
+    const widgetWidth = (width - 20) / columns - columns;
 
     return (
       <div>
@@ -100,6 +101,7 @@ export default class Tiler extends React.Component {
               style={{
                 display: 'inline-block',
                 width: widgetWidth,
+                maxWidth: widgetWidth,
                 padding: '3px'
               }}
             >
@@ -115,7 +117,8 @@ export default class Tiler extends React.Component {
                     // paddingBottom: displayTimeline ? '2vh' : '0px',
                     width,
                     // alignItems: 'center',
-                    justifyContent: 'space-around'
+                    justifyContent: 'space-around',
+                    overflow: ''
                   }}
                 >
                   <div
