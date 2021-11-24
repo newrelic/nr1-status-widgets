@@ -7,7 +7,9 @@ import Tiler from './tiler';
 export default class NrqlStatusWidgetRoot extends React.Component {
   render() {
     return (
-      <AutoSizer style={{ overflow: 'hidden' }}>
+      <AutoSizer
+        style={{ overflow: this.props.disableEdit ? 'hidden' : undefined }}
+      >
         {({ width, height }) => (
           <PlatformStateContext.Consumer>
             {platformState => {
