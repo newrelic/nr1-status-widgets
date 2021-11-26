@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "nr1-status-widgets",
-  "version": "2.14.1-custom15",
+  "version": "2.14.1-custom16",
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
@@ -12,7 +12,7 @@
     "uuid": "fb1ced43-0b2a-4d67-80ba-c7156646af33"
   },
   "uuids": {
-    "k":"35bc8fa2-d116-4332-90e1-4fc9ac8be02b",
+    "k": "35bc8fa2-d116-4332-90e1-4fc9ac8be02b",
     "toko": "62c9713a-5a16-4843-98c4-dc5b85ee25a1"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-dynamic-font": "^2.0.1",
     "react-select": "^3.1.1"
   },
   "devDependencies": {

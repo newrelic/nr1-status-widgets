@@ -229,7 +229,7 @@ export default class StatusWidget extends React.Component {
       chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
     }
 
-    let fontSizeMultiplier = fontMultiplier || 0.75;
+    let fontSizeMultiplier = fontMultiplier || 1;
     let hideLabels = false;
     if (width <= reducedFeatureWidth) {
       hideLabels = true;
@@ -321,55 +321,112 @@ export default class StatusWidget extends React.Component {
               marginTop = `${-25 * fontSizeMultiplier}vh`;
             }
 
-            let bottom = 0;
-
-            if (rows === row) {
-              bottom = 10;
-            } else {
-              bottom = rows * height - height * row + 140;
-            }
-
             if (numberFormat) {
               metricValue = numeral(metricValue).format(numberFormat);
             }
 
             const displayMetric = true;
 
+            const cfg = {
+              mainHeight: height,
+              secondaryHeight: '',
+              statusLabelHeight: '',
+              metricLabelHeight: '',
+              colSpan: 1
+            };
+
+            if (queryLeft || queryRight) {
+              if (!statusLabel) {
+                if (metricLabel) {
+                  const tmpHeights = height / 8;
+                  cfg.mainHeight = tmpHeights * 4;
+                  cfg.metricLabelHeight = tmpHeights * 1;
+                  cfg.secondaryHeight = tmpHeights * 3;
+                } else {
+                  const tmpHeights = height / 3;
+                  cfg.mainHeight = tmpHeights * 2;
+                  cfg.secondaryHeight = tmpHeights;
+                }
+              } else if (statusLabel) {
+                if (metricLabel) {
+                  const tmpHeights = height / 16;
+                  cfg.mainHeight = tmpHeights * 8;
+                  cfg.metricLabelHeight = tmpHeights * 2;
+                  cfg.statusLabelHeight = tmpHeights * 2;
+                  cfg.secondaryHeight = tmpHeights * 4;
+                } else {
+                  const tmpHeights = height / 8;
+                  cfg.mainHeight = tmpHeights * 4;
+                  cfg.statusLabelHeight = tmpHeights * 2;
+                  cfg.secondaryHeight = tmpHeights * 2;
+                }
+              }
+            } else if (!queryLeft && !queryRight && statusLabel) {
+              if (metricLabel) {
+                const tmpHeights = height / 8;
+                cfg.mainHeight = tmpHeights * 4;
+                cfg.metricLabelHeight = tmpHeights * 2;
+                cfg.statusLabelHeight = tmpHeights * 2;
+              }
+            } else if (
+              !queryLeft &&
+              !queryRight &&
+              !statusLabel &&
+              metricLabel
+            ) {
+              const tmpHeights = height / 8;
+              cfg.mainHeight = tmpHeights * 4;
+              cfg.metricLabelHeight = tmpHeights * 1;
+              cfg.statusLabelHeight = tmpHeights * 3;
+            } else {
+              const tmpHeights = height / 3;
+              cfg.mainHeight = tmpHeights * 2;
+              cfg.statusLabelHeight = tmpHeights;
+            }
+
+            if (queryRight && queryLeft) {
+              cfg.colSpan = 2;
+            }
+
             return (
-              <div
+              <table
                 style={{
                   width,
                   height,
                   maxWidth: width,
                   maxHeight: height,
-                  overflow: 'hidden'
+                  textOverflow: 'ellipsis'
                 }}
-                className={`${status}${
-                  enableFlash ? '' : '-solid'
-                }-bg flex-container`}
+                className={`${status}${enableFlash ? '' : '-solid'}-bg`}
               >
-                <div className="flex-col" style={{}}>
+                <tr
+                  className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                  style={{ height: cfg.mainHeight }}
+                >
                   {displayMetric && (
-                    <div
+                    <td
+                      colSpan={cfg.colSpan}
                       onClick={chartOnClick}
                       title={metricValue}
-                      className="flex-item"
+                      className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                       style={{
                         color: 'white',
-                        fontSize: `${20 * fontSizeMultiplier}vh`,
+                        fontSize: `${13 * fontSizeMultiplier}vh`,
                         width,
+                        maxWidth: width,
+                        textAlign: 'center',
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
                         marginTop,
                         cursor: chartOnClick ? 'pointer' : 'default'
                       }}
                     >
-                      <div>{adjustBasicWidget ? <>&nbsp;</> : metricValue}</div>
+                      {metricValue}
                       {metricSuffix && (
                         <div
                           style={{
                             display: 'inline',
-                            fontSize: `${17 * fontSizeMultiplier}vh`,
+                            fontSize: `${6 * fontSizeMultiplier}vh`,
                             verticalAlign: 'top',
                             textOverflow: 'ellipsis',
                             overflow: 'hidden'
@@ -378,121 +435,72 @@ export default class StatusWidget extends React.Component {
                           &nbsp;{metricSuffix}
                         </div>
                       )}
-                      {metricLabel && (
-                        <div
-                          style={{
-                            marginTop: '-5vh',
-                            fontSize: `${9 * fontSizeMultiplier}vh`,
-                            textOverflow: 'ellipsis',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          {metricLabel}
-                        </div>
-                      )}
-                    </div>
+                    </td>
                   )}
-                  {statusLabel && (
-                    <div
-                      className="flex-item"
+                </tr>
+
+                {metricLabel && (
+                  <tr
+                    style={{
+                      height: cfg.metricLabelHeight
+                    }}
+                    className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                  >
+                    <td
+                      colSpan={cfg.colSpan}
                       style={{
+                        verticalAlign: 'top',
                         color: 'white',
-                        fontSize: displayMetric ? '13vh' : '20vh',
+                        fontSize: `${4 * fontSizeMultiplier}vh`,
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
+                        textAlign: 'center'
+                      }}
+                      className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                    >
+                      {metricLabel}
+                    </td>
+                  </tr>
+                )}
+
+                {statusLabel && (
+                  <tr
+                    style={{
+                      height: cfg.statusLabelHeight
+                    }}
+                    className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                  >
+                    <td
+                      colSpan={cfg.colSpan}
+                      className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                      style={{
+                        verticalAlign: 'top',
+                        color: 'white',
+                        textAlign: 'center',
+                        fontSize: `${6 * fontSizeMultiplier}vh`,
                         textOverflow: 'ellipsis',
                         overflow: 'hidden'
                       }}
                     >
                       {statusLabel}
-                    </div>
-                  )}
-                </div>
-
-                {displayMetric && adjustBasicWidget && (
-                  <div
-                    className="flex-item"
-                    style={{
-                      position: 'absolute',
-                      bottom: `${bottom}px`,
-                      fontSize: `${20 * fontSizeMultiplier}vh`,
-                      display: 'inline-flex',
-                      paddingTop: '2vh',
-                      // paddingBottom: displayTimeline ? '2vh' : '0px',
-                      width,
-                      // alignItems: 'center',
-                      justifyContent: 'space-around'
-                    }}
-                  >
-                    <div
-                      onClick={chartOnClick}
-                      title={metricValue}
-                      className="flex-item"
-                      style={{
-                        color: 'white',
-                        fontSize: `${20 * fontSizeMultiplier}vh`,
-                        width,
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                        marginTop,
-                        cursor: chartOnClick ? 'pointer' : 'default'
-                      }}
-                    >
-                      <div>{metricValue}</div>
-                      {metricSuffix && (
-                        <div
-                          style={{
-                            display: 'inline',
-                            fontSize: `${17 * fontSizeMultiplier}vh`,
-                            verticalAlign: 'top',
-                            textOverflow: 'ellipsis',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          &nbsp;{metricSuffix}
-                        </div>
-                      )}
-                      {metricLabel && (
-                        <div
-                          style={{
-                            marginTop: '-5vh',
-                            fontSize: `${9 * fontSizeMultiplier}vh`,
-                            textOverflow: 'ellipsis',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          {metricLabel}
-                        </div>
-                      )}
-                    </div>
-
-                    {statusLabel && (
-                      <div
-                        className="flex-item"
-                        style={{
-                          color: 'white',
-                          fontSize: displayMetric ? '13vh' : '20vh',
-                          textOverflow: 'ellipsis',
-                          overflow: 'hidden'
-                        }}
-                      >
-                        {statusLabel}
-                      </div>
-                    )}
-                  </div>
+                    </td>
+                  </tr>
                 )}
 
                 <BottomMetrics
+                  colSpan={cfg.colSpan}
                   hideLabels={hideLabels}
                   leftMetric={leftMetric}
                   rightMetric={rightMetric}
                   displayTimeline={displayTimeline}
                   width={width}
-                  height={height + 4}
+                  height={cfg.secondaryHeight}
                   row={row}
                   rows={rows}
                   mainProps={this.props}
                   fontSizeMultiplier={fontSizeMultiplier}
                 />
-
+                {/* 
                 {displayTimeline && (
                   <Timeline
                     displayMetric={displayMetric}
@@ -502,8 +510,8 @@ export default class StatusWidget extends React.Component {
                     row={row}
                     rows={rows}
                   />
-                )}
-              </div>
+                )} */}
+              </table>
             );
           }}
         </NrqlQuery>

@@ -23,7 +23,8 @@ export default class BottomMetrics extends React.Component {
       fontSizeMultiplier,
       row,
       rows,
-      height
+      height,
+      colSpan
     } = this.props;
 
     const {
@@ -75,67 +76,58 @@ export default class BottomMetrics extends React.Component {
     const defaultFontSize = 20;
 
     return (
-      <div
-        className="flex-item"
-        style={{
-          position: 'absolute',
-          bottom: `${bottom}px`,
-          fontSize: `${defaultFontSize * fontSizeMultiplier}vh`,
-          display: 'inline-flex',
-          paddingTop: '2vh',
-          // paddingBottom: displayTimeline ? '2vh' : '0px',
-          width,
-          // alignItems: 'center',
-          justifyContent: 'space-around'
-        }}
-      >
+      <tr>
         {queryLeft && (
-          <NrqlMetric
-            direction="left"
-            fullWidth={fullWidth}
-            fontSizeMultiplier={fontSizeMultiplier}
-            width={width}
-            query={queryLeft}
-            enableFlash={enableFlashLeft}
-            accountId={accountId}
-            configuration={leftMetric.configuration}
-            numberFormat={leftMetric?.numberFormat}
-            altConfiguration={rightMetric?.configuration || {}}
-            decimalPlaces={decimalPlacesLeft}
-            metricSuffix={metricSuffixLeft}
-            metricLabel={metricLabelLeft}
-            updateState={this.updateState}
-            rightStatus={this.state.rightStatus}
-            leftStatus={this.state.leftStatus}
-            metricLabelRight={metricLabelRight}
-            hideLabels={hideLabels}
-            displayTimeline={displayTimeline}
-          />
+          <td colSpan={queryRight ? 1 : 2} style={{ padding: '0px' }}>
+            <NrqlMetric
+              direction="left"
+              fullWidth={fullWidth}
+              fontSizeMultiplier={fontSizeMultiplier}
+              width={queryRight ? width / 2 : width}
+              query={queryLeft}
+              enableFlash={enableFlashLeft}
+              accountId={accountId}
+              configuration={leftMetric.configuration}
+              numberFormat={leftMetric?.numberFormat}
+              altConfiguration={rightMetric?.configuration || {}}
+              decimalPlaces={decimalPlacesLeft}
+              metricSuffix={metricSuffixLeft}
+              metricLabel={metricLabelLeft}
+              updateState={this.updateState}
+              rightStatus={this.state.rightStatus}
+              leftStatus={this.state.leftStatus}
+              metricLabelRight={metricLabelRight}
+              hideLabels={hideLabels}
+              displayTimeline={displayTimeline}
+            />
+          </td>
         )}
         {queryRight && (
-          <NrqlMetric
-            direction="right"
-            fullWidth={fullWidth}
-            fontSizeMultiplier={fontSizeMultiplier}
-            width={width}
-            query={queryRight}
-            enableFlash={enableFlashRight}
-            accountId={accountId}
-            configuration={rightMetric.configuration}
-            numberFormat={rightMetric?.numberFormat}
-            altConfiguration={leftMetric?.configuration || {}}
-            decimalPlaces={decimalPlacesRight}
-            metricSuffix={metricSuffixRight}
-            metricLabel={metricLabelRight}
-            updateState={this.updateState}
-            rightStatus={this.state.rightStatus}
-            leftStatus={this.state.leftStatus}
-            metricLabelLeft={metricLabelLeft}
-            hideLabels={hideLabels}
-            displayTimeline={displayTimeline}
-          />
+          <td colSpan={queryLeft ? 1 : 2} style={{ padding: '0px' }}>
+            <NrqlMetric
+              direction="right"
+              fullWidth={fullWidth}
+              fontSizeMultiplier={fontSizeMultiplier}
+              width={queryLeft ? width / 2 : width}
+              query={queryRight}
+              enableFlash={enableFlashRight}
+              accountId={accountId}
+              configuration={rightMetric.configuration}
+              numberFormat={rightMetric?.numberFormat}
+              altConfiguration={leftMetric?.configuration || {}}
+              decimalPlaces={decimalPlacesRight}
+              metricSuffix={metricSuffixRight}
+              metricLabel={metricLabelRight}
+              updateState={this.updateState}
+              rightStatus={this.state.rightStatus}
+              leftStatus={this.state.leftStatus}
+              metricLabelLeft={metricLabelLeft}
+              hideLabels={hideLabels}
+              displayTimeline={displayTimeline}
+            />
+          </td>
         )}
-      </div>
+      </tr>
     );
   }
 }

@@ -15,6 +15,7 @@ export default class NrqlMetric extends React.Component {
 
   render() {
     const {
+      height,
       direction,
       rightStatus,
       leftStatus,
@@ -120,80 +121,141 @@ export default class NrqlMetric extends React.Component {
             metricLabel = metricLabel || '';
           }
 
-          const availWidth = fullWidth ? width : width / 2;
-
           if (numberFormat) {
             metricValue = numeral(metricValue).format(numberFormat);
           }
+          const cfg = {
+            mainHeight: height,
+            secondaryHeight: '',
+            statusLabelHeight: '',
+            metricLabelHeight: '',
+            colSpan: 1
+          };
+
+          if (!statusLabel) {
+            if (metricLabel) {
+              const tmpHeights = height / 8;
+              cfg.mainHeight = tmpHeights * 4;
+              cfg.metricLabelHeight = tmpHeights * 1;
+              cfg.secondaryHeight = tmpHeights * 3;
+            } else {
+              const tmpHeights = height / 3;
+              cfg.mainHeight = tmpHeights * 2;
+              cfg.secondaryHeight = tmpHeights;
+            }
+          } else if (statusLabel) {
+            if (metricLabel) {
+              const tmpHeights = height / 16;
+              cfg.mainHeight = tmpHeights * 8;
+              cfg.metricLabelHeight = tmpHeights * 2;
+              cfg.statusLabelHeight = tmpHeights * 2;
+              cfg.secondaryHeight = tmpHeights * 4;
+            } else {
+              const tmpHeights = height / 8;
+              cfg.mainHeight = tmpHeights * 4;
+              cfg.statusLabelHeight = tmpHeights * 2;
+              cfg.secondaryHeight = tmpHeights * 2;
+            }
+          }
+
+          const displayMetric = true;
 
           return (
-            <div
-              style={{ width: availWidth }}
-              className={`${status}${
-                enableFlash ? '' : '-solid'
-              }-bg flex-container`}
+            <table
+              style={{
+                width,
+                height,
+                maxWidth: width,
+                maxHeight: height,
+                textOverflow: 'ellipsis'
+              }}
+              className={`${status}${enableFlash ? '' : '-solid'}-bg`}
             >
-              <div className="flex-col">
-                <div
-                  title={metricValue}
-                  className="flex-item"
-                  style={{
-                    color: 'white',
-                    fontSize: `${18 * fontSizeMultiplier}vh`,
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden',
-                    width: availWidth
-                  }}
-                >
-                  {metricValue}
-                  {metricSuffix && (
-                    <div
-                      style={{
-                        display: 'inline',
-                        fontSize: '6vh',
-                        verticalAlign: 'middle',
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden'
-                      }}
-                    >
-                      &nbsp;{metricSuffix}
-                    </div>
-                  )}
-                  {metricLabel !== null &&
-                    metricLabel !== undefined &&
-                    !hideLabels && (
+              <tr
+                className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                style={{ height: cfg.mainHeight }}
+              >
+                {displayMetric && (
+                  <td
+                    colSpan={cfg.colSpan}
+                    title={metricValue}
+                    className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                    style={{
+                      color: 'white',
+                      fontSize: `${6 * fontSizeMultiplier}vh`,
+                      width,
+                      maxWidth: width,
+                      textAlign: 'center',
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {metricValue}
+                    {metricSuffix && (
                       <div
                         style={{
-                          marginTop: '-4vh',
-                          fontSize: '6vh',
+                          display: 'inline',
+                          fontSize: `${3 * fontSizeMultiplier}vh`,
+                          verticalAlign: 'top',
                           textOverflow: 'ellipsis',
                           overflow: 'hidden'
                         }}
                       >
-                        {metricLabel || <span>&nbsp;</span>}
+                        &nbsp;{metricSuffix}
                       </div>
                     )}
-                </div>
-                {statusLabel !== null &&
-                  statusLabel !== undefined &&
-                  !hideLabels && (
-                    <div
-                      className="flex-item"
-                      style={{
-                        marginTop: '-3.5vh',
-                        marginBottom: '1.3vh',
-                        color: 'white',
-                        fontSize: '9vh',
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                        width: availWidth
-                      }}
-                    >
-                      {statusLabel || <span>&nbsp;</span>}
-                    </div>
-                  )}
-              </div>
-            </div>
+                  </td>
+                )}
+              </tr>
+
+              {metricLabel && (
+                <tr
+                  style={{
+                    height: cfg.metricLabelHeight
+                  }}
+                  className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                >
+                  <td
+                    colSpan={cfg.colSpan}
+                    style={{
+                      verticalAlign: 'top',
+                      color: 'white',
+                      fontSize: `${2 * fontSizeMultiplier}vh`,
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      textAlign: 'center'
+                    }}
+                    className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                  >
+                    {metricLabel}
+                  </td>
+                </tr>
+              )}
+
+              {statusLabel && (
+                <tr
+                  style={{
+                    height: cfg.statusLabelHeight
+                  }}
+                  className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                >
+                  <td
+                    colSpan={cfg.colSpan}
+                    className={`${status}${enableFlash ? '' : '-solid'}-bg`}
+                    style={{
+                      verticalAlign: 'top',
+                      color: 'white',
+                      textAlign: 'center',
+                      fontSize: `${4 * fontSizeMultiplier}vh`,
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {statusLabel}
+                  </td>
+                </tr>
+              )}
+            </table>
           );
         }}
       </NrqlQuery>

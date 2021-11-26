@@ -47,7 +47,7 @@ export default class Tiler extends React.Component {
 
     console.log(height);
     const rows = Math.ceil(widgets.length / columns);
-    const widgetHeight = (height - 20) / rows;
+    const widgetHeight = height / rows - rows * 3;
     // const widgetWidth = (width - 25) / columns - columns * 1.5;
     const widgetWidth = (width - 20) / columns - columns;
 
@@ -106,35 +106,11 @@ export default class Tiler extends React.Component {
               }}
             >
               {widget.dummy ? (
-                <div
-                  className="flex-item"
-                  style={{
-                    position: 'absolute',
-                    bottom: `${bottom}px`,
-                    fontSize: `${20 * fontSizeMultiplier}vh`,
-                    display: 'inline-flex',
-                    paddingTop: '2vh',
-                    // paddingBottom: displayTimeline ? '2vh' : '0px',
-                    width,
-                    // alignItems: 'center',
-                    justifyContent: 'space-around',
-                    overflow: ''
-                  }}
-                >
-                  <div
-                    className="flex-item"
-                    style={{
-                      color: 'white',
-                      fontSize: `${20 * fontSizeMultiplier}vh`,
-                      width,
-                      textOverflow: 'ellipsis',
-                      overflow: 'hidden',
-                      marginTop
-                    }}
-                  >
-                    <div>&nbsp;</div>
-                  </div>
-                </div>
+                <table style={{ width: widgetWidth, height: widgetHeight }}>
+                  <tr>
+                    <td colSpan="2">&nbsp;</td>
+                  </tr>
+                </table>
               ) : (
                 <StatusWidget
                   isTile
