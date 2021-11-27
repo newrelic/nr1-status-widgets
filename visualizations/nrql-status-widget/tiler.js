@@ -78,15 +78,6 @@ export default class Tiler extends React.Component {
 
           const fontSizeMultiplier = 0.75;
 
-          let marginTop =
-            widget.queryRight || widget.queryLeft || widget.dummy
-              ? `${-25 * fontSizeMultiplier}vh`
-              : '0px';
-
-          if (adjustBasicWidget) {
-            marginTop = `${-25 * fontSizeMultiplier}vh`;
-          }
-
           let bottom = 0;
 
           if (rows === row) {
@@ -102,6 +93,8 @@ export default class Tiler extends React.Component {
                 display: 'inline-block',
                 width: widgetWidth,
                 maxWidth: widgetWidth,
+                maxHeight: widgetHeight,
+                overflow: 'hidden',
                 padding: '3px'
               }}
             >
@@ -113,11 +106,12 @@ export default class Tiler extends React.Component {
                 </table>
               ) : (
                 <StatusWidget
+                  widgetKey={i}
                   isTile
                   adjustBasicWidget={adjustBasicWidget}
                   timeRange={timeRange}
-                  width={widgetWidth}
-                  height={widgetHeight}
+                  width={widgetWidth - 6}
+                  height={widgetHeight - 6}
                   {...widget}
                   columns={columns.length}
                   row={row}

@@ -126,7 +126,6 @@ export default class NrqlMetric extends React.Component {
           }
           const cfg = {
             mainHeight: height,
-            secondaryHeight: '',
             statusLabelHeight: '',
             metricLabelHeight: '',
             colSpan: 1
@@ -136,12 +135,10 @@ export default class NrqlMetric extends React.Component {
             if (metricLabel) {
               const tmpHeights = height / 8;
               cfg.mainHeight = tmpHeights * 4;
-              cfg.metricLabelHeight = tmpHeights * 1;
-              cfg.secondaryHeight = tmpHeights * 3;
+              cfg.metricLabelHeight = tmpHeights * 4;
             } else {
               const tmpHeights = height / 3;
-              cfg.mainHeight = tmpHeights * 2;
-              cfg.secondaryHeight = tmpHeights;
+              cfg.mainHeight = tmpHeights * 3;
             }
           } else if (statusLabel) {
             if (metricLabel) {
@@ -149,12 +146,10 @@ export default class NrqlMetric extends React.Component {
               cfg.mainHeight = tmpHeights * 8;
               cfg.metricLabelHeight = tmpHeights * 2;
               cfg.statusLabelHeight = tmpHeights * 2;
-              cfg.secondaryHeight = tmpHeights * 4;
             } else {
               const tmpHeights = height / 8;
               cfg.mainHeight = tmpHeights * 4;
               cfg.statusLabelHeight = tmpHeights * 2;
-              cfg.secondaryHeight = tmpHeights * 2;
             }
           }
 
@@ -181,6 +176,7 @@ export default class NrqlMetric extends React.Component {
                     title={metricValue}
                     className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                     style={{
+                      height: cfg.mainHeight,
                       color: 'white',
                       fontSize: `${6 * fontSizeMultiplier}vh`,
                       width,
@@ -218,6 +214,7 @@ export default class NrqlMetric extends React.Component {
                   <td
                     colSpan={cfg.colSpan}
                     style={{
+                      height: cfg.metricLabelHeight,
                       verticalAlign: 'top',
                       color: 'white',
                       fontSize: `${2 * fontSizeMultiplier}vh`,
@@ -243,6 +240,7 @@ export default class NrqlMetric extends React.Component {
                     colSpan={cfg.colSpan}
                     className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                     style={{
+                      height: cfg.statusLabelHeight,
                       verticalAlign: 'top',
                       color: 'white',
                       textAlign: 'center',

@@ -63,23 +63,16 @@ export default class BottomMetrics extends React.Component {
       metricLabelRight = '';
     }
 
-    let bottom = 0;
-
-    if (rows === row) {
-      bottom = 0;
-    } else {
-      bottom = rows * height - height * row + 20;
-    }
-
     // bottom += row === 0 ? 20 : 0;
 
     const defaultFontSize = 20;
 
     return (
-      <tr>
+      <tr style={{ height, maxHeight: height }}>
         {queryLeft && (
-          <td colSpan={queryRight ? 1 : 2} style={{ padding: '0px' }}>
+          <td colSpan={queryRight ? 1 : 2} style={{ padding: '0px', height }}>
             <NrqlMetric
+              height={height}
               direction="left"
               fullWidth={fullWidth}
               fontSizeMultiplier={fontSizeMultiplier}
@@ -103,8 +96,9 @@ export default class BottomMetrics extends React.Component {
           </td>
         )}
         {queryRight && (
-          <td colSpan={queryLeft ? 1 : 2} style={{ padding: '0px' }}>
+          <td colSpan={queryLeft ? 1 : 2} style={{ padding: '0px', height }}>
             <NrqlMetric
+              height={height}
               direction="right"
               fullWidth={fullWidth}
               fontSizeMultiplier={fontSizeMultiplier}
