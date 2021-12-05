@@ -13,6 +13,64 @@ export default class NrqlMetric extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { widgetKey, direction } = this.props;
+
+    this.intervalId = setInterval(() => {
+      const attributes = [`displayMetric_${widgetKey}_${direction}`];
+      const overflowState = {};
+
+      attributes.forEach(a => {
+        overflowState[`${a}Overflow`] = this.isEllipsisActive(this[a]);
+      });
+
+      this.setState(overflowState);
+    }, 1000);
+  }
+
+  componentDidUpdate() {
+    const { width, widgetKey, direction } = this.props;
+    this.trackWidth(width, widgetKey, direction);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  trackWidth = (width, widgetKey, direction) => {
+    const stateWidth = this.state.width;
+    if (width !== stateWidth) {
+      this.setState({
+        width,
+        [`displayMetric_${widgetKey}_${direction}Adjust`]: 0
+      });
+    }
+  };
+
+  isEllipsisActive = e => {
+    if (e) {
+      const active =
+        e.offsetHeight < e.scrollHeight || e.offsetWidth < e.scrollWidth;
+
+      if (active) {
+        const metricName = `${e.id}Adjust`;
+        const metricValue = this.state[metricName] || 0;
+        const newValue = metricValue + (active ? -1 : 1);
+
+        this.setState({ [metricName]: newValue }, () => {
+          if (active) {
+            setTimeout(() => {
+              this.isEllipsisActive(e);
+            }, 75);
+          }
+          return active;
+        });
+      }
+    } else {
+      return false;
+    }
+  };
+
   render() {
     const {
       height,
@@ -32,11 +90,18 @@ export default class NrqlMetric extends React.Component {
       metricLabelRight,
       hideLabels,
       numberFormat,
+      widgetKey,
       fontSizeMultiplier = { fontSizeMultiplier }
     } = this.props;
     let { metricLabel } = this.props;
 
     const { initialized } = this.state;
+
+    const displayMetricAdjust =
+      this.state[`displayMetric_${widgetKey}_${direction}Adjust`] || 0;
+    let displayMetricFontSize = (9 + displayMetricAdjust) * fontSizeMultiplier;
+    displayMetricFontSize =
+      displayMetricFontSize <= 0 ? 1 : displayMetricFontSize;
 
     return (
       <NrqlQuery
@@ -172,26 +237,31 @@ export default class NrqlMetric extends React.Component {
               >
                 {displayMetric && (
                   <td
+                    id={`displayMetric_${widgetKey}_${direction}`}
                     colSpan={cfg.colSpan}
                     title={metricValue}
                     className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                     style={{
-                      height: cfg.mainHeight,
                       color: 'white',
-                      fontSize: `${6 * fontSizeMultiplier}vh`,
+                      fontSize: `${displayMetricFontSize}vh`,
                       width,
                       maxWidth: width,
                       textAlign: 'center',
                       textOverflow: 'ellipsis',
                       overflow: 'hidden'
+                      // cursor: chartOnClick ? 'pointer' : 'default'
                     }}
+                    ref={ref =>
+                      (this[`displayMetric_${widgetKey}_${direction}`] = ref)
+                    }
                   >
                     {metricValue}
+
                     {metricSuffix && (
                       <div
                         style={{
                           display: 'inline',
-                          fontSize: `${3 * fontSizeMultiplier}vh`,
+                          fontSize: `${displayMetricFontSize * 0.7}vh`,
                           verticalAlign: 'top',
                           textOverflow: 'ellipsis',
                           overflow: 'hidden'
@@ -214,10 +284,9 @@ export default class NrqlMetric extends React.Component {
                   <td
                     colSpan={cfg.colSpan}
                     style={{
-                      height: cfg.metricLabelHeight,
                       verticalAlign: 'top',
                       color: 'white',
-                      fontSize: `${2 * fontSizeMultiplier}vh`,
+                      fontSize: `${4 * fontSizeMultiplier}vh`,
                       textOverflow: 'ellipsis',
                       overflow: 'hidden',
                       textAlign: 'center'
@@ -230,21 +299,17 @@ export default class NrqlMetric extends React.Component {
               )}
 
               {statusLabel && (
-                <tr
-                  style={{
-                    height: cfg.statusLabelHeight
-                  }}
-                  className={`${status}${enableFlash ? '' : '-solid'}-bg`}
-                >
+                <tr className={`${status}${enableFlash ? '' : '-solid'}-bg`}>
                   <td
                     colSpan={cfg.colSpan}
                     className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                     style={{
+                      maxHeight: cfg.statusLabelHeight,
                       height: cfg.statusLabelHeight,
                       verticalAlign: 'top',
                       color: 'white',
                       textAlign: 'center',
-                      fontSize: `${4 * fontSizeMultiplier}vh`,
+                      fontSize: `${6 * fontSizeMultiplier}vh`,
                       textOverflow: 'ellipsis',
                       overflow: 'hidden'
                     }}

@@ -7,7 +7,7 @@ import {
 } from './utils';
 import EmptyState from '../shared/emptyState';
 import ErrorState from '../shared/errorState';
-import Timeline from './timeline';
+// import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
 import ModalCharts from './modalCharts';
 
@@ -67,7 +67,7 @@ export default class StatusWidget extends React.Component {
           if (active) {
             setTimeout(() => {
               this.isEllipsisActive(e);
-            }, 50);
+            }, 75);
           }
           return active;
         });
@@ -293,18 +293,20 @@ export default class StatusWidget extends React.Component {
 
     const displayMetricAdjust =
       this.state[`displayMetric_${widgetKey}Adjust`] || 0;
-    let displayMetricFontSize = (15 + displayMetricAdjust) * fontSizeMultiplier;
+    let displayMetricFontSize = (17 + displayMetricAdjust) * fontSizeMultiplier;
     displayMetricFontSize =
       displayMetricFontSize <= 0 ? 1 : displayMetricFontSize;
 
     return (
       <>
-        <ModalCharts
-          open={modalOpen}
-          close={this.modalClose}
-          queries={validModalQueries}
-          accountId={accountId}
-        />
+        {validModalQueries.length > 0 && (
+          <ModalCharts
+            open={modalOpen}
+            close={this.modalClose}
+            queries={validModalQueries}
+            accountId={accountId}
+          />
+        )}
         <NrqlQuery
           query={finalQuery}
           accountId={parseInt(accountId)}
@@ -434,10 +436,6 @@ export default class StatusWidget extends React.Component {
 
             if (queryRight && queryLeft) {
               cfg.colSpan = 2;
-            }
-
-            if (statusLabel) {
-              console.log(cfg);
             }
 
             return (

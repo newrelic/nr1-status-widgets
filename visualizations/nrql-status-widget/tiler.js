@@ -45,11 +45,10 @@ export default class Tiler extends React.Component {
       return 'No widgets defined...';
     }
 
-    console.log(height);
     const rows = Math.ceil(widgets.length / columns);
-    const widgetHeight = height / rows - rows * 3;
+    const widgetHeight = height / rows;
     // const widgetWidth = (width - 25) / columns - columns * 1.5;
-    const widgetWidth = (width - 20) / columns - columns;
+    const widgetWidth = width / columns - columns;
 
     return (
       <div>
@@ -76,16 +75,6 @@ export default class Tiler extends React.Component {
             }
           }
 
-          const fontSizeMultiplier = 0.75;
-
-          let bottom = 0;
-
-          if (rows === row) {
-            bottom = 10;
-          } else {
-            bottom = rows * height - height * row + 140;
-          }
-
           return (
             <div
               key={i}
@@ -95,7 +84,7 @@ export default class Tiler extends React.Component {
                 maxWidth: widgetWidth,
                 maxHeight: widgetHeight,
                 overflow: 'hidden',
-                padding: '3px'
+                padding: '1px'
               }}
             >
               {widget.dummy ? (
@@ -110,7 +99,7 @@ export default class Tiler extends React.Component {
                   isTile
                   adjustBasicWidget={adjustBasicWidget}
                   timeRange={timeRange}
-                  width={widgetWidth - 6}
+                  width={widgetWidth - 2}
                   height={widgetHeight - 6}
                   {...widget}
                   columns={columns.length}
