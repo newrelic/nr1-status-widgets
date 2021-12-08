@@ -9,7 +9,6 @@ import EmptyState from '../shared/emptyState';
 import ErrorState from '../shared/errorState';
 // import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
-import ModalCharts from './modalCharts';
 
 const numeral = require('numeral');
 
@@ -111,7 +110,7 @@ export default class StatusWidget extends React.Component {
   };
 
   render() {
-    const { modalOpen, initialized, timeRange, timeRangeResult } = this.state;
+    const { initialized, timeRange, timeRangeResult } = this.state;
     const {
       widgetKey,
       width,
@@ -299,14 +298,6 @@ export default class StatusWidget extends React.Component {
 
     return (
       <>
-        {validModalQueries.length > 0 && (
-          <ModalCharts
-            open={modalOpen}
-            close={this.modalClose}
-            queries={validModalQueries}
-            accountId={accountId}
-          />
-        )}
         <NrqlQuery
           query={finalQuery}
           accountId={parseInt(accountId)}
