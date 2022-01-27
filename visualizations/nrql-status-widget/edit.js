@@ -189,9 +189,6 @@ export default class EditMode extends React.Component {
     const cValue = collectionValue?.[c.name]
     const value = w[c.name] || cValue;
 
-
-    console.log(c,ci,w,i,collectionIndex,collectionName,collectionValue)
-
     if (c.name === 'accountId') {
       return (
         <React.Fragment key={ci} style={{ paddingLeft }}>

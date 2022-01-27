@@ -27,7 +27,7 @@ const DAY = 24 * HOUR;
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
 const timeRangeToNrql = timeRange => {
-  if (!timeRange) {
+  if (!timeRange || Object.keys(timeRange).length === 0) {
     return 'SINCE 30 minutes ago';
   }
 
@@ -187,6 +187,7 @@ export default class CustomModalNerdlet extends React.Component {
                   const { queries, accountId } = nerdletState;
                   const { timeRange } = platformState;
                   const { time } = this.state;
+
                   const timeOptions = [
                     {
                       key: 'platform',
@@ -315,7 +316,7 @@ export default class CustomModalNerdlet extends React.Component {
                             isClearable
                             onChange={time => {
                               this.setState({ time }, () =>
-                                platform.setUrlState({ timeRange: time.value })
+                                platform.setUrlState({ timeRange: time?.value })
                               );
                             }}
                             value={selectedTime}
