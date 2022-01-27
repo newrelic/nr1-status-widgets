@@ -184,9 +184,13 @@ export default class EditMode extends React.Component {
     this.setState({ documentValue }, () => this.saveDocument());
   };
 
-  renderConfiguration = (c, ci, w, i, collectionIndex, collectionName) => {
+  renderConfiguration = (c, ci, w, i, collectionIndex, collectionName, collectionValue) => {
     const paddingLeft = collectionIndex !== null ? 10 : 0;
-    const value = w[c.name];
+    const cValue = collectionValue?.[c.name]
+    const value = w[c.name] || cValue;
+
+
+    console.log(c,ci,w,i,collectionIndex,collectionName,collectionValue)
 
     if (c.name === 'accountId') {
       return (
@@ -343,7 +347,7 @@ export default class EditMode extends React.Component {
                         item,
                         i,
                         valueIndex,
-                        c.name
+                        c.name,v
                       )}
                     </React.Fragment>
                   );
