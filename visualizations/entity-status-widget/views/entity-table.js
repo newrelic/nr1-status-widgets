@@ -50,7 +50,10 @@ export default class EntityTable extends React.Component {
             <TableRow>
               <EntityTitleTableRowCell
                 value={item}
-                onClick={() => navigation.openStackedEntity(item.guid)}
+                onClick={() => {
+                  console.log('GUID', item.guid);
+                  navigation.openStackedEntity(item.guid);
+                }}
               />
               <TableRowCell>{item.type}</TableRowCell>
             </TableRow>

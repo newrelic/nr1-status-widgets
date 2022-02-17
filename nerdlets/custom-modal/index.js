@@ -56,7 +56,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'area': {
         return (
           <AreaChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -65,7 +65,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'bar': {
         return (
           <BarChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -74,7 +74,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'billboard': {
         return (
           <BillboardChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -83,7 +83,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'funnel': {
         return (
           <FunnelChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -92,7 +92,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'heatmap': {
         return (
           <HeatmapChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -101,7 +101,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'histogram': {
         return (
           <HistogramChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -110,7 +110,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'json': {
         return (
           <JsonChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -119,7 +119,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'line': {
         return (
           <LineChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -128,7 +128,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'pie': {
         return (
           <PieChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -137,7 +137,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'scatter': {
         return (
           <ScatterChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -146,7 +146,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'sparkline': {
         return (
           <SparklineChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -155,7 +155,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'stackedbar': {
         return (
           <StackedBarChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />
@@ -164,7 +164,7 @@ export default class CustomModalNerdlet extends React.Component {
       case 'table': {
         return (
           <TableChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={queryWithTime}
             style={{ height, width }}
           />

@@ -135,7 +135,7 @@ export default class StatusWidget extends React.Component {
         />
         <NrqlQuery
           query={finalQuery}
-          accountId={parseInt(accountId)}
+          accountIds={[parseInt(accountId)]}
           pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
         >
           {({ data, loading, error }) => {
