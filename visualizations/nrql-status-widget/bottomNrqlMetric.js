@@ -37,7 +37,7 @@ export default class NrqlMetric extends React.Component {
     return (
       <NrqlQuery
         query={query}
-        accountId={parseInt(accountId)}
+        accountIds={[parseInt(accountId)]}
         pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
       >
         {({ data, loading, error }) => {

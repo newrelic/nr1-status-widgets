@@ -47,7 +47,7 @@ export default class StatusWidget extends React.Component {
       const { query, accountId } = this.props;
       const nrqlResult = await NrqlQuery.query({
         query,
-        accountId,
+        accountId: [accountId],
         timeRange: incomingTimeRange
       });
       stateUpdate.timeRangeResult = nrqlResult?.data?.[0]?.data?.[0]?.y || null;
@@ -236,7 +236,7 @@ export default class StatusWidget extends React.Component {
         />
         <NrqlQuery
           query={finalQuery}
-          accountId={parseInt(accountId)}
+          accountIds={[parseInt(accountId)]}
           pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
         >
           {({ data, loading, error }) => {

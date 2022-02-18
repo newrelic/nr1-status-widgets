@@ -23,18 +23,22 @@ export default class ModalCharts extends React.Component {
     switch (chartType) {
       case 'area': {
         return (
-          <AreaChart accountId={accountId} query={query} style={{ height }} />
+          <AreaChart
+            accountIds={[accountId]}
+            query={query}
+            style={{ height }}
+          />
         );
       }
       case 'bar': {
         return (
-          <BarChart accountId={accountId} query={query} style={{ height }} />
+          <BarChart accountIds={[accountId]} query={query} style={{ height }} />
         );
       }
       case 'billboard': {
         return (
           <BillboardChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -42,13 +46,17 @@ export default class ModalCharts extends React.Component {
       }
       case 'funnel': {
         return (
-          <FunnelChart accountId={accountId} query={query} style={{ height }} />
+          <FunnelChart
+            accountIds={[accountId]}
+            query={query}
+            style={{ height }}
+          />
         );
       }
       case 'heatmap': {
         return (
           <HeatmapChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -57,7 +65,7 @@ export default class ModalCharts extends React.Component {
       case 'histogram': {
         return (
           <HistogramChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -65,23 +73,31 @@ export default class ModalCharts extends React.Component {
       }
       case 'json': {
         return (
-          <JsonChart accountId={accountId} query={query} style={{ height }} />
+          <JsonChart
+            accountIds={[accountId]}
+            query={query}
+            style={{ height }}
+          />
         );
       }
       case 'line': {
         return (
-          <LineChart accountId={accountId} query={query} style={{ height }} />
+          <LineChart
+            accountIds={[accountId]}
+            query={query}
+            style={{ height }}
+          />
         );
       }
       case 'pie': {
         return (
-          <PieChart accountId={accountId} query={query} style={{ height }} />
+          <PieChart accountIds={[accountId]} query={query} style={{ height }} />
         );
       }
       case 'scatter': {
         return (
           <ScatterChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -90,7 +106,7 @@ export default class ModalCharts extends React.Component {
       case 'sparkline': {
         return (
           <SparklineChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -99,7 +115,7 @@ export default class ModalCharts extends React.Component {
       case 'stackedbar': {
         return (
           <StackedBarChart
-            accountId={accountId}
+            accountIds={[accountId]}
             query={query}
             style={{ height }}
           />
@@ -107,7 +123,11 @@ export default class ModalCharts extends React.Component {
       }
       case 'table': {
         return (
-          <TableChart accountId={accountId} query={query} style={{ height }} />
+          <TableChart
+            accountIds={[accountId]}
+            query={query}
+            style={{ height }}
+          />
         );
       }
       default: {
