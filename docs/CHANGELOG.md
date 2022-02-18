@@ -1,3 +1,10 @@
+## [2.15.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.15.0...v2.15.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* app deprecations ([f8388fc](https://github.com/newrelic/nr1-status-widgets/commit/f8388fc8ab51aa7cd1c2e58e043caea2178da5e3))
+
 # [2.15.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.14.1...v2.15.0) (2021-11-05)
 
 
