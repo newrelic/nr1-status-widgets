@@ -1,6 +1,11 @@
+td:not(.u-unstyledTd), th:not(.u-unstyledTh){
+  line-height: unset !important;
+}
+
 td {
   padding: 0px;
   min-height: 0px;
+  height: unset !important;
 }
 .healthy-bg {
   background-color: #01b076;

@@ -375,6 +375,8 @@ export default class EditMode extends React.Component {
       checkingDocument,
       savingDocument
     } = this.state;
+    console.log("hello")
+    console.log(this.props)
     const { accountId, documentId } = this.props;
     const errors = [];
     if (!accountId) errors.push('Account not selected');

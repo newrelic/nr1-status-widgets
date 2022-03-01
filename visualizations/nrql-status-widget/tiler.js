@@ -1,116 +1,79 @@
 import React from 'react';
 import StatusWidget from './status-widget';
-import { AccountStorageQuery } from 'nr1';
+import groupBy from 'lodash.groupby';
 
-const collection = 'status-widgets';
+const withIndex = fn => {
+  let index = 0;
+  return thing => fn(thing, index++);
+};
 
 export default class Tiler extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      documentValue: null,
-      loadingDocument: false
-    };
-  }
-
-  componentDidMount() {
-    const { accountId, documentId } = this.props;
-    this.setState({ loadingDocument: true }, () => {
-      AccountStorageQuery.query({
-        accountId,
-        collection,
-        documentId
-      }).then(({ data }) => {
-        // eslint-disable-next-line
-        console.log(data);
-        this.setState({
-          loadingDocument: false,
-          documentValue: data || {}
-        });
-      });
-    });
-  }
-
   render() {
-    const { documentValue, loadingDocument } = this.state;
-    const widgets = documentValue?.widgets || [];
-    const columns = documentValue?.columns || 1;
-    const { timeRange, width, height } = this.props;
+    const { timeRange, width, height, widgets } = this.props;
+    // const realWidgets = this.props.widgets; // revert
+    const columns = parseFloat(this.props?.columns || 1);
 
-    if (loadingDocument) {
-      return 'Loading configuration...';
-    }
+    // const widgets = [];
+    // for (let z = 0; z < 12; z++) {
+    //   widgets.push(realWidgets[0]);
+    // }
 
     if (widgets.length === 0) {
       return 'No widgets defined...';
     }
 
+    const rowGroupedWidgets = groupBy(
+      widgets,
+      withIndex((w, i) => {
+        const row = Math.ceil((i + 1) / columns);
+        return row;
+      })
+    );
+
+    const padding = 1;
     const rows = Math.ceil(widgets.length / columns);
-    const widgetHeight = height / rows - rows * 3;
-    // const widgetWidth = (width - 25) / columns - columns * 1.5;
-    const widgetWidth = (width - 20) / columns - columns;
+    const widgetHeight = height / rows - padding * 2 * rows;
+    const widgetWidth = width / columns - padding * 2 * columns;
 
     return (
-      <div>
-        {widgets.map((widget, i) => {
-          const row = Math.ceil((i + 1) / columns);
-          const endPos = row * columns;
-          const startPos = endPos - (columns - 1);
-
-          let adjustBasicWidget = false;
-
-          // check if there is a widget to left or right
-          if (!widget.queryLeft && !widget.queryRight) {
-            //  check left
-            if (i + 1 > startPos && widgets[i - 1]) {
-              if (widgets[i + 1]?.queryLeft || widgets[i + 1]?.queryRight) {
-                adjustBasicWidget = true;
-              }
-            }
-            //  check right
-            if (i + 1 < endPos && widgets[i + 1]) {
-              if (widgets[i - 1]?.queryLeft || widgets[i + -1]?.queryRight) {
-                adjustBasicWidget = true;
-              }
-            }
-          }
-
+      <table style={{ tableLayout: 'fixed' }}>
+        {Object.keys(rowGroupedWidgets).map(rowNo => {
+          const rowData = rowGroupedWidgets[rowNo];
           return (
-            <div
-              key={i}
-              style={{
-                display: 'inline-block',
-                width: widgetWidth,
-                maxWidth: widgetWidth,
-                maxHeight: widgetHeight,
-                overflow: 'hidden',
-                padding: '3px'
-              }}
-            >
-              {widget.dummy ? (
-                <table style={{ width: widgetWidth, height: widgetHeight }}>
-                  <tr>
-                    <td colSpan="2">&nbsp;</td>
-                  </tr>
-                </table>
-              ) : (
-                <StatusWidget
-                  widgetKey={i}
-                  isTile
-                  adjustBasicWidget={adjustBasicWidget}
-                  timeRange={timeRange}
-                  width={widgetWidth - 6}
-                  height={widgetHeight - 6}
-                  {...widget}
-                  columns={columns.length}
-                  row={row}
-                  rows={rows}
-                />
-              )}
-            </div>
+            <tr key={rowNo}>
+              {rowData.map((widget, widgetIndex) => {
+                return (
+                  <td
+                    key={widgetIndex}
+                    style={{
+                      padding: `${padding}px`,
+                      maxWidth: widgetWidth,
+                      maxHeight: widgetHeight
+                    }}
+                  >
+                    {widget.dummy ? (
+                      <div>&nbsp;</div>
+                    ) : (
+                      <StatusWidget
+                        widgetKey={widgetIndex}
+                        isTile
+                        // adjustBasicWidget={adjustBasicWidget}
+                        timeRange={timeRange}
+                        width={widgetWidth}
+                        height={widgetHeight}
+                        {...widget}
+                        columns={columns.length}
+                        row={rowNo}
+                        rows={rows}
+                      />
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
           );
         })}
-      </div>
+      </table>
     );
   }
 }

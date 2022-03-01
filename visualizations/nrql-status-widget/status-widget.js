@@ -7,9 +7,8 @@ import {
 } from './utils';
 import EmptyState from '../shared/emptyState';
 import ErrorState from '../shared/errorState';
-import Timeline from './timeline';
+// import Timeline from './timeline';
 import BottomMetrics from './bottomMetrics';
-import ModalCharts from './modalCharts';
 
 const numeral = require('numeral');
 
@@ -67,7 +66,7 @@ export default class StatusWidget extends React.Component {
           if (active) {
             setTimeout(() => {
               this.isEllipsisActive(e);
-            }, 50);
+            }, 75);
           }
           return active;
         });
@@ -111,7 +110,7 @@ export default class StatusWidget extends React.Component {
   };
 
   render() {
-    const { modalOpen, initialized, timeRange, timeRangeResult } = this.state;
+    const { initialized, timeRange, timeRangeResult } = this.state;
     const {
       widgetKey,
       width,
@@ -279,12 +278,12 @@ export default class StatusWidget extends React.Component {
     }
 
     const fontSizeMultiplier = fontMultiplier || 1;
-    let hideLabels = false;
-    if (width <= reducedFeatureWidth) {
-      hideLabels = true;
-      displayTimeline = false;
-      // fontSizeMultiplier *= 1.4;
-    }
+    const hideLabels = false;
+    // if (width <= reducedFeatureWidth) {
+    //   hideLabels = true;
+    //   displayTimeline = false;
+    //   // fontSizeMultiplier *= 1.4;
+    // }
 
     // unsupported tiling features
     if (isTile) {
@@ -293,18 +292,12 @@ export default class StatusWidget extends React.Component {
 
     const displayMetricAdjust =
       this.state[`displayMetric_${widgetKey}Adjust`] || 0;
-    let displayMetricFontSize = (15 + displayMetricAdjust) * fontSizeMultiplier;
+    let displayMetricFontSize = (17 + displayMetricAdjust) * fontSizeMultiplier;
     displayMetricFontSize =
       displayMetricFontSize <= 0 ? 1 : displayMetricFontSize;
 
     return (
       <>
-        <ModalCharts
-          open={modalOpen}
-          close={this.modalClose}
-          queries={validModalQueries}
-          accountId={accountId}
-        />
         <NrqlQuery
           query={finalQuery}
           accountId={parseInt(accountId)}
@@ -377,9 +370,13 @@ export default class StatusWidget extends React.Component {
 
             const cfg = {
               mainHeight: height,
+              mainFont: 0,
               secondaryHeight: '',
+              secondaryFont: 1,
               statusLabelHeight: '',
+              statusFont: 1,
               metricLabelHeight: '',
+              metricFont: 1,
               colSpan: 1
             };
 
@@ -390,6 +387,7 @@ export default class StatusWidget extends React.Component {
                   cfg.mainHeight = tmpHeights * 4;
                   cfg.metricLabelHeight = tmpHeights;
                   cfg.secondaryHeight = tmpHeights * 3;
+                  cfg.metricFont = 0.4;
                 } else {
                   const tmpHeights = height / 3;
                   cfg.mainHeight = tmpHeights * 2;
@@ -402,12 +400,15 @@ export default class StatusWidget extends React.Component {
                   cfg.metricLabelHeight = tmpHeights * 2;
                   cfg.statusLabelHeight = tmpHeights * 2;
                   cfg.secondaryHeight = tmpHeights * 4;
+                  cfg.statusFont = 0.3;
+                  cfg.metricFont = 0.3;
                 } else {
                   const tmpHeights = height / 8;
 
                   cfg.mainHeight = tmpHeights * 4;
                   cfg.statusLabelHeight = tmpHeights * 2;
                   cfg.secondaryHeight = tmpHeights * 2;
+                  cfg.statusFont = 0.4;
                 }
               }
             } else if (!queryLeft && !queryRight && statusLabel) {
@@ -416,6 +417,10 @@ export default class StatusWidget extends React.Component {
                 cfg.mainHeight = tmpHeights * 4;
                 cfg.metricLabelHeight = tmpHeights * 2;
                 cfg.statusLabelHeight = tmpHeights * 2;
+              } else {
+                const tmpHeights = height / 3;
+                cfg.mainHeight = tmpHeights * 2;
+                cfg.statusLabelHeight = tmpHeights;
               }
             } else if (
               !queryLeft &&
@@ -436,10 +441,6 @@ export default class StatusWidget extends React.Component {
               cfg.colSpan = 2;
             }
 
-            if (statusLabel) {
-              console.log(cfg);
-            }
-
             return (
               <table
                 style={{
@@ -447,13 +448,17 @@ export default class StatusWidget extends React.Component {
                   height,
                   maxWidth: width,
                   maxHeight: height,
-                  textOverflow: 'ellipsis'
+                  textOverflow: 'ellipsis',
+                  tableLayout: 'fixed'
                 }}
                 className={`${status}${enableFlash ? '' : '-solid'}-bg`}
               >
                 <tr
                   className={`${status}${enableFlash ? '' : '-solid'}-bg`}
-                  style={{ height: cfg.mainHeight }}
+                  style={{
+                    height: cfg.mainHeight,
+                    borderBottom: '1px solid white'
+                  }}
                 >
                   {displayMetric && (
                     <td
@@ -474,21 +479,23 @@ export default class StatusWidget extends React.Component {
                       }}
                       ref={ref => (this[`displayMetric_${widgetKey}`] = ref)}
                     >
-                      {metricValue}
+                      <div style={{ maxHeight: cfg.mainHeight }}>
+                        {metricValue}
 
-                      {metricSuffix && (
-                        <div
-                          style={{
-                            display: 'inline',
-                            fontSize: `${displayMetricFontSize * 0.7}vh`,
-                            verticalAlign: 'top',
-                            textOverflow: 'ellipsis',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          &nbsp;{metricSuffix}
-                        </div>
-                      )}
+                        {metricSuffix && (
+                          <div
+                            style={{
+                              display: 'inline',
+                              fontSize: `${displayMetricFontSize * 0.7}vh`,
+                              verticalAlign: 'top',
+                              textOverflow: 'ellipsis',
+                              overflow: 'hidden'
+                            }}
+                          >
+                            &nbsp;{metricSuffix}
+                          </div>
+                        )}
+                      </div>
                     </td>
                   )}
                 </tr>
@@ -496,7 +503,7 @@ export default class StatusWidget extends React.Component {
                 {metricLabel && (
                   <tr
                     style={{
-                      height: cfg.metricLabelHeight
+                      maxHeight: cfg.metricLabelHeight
                     }}
                     className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                   >
@@ -505,14 +512,29 @@ export default class StatusWidget extends React.Component {
                       style={{
                         verticalAlign: 'top',
                         color: 'white',
-                        fontSize: `${4 * fontSizeMultiplier}vh`,
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        height: cfg.metricLabelHeight,
+                        maxHeight: cfg.metricLabelHeight
                       }}
                       className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                     >
-                      {metricLabel}
+                      <div
+                        style={{
+                          maxHeight: cfg.metricLabelHeight,
+                          height: cfg.metricLabelHeight,
+                          minHeight: cfg.metricLabelHeight,
+                          width,
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden',
+                          display: 'table-cell',
+                          verticalAlign: 'middle',
+                          textAlign: 'center',
+                          fontSize: `${displayMetricFontSize *
+                            cfg.metricFont}vh`
+                        }}
+                      >
+                        {metricLabel}
+                      </div>
                     </td>
                   </tr>
                 )}
@@ -524,33 +546,46 @@ export default class StatusWidget extends React.Component {
                       className={`${status}${enableFlash ? '' : '-solid'}-bg`}
                       style={{
                         maxHeight: cfg.statusLabelHeight,
-                        height: cfg.statusLabelHeight,
                         verticalAlign: 'top',
                         color: 'white',
-                        textAlign: 'center',
-                        fontSize: `${6 * fontSizeMultiplier}vh`,
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden'
+                        textAlign: 'center'
                       }}
                     >
-                      {statusLabel}
+                      <div
+                        style={{
+                          maxHeight: cfg.statusLabelHeight,
+                          height: cfg.statusLabelHeight,
+                          width,
+                          display: 'table-cell',
+                          verticalAlign: 'top',
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden',
+                          fontSize: `${displayMetricFontSize *
+                            cfg.statusFont}vh`
+                        }}
+                      >
+                        {statusLabel}
+                      </div>
                     </td>
                   </tr>
                 )}
 
-                <BottomMetrics
-                  colSpan={cfg.colSpan}
-                  hideLabels={hideLabels}
-                  leftMetric={leftMetric}
-                  rightMetric={rightMetric}
-                  displayTimeline={displayTimeline}
-                  width={width}
-                  height={cfg.secondaryHeight}
-                  row={row}
-                  rows={rows}
-                  mainProps={this.props}
-                  fontSizeMultiplier={fontSizeMultiplier}
-                />
+                <div style={{ maxHeight: cfg.secondaryHeight }}>
+                  <BottomMetrics
+                    colSpan={cfg.colSpan}
+                    hideLabels={hideLabels}
+                    leftMetric={leftMetric}
+                    rightMetric={rightMetric}
+                    displayTimeline={displayTimeline}
+                    width={width}
+                    height={cfg.secondaryHeight}
+                    row={row}
+                    rows={rows}
+                    mainProps={this.props}
+                    fontSizeMultiplier={fontSizeMultiplier}
+                  />
+                </div>
+
                 {/* 
                 {displayTimeline && (
                   <Timeline

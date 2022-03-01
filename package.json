@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "nr1-status-widgets",
-  "version": "2.14.1-custom19",
+  "version": "2.14.1-custom38",
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
@@ -18,14 +18,11 @@
   "dependencies": {
     "@newrelic/nr1-community": "^1.2.0",
     "async": "^3.2.0",
-    "auto-fontsize": "^1.0.25",
     "lodash.groupby": "^4.6.0",
     "numeral": "^2.0.6",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
-    "react-detectable-overflow": "^0.6.2",
     "react-dom": "^16.6.3",
-    "react-dynamic-font": "^2.0.1",
     "react-select": "^3.1.1"
   },
   "devDependencies": {

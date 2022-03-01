@@ -1,26 +1,404 @@
 {
   "schemaType": "VISUALIZATION",
   "id": "nrql-status-widget",
-  "displayName": "NRQL Status Widget (Toko custom)",
+  "displayName": "NRQL Status Widget",
   "description": "NRQL driven status widget",
   "configuration": [
     {
-      "name": "accountId",
-      "title": "Account ID to store the widget configuration",
-      "description": "Account ID to store the widget configuration",
+      "name": "columns",
+      "title": "Columns",
+      "description": "Number of columns (default 1)",
       "type": "number"
     },
     {
-      "name": "documentId",
-      "title": "Unique document ID for this widgets configuration",
-      "description": "",
-      "type": "string"
-    },
-    {
-      "name": "disableEdit",
-      "title": "Disable edit mode (turn on when displaying in dashboard)",
-      "description": "",
-      "type": "boolean"
+      "name": "widgets",
+      "title": "Widgets",
+      "type": "collection",
+      "items": [
+        {
+          "name": "accountId",
+          "title": "Account ID",
+          "description": "Account ID to be associated with the query",
+          "type": "number"
+        },
+        {
+          "name": "query",
+          "title": "Query (do not use timeseries or facets)",
+          "description": "NRQL query eg. SELECT count(*) FROM TransactionError",
+          "type": "nrql"
+        },
+        {
+          "name": "numberFormat",
+          "title": "Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "enableFlash",
+          "title": "Enable flash/pulse effect when not healthy",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "timelineBucket",
+          "title": "Bucket size in minutes (default 1 minute)",
+          "description": "This value is used for the since clause and for the timeseries query",
+          "type": "number"
+        },
+        {
+          "name": "thresholdEmptyHandling",
+          "title": "Threshold NULL & ZERO handling",
+          "description": "Null and zero handling",
+          "type": "enum",
+          "items": [
+            {
+              "title": "Default",
+              "value": null
+            },
+            {
+              "title": "Return critical if zero / 0",
+              "value": "critIfZero"
+            },
+            {
+              "title": "Return critical if null",
+              "value": "critIfNull"
+            },
+            {
+              "title": "Return critical if null or zero",
+              "value": "critIfEither"
+            }
+          ]
+        },
+        {
+          "name": "thresholdDirection",
+          "title": "Threshold Direction: above or below (default: above)",
+          "description": "Threshold Direction: above or below (default: above)",
+          "type": "enum",
+          "items": [
+            {
+              "title": "above",
+              "value": "above"
+            },
+            {
+              "title": "below",
+              "value": "below"
+            }
+          ]
+        },
+        {
+          "name": "criticalThreshold",
+          "title": "Critical Threshold",
+          "description": "If above this value critical will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "criticalLabel",
+          "title": "Optional: Critical Label",
+          "description": "Optionally render this label if critical threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "warningThreshold",
+          "title": "Warning Threshold",
+          "description": "If above this value warning will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "warningLabel",
+          "title": "Optional: Warning Label",
+          "description": "Optionally render this label if warning threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "healthyLabel",
+          "title": "Optional: Healthy Label",
+          "description": "Optionally render this label instead of the value when healthy",
+          "type": "string"
+        },
+        {
+          "name": "decimalPlaces",
+          "title": "Decimal Places",
+          "description": "Set decimal places on metric",
+          "type": "number"
+        },
+        {
+          "name": "metricLabel",
+          "title": "Optional: Metric Label",
+          "description": "Label to place under the metric",
+          "type": "string"
+        },
+        {
+          "name": "metricSuffix",
+          "title": "Optional: Metric Suffix",
+          "description": "Label to place beside the metric",
+          "type": "string"
+        },
+        {
+          "name": "onClickUrl",
+          "title": "Optional: On Click URL",
+          "description": "Add an on click url to navigate to another page such as a runbook",
+          "type": "string"
+        },
+        {
+          "name": "untilClause",
+          "title": "Optional: UNTIL clause",
+          "description": "Optionally add an UNTIL clause to assist in excluding data",
+          "type": "string"
+        },
+        {
+          "name": "modalQueries",
+          "title": "Modal Chart Queries",
+          "type": "collection",
+          "items": [
+            {
+              "name": "chartTitle",
+              "title": "Chart Title",
+              "description": "Chart title",
+              "type": "string"
+            },
+            {
+              "name": "query",
+              "title": "Query",
+              "description": "NRQL query for visualization",
+              "type": "nrql"
+            },
+            {
+              "name": "chartType",
+              "title": "Chart Type",
+              "description": "Chart Type",
+              "type": "enum",
+              "items": [
+                {
+                  "title": "Select a chart",
+                  "value": null
+                },
+                {
+                  "title": "area",
+                  "value": "area"
+                },
+                {
+                  "title": "bar",
+                  "value": "bar"
+                },
+                {
+                  "title": "billboard",
+                  "value": "billboard"
+                },
+                {
+                  "title": "funnel",
+                  "value": "funnel"
+                },
+                {
+                  "title": "heatmap",
+                  "value": "heatmap"
+                },
+                {
+                  "title": "histogram",
+                  "value": "histogram"
+                },
+                {
+                  "title": "json",
+                  "value": "json"
+                },
+                {
+                  "title": "line",
+                  "value": "line"
+                },
+                {
+                  "title": "pie",
+                  "value": "pie"
+                },
+                {
+                  "title": "scatter",
+                  "value": "scatter"
+                },
+                {
+                  "title": "sparkline",
+                  "value": "sparkline"
+                },
+                {
+                  "title": "stackedbar",
+                  "value": "stackedbar"
+                },
+                {
+                  "title": "table",
+                  "value": "table"
+                }
+              ]
+            },
+            {
+              "name": "height",
+              "title": "Height (px) - optional",
+              "description": "Height for widget",
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "name": "queryLeft",
+          "title": "Bottom Left Metric - Add an additional query to the bottom left of the widget",
+          "description": "",
+          "type": "nrql"
+        },
+        {
+          "name": "numberFormatLeft",
+          "title": "Bottom Left Metric - Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "enableFlashLeft",
+          "title": "Bottom Left Metric - Enable flash/pulse effect when not healthy",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "thresholdDirectionLeft",
+          "title": "Bottom Left Metric - Threshold Direction: above or below (default: above)",
+          "description": "Threshold Direction: above or below (default: above)",
+          "type": "enum",
+          "items": [
+            {
+              "title": "above",
+              "value": "above"
+            },
+            {
+              "title": "below",
+              "value": "below"
+            }
+          ]
+        },
+        {
+          "name": "criticalThresholdLeft",
+          "title": "Bottom Left Metric - Critical Threshold",
+          "description": "If above this value critical will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "criticalLabelLeft",
+          "title": "Bottom Left Metric - Optional: Critical Label",
+          "description": "Optionally render this label if critical threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "warningThresholdLeft",
+          "title": "Bottom Left Metric - Warning Threshold",
+          "description": "If above this value warning will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "warningLabelLeft",
+          "title": "Bottom Left Metric - Optional: Warning Label",
+          "description": "Optionally render this label if warning threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "healthyLabelLeft",
+          "title": "Bottom Left Metric - Optional: Healthy Label",
+          "description": "Optionally render this label instead of the value when healthy",
+          "type": "string"
+        },
+        {
+          "name": "decimalPlacesLeft",
+          "title": "Bottom Left Metric - Decimal Places",
+          "description": "Set decimal places on metric",
+          "type": "number"
+        },
+        {
+          "name": "metricLabelLeft",
+          "title": "Bottom Left Metric - Optional: Metric Label",
+          "description": "Label to place under the metric",
+          "type": "string"
+        },
+        {
+          "name": "metricSuffixLeft",
+          "title": "Bottom Left Metric - Optional: Metric Suffix",
+          "description": "Label to place beside the metric",
+          "type": "string"
+        },
+        {
+          "name": "queryRight",
+          "title": "Bottom Right Metric - Add an additional query to the bottom Right of the widget",
+          "description": "",
+          "type": "nrql"
+        },
+        {
+          "name": "numberFormatRight",
+          "title": "Bottom Right Metric - Optional: NumeralJS custom number format: http://numeraljs.com/#format",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "enableFlashRight",
+          "title": "Bottom Right Metric - Enable flash/pulse effect when not healthy",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "thresholdDirectionRight",
+          "title": "Bottom Right Metric - Threshold Direction: above or below (default: above)",
+          "description": "Threshold Direction: above or below (default: above)",
+          "type": "enum",
+          "items": [
+            {
+              "title": "above",
+              "value": "above"
+            },
+            {
+              "title": "below",
+              "value": "below"
+            }
+          ]
+        },
+        {
+          "name": "criticalThresholdRight",
+          "title": "Bottom Right Metric - Critical Threshold",
+          "description": "If above this value critical will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "criticalLabelRight",
+          "title": "Bottom Right Metric - Optional: Critical Label",
+          "description": "Optionally render this label if critical threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "warningThresholdRight",
+          "title": "Bottom Right Metric - Warning Threshold",
+          "description": "If above this value warning will be rendered",
+          "type": "number"
+        },
+        {
+          "name": "warningLabelRight",
+          "title": "Bottom Right Metric - Optional: Warning Label",
+          "description": "Optionally render this label if warning threshold exceeded",
+          "type": "string"
+        },
+        {
+          "name": "healthyLabelRight",
+          "title": "Bottom Right Metric - Optional: Healthy Label",
+          "description": "Optionally render this label instead of the value when healthy",
+          "type": "string"
+        },
+        {
+          "name": "decimalPlacesRight",
+          "title": "Bottom Right Metric - Decimal Places",
+          "description": "Set decimal places on metric",
+          "type": "number"
+        },
+        {
+          "name": "metricLabelRight",
+          "title": "Bottom Right Metric - Optional: Metric Label",
+          "description": "Label to place under the metric",
+          "type": "string"
+        },
+        {
+          "name": "metricSuffixRight",
+          "title": "Bottom Right Metric - Optional: Metric Suffix",
+          "description": "Label to place beside the metric",
+          "type": "string"
+        }
+      ]
     }
   ]
 }
