@@ -165,9 +165,6 @@ export const generateErrorsAndConfig = (
     if (lowerQuery.includes('timeseries')) {
       errors.push('Query contains timeseries and should be removed');
     }
-    if (lowerQuery.includes('since') || lowerQuery.includes('until')) {
-      errors.push('Query contains since and/or until and should be removed');
-    }
   }
 
   return { errors, sortedThresholds };
