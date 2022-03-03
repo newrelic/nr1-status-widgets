@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.15.1...v2.16.0) (2022-03-03)
+
+
+### Features
+
+* allow since/until clauses for status timeline widget ([2333bce](https://github.com/newrelic/nr1-status-widgets/commit/2333bce23ee8b28f798f56191ff741a6e9c777c1))
+
 ## [2.15.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.15.0...v2.15.1) (2022-02-18)
 
 
