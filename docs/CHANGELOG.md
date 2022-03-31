@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.16.0...v2.17.0) (2022-03-31)
+
+
+### Features
+
+* trigger release ([8c4325e](https://github.com/newrelic/nr1-status-widgets/commit/8c4325ebc6bcb68ad0acbb407c81db502709dca7))
+
 # [2.16.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.15.1...v2.16.0) (2022-03-03)
 
 
