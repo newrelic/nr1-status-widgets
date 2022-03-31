@@ -117,13 +117,13 @@ export const assessValue = (value, config) => {
     }
   } else if (config.thresholdType === 'regex') {
     const warningRegex = new RegExp(config.warningThreshold);
-    if (warningRegex.test(value.y)) {
+    if (warningRegex.test(value.value)) {
       value.status = 'warning';
       value.statusLabel = config.warningLabel;
     }
 
     const criticalRegex = new RegExp(config.criticalThreshold);
-    if (criticalRegex.test(value.y)) {
+    if (criticalRegex.test(value.value)) {
       value.status = 'critical';
       value.statusLabel = config.criticalLabel;
     }
