@@ -184,7 +184,11 @@ export default class CustomModalNerdlet extends React.Component {
             {platformState => (
               <NerdletStateContext.Consumer>
                 {nerdletState => {
-                  const { queries, accountId } = nerdletState;
+                  const {
+                    queries,
+                    accountId,
+                    modalChartColumns
+                  } = nerdletState;
                   const { timeRange } = platformState;
                   const { time } = this.state;
                   const timeOptions = [
@@ -298,11 +302,7 @@ export default class CustomModalNerdlet extends React.Component {
                   const selectedTime = time || timeOptions[0];
                   width = width * 0.95;
 
-                  let widgetsPerCol = 3;
-                  if (queries.length === 2) widgetsPerCol = 2;
-
-                  let widgetsPerRow = 3;
-                  if (queries.length === 2) widgetsPerRow = 2;
+                  const widgetsPerRow = parseInt(modalChartColumns || 3);
 
                   return (
                     <div style={{ padding: '10px' }}>
@@ -341,8 +341,10 @@ export default class CustomModalNerdlet extends React.Component {
                               padding: '7px',
                               paddingBottom: '50px',
                               float: 'left',
-                              height: widgetHeight || height / widgetsPerRow,
-                              width: widgetWidth || width / widgetsPerCol
+                              height:
+                                widgetHeight ||
+                                Math.ceil(height / widgetsPerRow),
+                              width: widgetWidth || width / widgetsPerRow
                             }}
                           >
                             {!q.hideTitle && (

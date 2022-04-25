@@ -92,6 +92,8 @@ export default class StatusWidget extends React.Component {
       warningThresholdRight,
       warningLabelRight,
       healthyLabelRight,
+      modalGuid,
+      modalChartColumns,
       modalQueries,
       sloId,
       sloDays,
@@ -209,6 +211,7 @@ export default class StatusWidget extends React.Component {
         urlState: {
           accountId: parseInt(accountId),
           queries: validModalQueries,
+          modalChartColumns,
           timeRange,
           height,
           width
@@ -216,6 +219,10 @@ export default class StatusWidget extends React.Component {
       };
 
       chartOnClick = () => navigation.openStackedNerdlet(nerdlet);
+    }
+
+    if (modalGuid) {
+      chartOnClick = () => navigation.openStackedEntity(modalGuid);
     }
 
     let fontSizeMultiplier = fontMultiplier || 1;
