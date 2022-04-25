@@ -146,6 +146,40 @@
       "type": "string"
     },
     {
+      "name": "modalGuid",
+      "title": "Modal Entity Guid (disables Modal Chart Queries)",
+      "description": "Load an entity or dashboard as a stacked modal",
+      "type": "string"
+    },
+    {
+      "name": "modalChartColumns",
+      "title": "Modal Chart Columns (default: 3)",
+      "description": "Modal Chart Columns (default: 3)",
+      "type": "enum",
+      "items": [
+        {
+          "title": "1",
+          "value": "1"
+        },
+        {
+          "title": "2",
+          "value": "2"
+        },
+        {
+          "title": "3",
+          "value": "3"
+        },
+        {
+          "title": "4",
+          "value": "4"
+        },
+        {
+          "title": "5",
+          "value": "5"
+        }
+      ]
+    },
+    {
       "name": "modalQueries",
       "title": "Modal Chart Queries",
       "type": "collection",
