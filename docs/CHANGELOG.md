@@ -1,3 +1,10 @@
+# [2.18.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.17.1...v2.18.0) (2022-04-25)
+
+
+### Features
+
+* add stacked modal entity and configurable modal columns ([ed75ca0](https://github.com/newrelic/nr1-status-widgets/commit/ed75ca00728c7c1f23aa44637818bb1dabf19012))
+
 ## [2.17.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.17.0...v2.17.1) (2022-04-25)
 
 
