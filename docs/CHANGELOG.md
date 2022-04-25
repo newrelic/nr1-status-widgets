@@ -1,3 +1,10 @@
+## [2.17.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.17.0...v2.17.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* handle undefined status ([71d4505](https://github.com/newrelic/nr1-status-widgets/commit/71d45059afb84f4db809841ef9b2fe9f40ba0dec))
+
 # [2.17.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.16.0...v2.17.0) (2022-03-31)
 
 
