@@ -100,14 +100,14 @@ export const assessValue = (value, config) => {
           break;
         }
         case 'critIfNull': {
-          if (value.value === null) {
+          if (value.value === null || value.value === undefined) {
             value.status = 'critical';
             value.statusLabel = config.criticalLabel;
           }
           break;
         }
         case 'critIfEither': {
-          if (value.value === null || value.value === 0) {
+          if (!value.value) {
             value.status = 'critical';
             value.statusLabel = config.criticalLabel;
           }
