@@ -16,7 +16,7 @@ export const generateErrors = props => {
 
   // at least one guid or one entity search query should be defined
   // // filter nulls
-  const guids = entityGuids.filter(g => g.guid);
+  const guids = (entityGuids || []).filter(g => g.guid);
   if (guids.length === 0 && !entitySearchQuery) {
     errors.push('At least one guid or a entity search query should be defined');
   }
