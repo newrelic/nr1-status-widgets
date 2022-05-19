@@ -1,3 +1,10 @@
+# [2.19.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.18.0...v2.19.0) (2022-05-19)
+
+
+### Features
+
+* add export button to entity table ([0ef6231](https://github.com/newrelic/nr1-status-widgets/commit/0ef62317047d2ca43257353cfd9c2c45cf4861ef))
+
 # [2.18.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.17.1...v2.18.0) (2022-04-25)
 
 
