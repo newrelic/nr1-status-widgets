@@ -9,6 +9,7 @@ import {
   navigation,
   TextField
 } from 'nr1';
+import CsvDownload from 'react-json-to-csv';
 
 export default class EntityTable extends React.Component {
   constructor(props) {
@@ -33,11 +34,38 @@ export default class EntityTable extends React.Component {
         <div style={{ paddingLeft: '5px', paddingTop: '5px' }}>
           <TextField
             loading={isFetching}
-            style={{ width: '100%' }}
+            style={{ width: width - 85 }}
             type={TextField.TYPE.SEARCH}
             placeholder={`Search ${entities.length} entities...`}
             onChange={e => this.setState({ searchText: e.target.value })}
           />
+          &nbsp;
+          <CsvDownload
+            data={searchedEntities.map(e => ({
+              guid: e.guid,
+              name: e.name,
+              type: e.type,
+              entityType: e.entityType,
+              domain: e.domain,
+              reporting: e.reporting,
+              alertSeverity: e.alertSeverity,
+              accountId: e.account.id,
+              accountName: e.account.name
+            }))}
+            filename={`${new Date().getTime()}-entities.csv`}
+            style={{
+              minHeight: '0px',
+              paddingLeft: '8px',
+              paddingRight: '8px',
+              paddingTop: '4px',
+              paddingBottom: '4px',
+              height: '24px',
+              width: '52px',
+              fontSize: '12px'
+            }}
+          >
+            Export
+          </CsvDownload>
         </div>
 
         <Table items={searchedEntities}>
