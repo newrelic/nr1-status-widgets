@@ -1,3 +1,10 @@
+## [2.19.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.0...v2.19.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* handle undefined entityGuids ([8378508](https://github.com/newrelic/nr1-status-widgets/commit/83785083d5b2805ca72c2557b8c3cfef0e5a1684))
+
 # [2.19.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.18.0...v2.19.0) (2022-05-19)
 
 
