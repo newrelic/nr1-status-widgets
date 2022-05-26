@@ -60,7 +60,7 @@ export default class StatusWidget extends React.Component {
       height,
       accountId,
       query,
-      thresholds,
+      thresholds = [],
       onClickUrl,
       modalQueries,
       hideMetrics,
