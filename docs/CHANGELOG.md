@@ -1,3 +1,10 @@
+## [2.19.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.1...v2.19.2) (2022-05-26)
+
+
+### Bug Fixes
+
+* Missing thresholds leading to visualization crashing ([9d7eb7d](https://github.com/newrelic/nr1-status-widgets/commit/9d7eb7dd462f92f3ddabb6d563ad4a91ac244423))
+
 ## [2.19.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.0...v2.19.1) (2022-05-19)
 
 
