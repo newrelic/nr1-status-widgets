@@ -11,15 +11,15 @@ export const assessValue = (value, thresholds) => {
 
     const rulesToMeet = {};
 
-    if (valueAbove !== null && valueAbove !== '') {
+    if (!isEmpty(valueAbove)) {
       rulesToMeet.valueAbove = value.value > valueAbove;
     }
 
-    if (valueBelow !== null && valueBelow !== '') {
+    if (!isEmpty(valueBelow)) {
       rulesToMeet.valueBelow = value.value < valueBelow;
     }
 
-    if (valueEqual !== null && valueEqual !== '') {
+    if (!isEmpty(valueEqual)) {
       rulesToMeet.valueEqual = value.value === valueEqual;
     }
 
@@ -84,8 +84,8 @@ export const generateErrorsAndConfig = (
 ) => {
   const errors = [];
   const sortedThresholds = thresholds.sort((a, b) => {
-    const aNo = a.priority !== '' && a.priority !== null ? a.priority : 99999;
-    const bNo = b.priority !== '' && b.priority !== null ? b.priority : 99999;
+    const aNo = !isEmpty(a.priority) ? a.priority : 99999;
+    const bNo = !isEmpty(b.priority) ? b.priority : 99999;
 
     return parseInt(aNo) - parseInt(bNo);
   });
@@ -130,26 +130,27 @@ export const generateErrorsAndConfig = (
 
       // empty check
       if (
-        (t.valueAbove === null || t.valueAbove === '') &&
-        (t.valueBelow === null || t.valueBelow === '') &&
-        (t.valueEqual === null || t.valueEqual === '')
+        isEmpty(t.valueAbove) &&
+        isEmpty(t.valueBelow) &&
+        isEmpty(t.valueEqual)
       ) {
         errors.push(
           `Threshold ${i + 1} - at least one value parameter should be define`
         );
       }
 
-      if (t.priority !== null && t.priority !== '' && isNaN(t.priority)) {
+      if (!isEmpty(t.priority) && isNaN(t.priority)) {
         errors.push(`Threshold ${i + 1} - priority: must be a number`);
       }
 
-      if (t.valueAbove !== null && t.valueAbove !== '' && isNaN(t.valueAbove)) {
+      if (!isEmpty(t.valueAbove) && isNaN(t.valueAbove)) {
         errors.push(`Threshold ${i + 1} - above: must be a number`);
       }
-      if (t.valueBelow !== null && t.valueBelow !== '' && isNaN(t.valueBelow)) {
+
+      if (!isEmpty(t.valueBelow) && isNaN(t.valueBelow)) {
         errors.push(`Threshold ${i + 1} - below: must be a number`);
       }
-      if (t.valueEqual !== null && t.valueEqual !== '' && isNaN(t.valueEqual)) {
+      if (!isEmpty(t.valueEqual) && isNaN(t.valueEqual)) {
         errors.push(`Threshold ${i + 1} - equal: must be a number`);
       }
     }
@@ -235,3 +236,13 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
 
   return { orderedData: orderedHeatMapData, xLabels };
 };
+
+/**
+ * Returns true when the provided value is either null, undefined or an empty string
+ *
+ * @param {any} value
+ * @returns {boolean}
+ */
+function isEmpty(value) {
+  return [null, undefined, ''].includes(value);
+}
