@@ -29,7 +29,6 @@ code, the source code can be found at [https://github.com/newrelic/nr1-status-wi
 * [eslint](#eslint)
 * [prettier](#prettier)
 
-
 ## dependencies
 
 ### @newrelic/nr1-community
