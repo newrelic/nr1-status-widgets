@@ -1,3 +1,10 @@
+## [2.19.3](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.2...v2.19.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* Improved handling of missing properties ([cc9fce5](https://github.com/newrelic/nr1-status-widgets/commit/cc9fce5c04bd514140a6256e8b44e146498d04ca))
+
 ## [2.19.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.1...v2.19.2) (2022-05-26)
 
 
