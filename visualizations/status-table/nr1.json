@@ -35,7 +35,7 @@
         },
         {
           "name": "targetAttribute",
-          "title": "Target Attribute eg. count, appName etc.",
+          "title": "Target Attribute eg. count, appName etc. (not the renamed header)",
           "description": "",
           "type": "string"
         },

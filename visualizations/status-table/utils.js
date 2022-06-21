@@ -9,6 +9,8 @@ export const discoverErrors = props => {
 
   if (!query) {
     errors.push('Query required');
+  } else if (query.toLowerCase().includes('timeseries')) {
+    errors.push('Remove timeseries from query');
   }
 
   return errors;
