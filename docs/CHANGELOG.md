@@ -1,3 +1,10 @@
+# [2.27.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.26.0...v2.27.0) (2022-06-21)
+
+
+### Features
+
+* patch alias support ([d4cadea](https://github.com/newrelic/nr1-status-widgets/commit/d4cadea367c1eeeddebfd3d874ee5f8a84d702ff))
+
 # [2.26.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.25.0...v2.26.0) (2022-06-21)
 
 
