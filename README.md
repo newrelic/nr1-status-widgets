@@ -26,6 +26,22 @@ This nerdpack contains three status widget custom visualizations to be used with
 - Define bottom left and right metrics
 ---
 
+## NRQL Status Table Widget Features
+
+- Custom thresholds
+  - Configurable background and font colors
+  - Highlight just the cell or the full row
+- Sortable
+- Toggle Keys
+- Handle 0, undefined, null cases
+- Customizable table
+  - Headers
+  - Metric cells
+---
+
+![NRQL Status Table Widget](screenshots/nrql-status-table-widget-1.png)
+
+
 ## NRQL Status Timeline Widget
 
 ![NRQL Status Widget](screenshots/nrql-status-timeline-widget-1.png)

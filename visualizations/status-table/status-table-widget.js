@@ -110,10 +110,18 @@ function StatusTableWidget(props) {
                 ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
                 ...(Array.isArray(metadata?.facet) ? metadata?.facet : []),
                 ...(Array.isArray(metadata?.contents) ? metadata?.contents : [])
-                  .map(c => c.alias || c.attribute || c.function)
+                  .map(c =>
+                    c.alias || c.attribute
+                      ? `${c.function}.${c.attribute}`
+                      : c.function
+                  )
                   .flat(),
                 ...(metadata?.contents?.contents || [])
-                  .map(c => c.alias || c.attribute || c.function)
+                  .map(c =>
+                    c.alias || c.attribute
+                      ? `${c.function}.${c.attribute}`
+                      : c.function
+                  )
                   .flat()
               ])
             ].filter(f => !ignoreKeys.includes(f));
@@ -138,7 +146,11 @@ function StatusTableWidget(props) {
             } else if (workingData?.facets) {
               (workingData?.facets || []).forEach(f => {
                 if (singleFacet) {
-                  f[singleFacet] = f.name;
+                  if (singleFacet === 'name') {
+                    f.tempName = f.name;
+                  } else {
+                    f[singleFacet] = f.name;
+                  }
                 } else {
                   multiFacet.forEach((mf, i) => {
                     if (mf === 'name') {
@@ -156,8 +168,11 @@ function StatusTableWidget(props) {
 
                   if (contents[i]) {
                     const { alias, attribute } = contents[i];
+                    const fn = contents[i].function;
                     f[alias] = firstValue;
                     f[attribute] = firstValue;
+                    f[fn] = firstValue;
+                    f[`${fn}.${attribute}`] = firstValue;
                   }
                 });
 
@@ -168,7 +183,11 @@ function StatusTableWidget(props) {
               const newItem = {};
 
               metadata.contents.forEach((c, i) => {
-                const attr = c.alias || c.attribute || c.function;
+                const attr =
+                  c.alias || c.attribute
+                    ? `${c.function}.${c.attribute}`
+                    : c.function;
+
                 newItem[attr] =
                   data?.results?.[i][Object.keys(data?.results?.[i])[0]];
               });
