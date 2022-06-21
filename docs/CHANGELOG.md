@@ -1,3 +1,10 @@
+# [2.25.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.24.0...v2.25.0) (2022-06-21)
+
+
+### Features
+
+* prevent timeseries query ([a0d68fb](https://github.com/newrelic/nr1-status-widgets/commit/a0d68fb1f1cd3fbc3e18be0f3ea5f0624dddccdf))
+
 # [2.24.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.23.0...v2.24.0) (2022-06-21)
 
 
