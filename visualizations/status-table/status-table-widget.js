@@ -110,17 +110,21 @@ function StatusTableWidget(props) {
                 ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
                 ...(Array.isArray(metadata?.facet) ? metadata?.facet : []),
                 ...(Array.isArray(metadata?.contents) ? metadata?.contents : [])
-                  .map(c =>
-                    c.alias || c.attribute
-                      ? `${c.function}.${c.attribute}`
-                      : c.function
+                  .map(
+                    c =>
+                      c.alias ||
+                      (c.attribute
+                        ? `${c.function}.${c.attribute}`
+                        : c.function)
                   )
                   .flat(),
                 ...(metadata?.contents?.contents || [])
-                  .map(c =>
-                    c.alias || c.attribute
-                      ? `${c.function}.${c.attribute}`
-                      : c.function
+                  .map(
+                    c =>
+                      c.alias ||
+                      (c.attribute
+                        ? `${c.function}.${c.attribute}`
+                        : c.function)
                   )
                   .flat()
               ])
@@ -184,9 +188,8 @@ function StatusTableWidget(props) {
 
               metadata.contents.forEach((c, i) => {
                 const attr =
-                  c.alias || c.attribute
-                    ? `${c.function}.${c.attribute}`
-                    : c.function;
+                  c.alias ||
+                  (c.attribute ? `${c.function}.${c.attribute}` : c.function);
 
                 newItem[attr] =
                   data?.results?.[i][Object.keys(data?.results?.[i])[0]];
