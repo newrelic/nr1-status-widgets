@@ -6,7 +6,7 @@ function StatusTableWidgetRoot(props) {
   const platformContext = useContext(PlatformStateContext);
 
   return (
-    <div style={{ height: '100%' }}>
+    <div style={{ height: '100%', overflowX: 'hidden' }}>
       <AutoSizer>
         {({ width, height }) => (
           <StatusTableWidget

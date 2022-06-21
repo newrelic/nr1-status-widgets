@@ -39,6 +39,7 @@ const timeRangeToNrql = timeRange => {
 function StatusTableWidget(props) {
   // console.log(props);
   const {
+    width,
     height,
     accountId,
     useTimeRange,
@@ -204,7 +205,10 @@ function StatusTableWidget(props) {
               <>
                 <Table
                   items={items}
-                  style={{ height: showKey ? height - 40 : height }}
+                  style={{
+                    height: showKey ? height - 40 : height,
+                    width: width + 52
+                  }}
                 >
                   <TableHeader>
                     {headers.map((h, i) => {

@@ -29,6 +29,13 @@ export const assessValue = (value, config) => {
   if (!isNaN(value)) {
     if (!isEmpty(valueAbove) && value > valueAbove) {
       result.check = 'valueAbove';
+    } else if (
+      !isEmpty(valueBelow) &&
+      !isEmpty(valueAbove) &&
+      value < valueBelow &&
+      value > valueAbove
+    ) {
+      result.check = 'valueBetween';
     } else if (!isEmpty(valueBelow) && value < valueBelow) {
       result.check = 'valueBelow';
     } else if (!isEmpty(valueEqual) && value === valueEqual) {
