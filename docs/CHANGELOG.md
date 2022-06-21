@@ -1,3 +1,10 @@
+# [2.22.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.21.0...v2.22.0) (2022-06-21)
+
+
+### Features
+
+* update table widget nr1.json ([db94a5e](https://github.com/newrelic/nr1-status-widgets/commit/db94a5ef8c0d385d6514872ef86bbe7d8de0c93d))
+
 # [2.21.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.20.0...v2.21.0) (2022-06-21)
 
 
