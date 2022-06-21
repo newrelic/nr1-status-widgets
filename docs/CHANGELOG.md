@@ -1,3 +1,10 @@
+# [2.26.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.25.0...v2.26.0) (2022-06-21)
+
+
+### Features
+
+* update screenshots ([69219af](https://github.com/newrelic/nr1-status-widgets/commit/69219afa641f1a06b72d632af4c007dc7eb7f7c5))
+
 # [2.25.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.24.0...v2.25.0) (2022-06-21)
 
 
