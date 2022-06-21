@@ -1,0 +1,239 @@
+{
+  "schemaType": "VISUALIZATION",
+  "id": "status-table-widget",
+  "displayName": "Status Table Widget (BETA)",
+  "description": "",
+  "configuration": [
+    {
+      "name": "accountId",
+      "title": "Account ID",
+      "description": "Account ID to be associated with the query",
+      "type": "number"
+    },
+    {
+      "name": "query",
+      "title": "Query (do not use timeseries)",
+      "description": "NRQL query eg. FROM Transaction SELECT count(*) FACET appName, hourOf(timestamp) ORDER BY timestamp LIMIT MAX",
+      "type": "nrql"
+    },
+    {
+      "name": "useTimeRange",
+      "title": "Use Time Range Picker",
+      "description": "Respects the time range picker",
+      "type": "boolean"
+    },
+    {
+      "name": "cellConfigs",
+      "title": "Cell Configuration",
+      "type": "collection",
+      "items": [
+        {
+          "name": "priority",
+          "title": "Validation priority (0 is highest) (optional)",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "targetAttribute",
+          "title": "Target Attribute eg. count, appName etc.",
+          "description": "",
+          "type": "string"
+        },{
+          "name": "keyLabel",
+          "title": "Key Label (Used when show key is used)",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "regexMatch",
+          "title": "Regex Match (cannot be used with value equal, above, below)",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "valueEqual",
+          "title": "Value equal =",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "valueAbove",
+          "title": "Value above >",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "valueBelow",
+          "title": "Value below <",
+          "description": "",
+          "type": "number"
+        },
+        {
+          "name": "bgColor",
+          "title": "Background Color",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "fontColor",
+          "title": "Font Color",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "highlightRow",
+          "title": "Highlight Entire Row if cell is triggered",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "alignmentType",
+          "title": "Alignment Type",
+          "description": "",
+          "type": "enum",
+          "items": [
+            {
+              "title": "LEFT",
+              "value": "LEFT"
+            },
+            {
+              "title": "RIGHT",
+              "value": "RIGHT"
+            },
+            {
+              "title": "CENTER",
+              "value": "CENTER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "headerConfigs",
+      "title": "Header Configuration",
+      "type": "collection",
+      "items": [
+        {
+          "name": "targetAttribute",
+          "title": "Target Attribute eg. count, appName etc.",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "renameHeader",
+          "title": "Rename Header",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "valueType",
+          "title": "Value Type",
+          "description": "",
+          "type": "enum",
+          "items": [
+            {
+              "title": "Normal",
+              "value": "normal"
+            },
+            {
+              "title": "APDEX",
+              "value": "APDEX"
+            },
+            {
+              "title": "BITS",
+              "value": "BITS"
+            },
+            {
+              "title": "BITS_PER_MS",
+              "value": "BITS_PER_MS"
+            },
+            {
+              "title": "BYTES",
+              "value": "BYTES"
+            },
+            {
+              "title": "BYTES_PER_MS",
+              "value": "BYTES_PER_MS"
+            },
+            {
+              "title": "BYTES_PER_SECOND",
+              "value": "BYTES_PER_SECOND"
+            },
+            {
+              "title": "CELSIUS",
+              "value": "CELSIUS"
+            },
+            {
+              "title": "COUNT",
+              "value": "COUNT"
+            },
+            {
+              "title": "HERTZ",
+              "value": "HERTZ"
+            },
+            {
+              "title": "MS",
+              "value": "MS"
+            },
+            {
+              "title": "PAGES_PER_SECOND",
+              "value": "PAGES_PER_SECOND"
+            },
+            {
+              "title": "PERCENTAGE",
+              "value": "PERCENTAGE"
+            },
+            {
+              "title": "REQUESTS_PER_SECOND",
+              "value": "REQUESTS_PER_SECOND"
+            },
+            {
+              "title": "SECONDS",
+              "value": "SECONDS"
+            },
+            {
+              "title": "TIMESTAMP",
+              "value": "TIMESTAMP"
+            },
+            {
+              "title": "UNKNOWN",
+              "value": "UNKNOWN"
+            }
+          ]
+        },
+        {
+          "name": "alignmentType",
+          "title": "Alignment Type",
+          "description": "",
+          "type": "enum",
+          "items": [
+            {
+              "title": "LEFT",
+              "value": "LEFT"
+            },
+            {
+              "title": "RIGHT",
+              "value": "RIGHT"
+            },
+            {
+              "title": "CENTER",
+              "value": "CENTER"
+            }
+          ]
+        },
+        {
+          "name": "headerWidth",
+          "title": "Width",
+          "description": "",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "showKey",
+      "title": "Show Key",
+      "description": "",
+      "type": "boolean"
+    }
+  ]
+}
