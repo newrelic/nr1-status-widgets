@@ -1,3 +1,11 @@
+# [2.23.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.22.0...v2.23.0) (2022-06-21)
+
+
+### Features
+
+* add additional handling ([9e32d02](https://github.com/newrelic/nr1-status-widgets/commit/9e32d02ab14f453025cef9df295ebd1b26b6fe20))
+* increase table width and hide scroll to balance view ([347e3a6](https://github.com/newrelic/nr1-status-widgets/commit/347e3a66e0fd2c56a543028e44ddd00d9642edf6))
+
 # [2.22.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.21.0...v2.22.0) (2022-06-21)
 
 
