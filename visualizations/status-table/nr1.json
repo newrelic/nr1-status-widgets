@@ -1,7 +1,7 @@
 {
   "schemaType": "VISUALIZATION",
   "id": "status-table-widget",
-  "displayName": "Status Table Widget (BETA)",
+  "displayName": "Status Table Widget",
   "description": "",
   "configuration": [
     {
