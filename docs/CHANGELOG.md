@@ -1,3 +1,10 @@
+# [2.21.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.20.0...v2.21.0) (2022-06-21)
+
+
+### Features
+
+* add status table widget ([533c59c](https://github.com/newrelic/nr1-status-widgets/commit/533c59c0e96a54f54743dbe25a11de8bd0c597ed))
+
 # [2.20.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.19.3...v2.20.0) (2022-06-16)
 
 
