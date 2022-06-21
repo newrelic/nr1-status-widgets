@@ -1,3 +1,11 @@
+# [2.24.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.23.0...v2.24.0) (2022-06-21)
+
+
+### Features
+
+* add screenshots ([70a4081](https://github.com/newrelic/nr1-status-widgets/commit/70a4081638d344503922abd032c9e35250d1060f))
+* status table widget, update attr handling ([8c8ba96](https://github.com/newrelic/nr1-status-widgets/commit/8c8ba962f939753da5a24b1f2b748510684eeaea))
+
 # [2.23.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.22.0...v2.23.0) (2022-06-21)
 
 
