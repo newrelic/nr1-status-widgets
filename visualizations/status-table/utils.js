@@ -22,20 +22,20 @@ export const assessValue = (value, config) => {
     valueAbove,
     valueBelow,
     bgColor,
-    fontColor
+    fontColor,
+    nullHandling,
+    zeroHandling,
+    emptyHandling
   } = config;
   const result = {};
 
   if (!isNaN(value)) {
-    if (!isEmpty(valueAbove) && value > valueAbove) {
+    if (!isEmpty(valueBelow) && !isEmpty(valueAbove)) {
+      if (value < valueBelow && value > valueAbove) {
+        result.check = 'valueBetween';
+      }
+    } else if (!isEmpty(valueAbove) && value > valueAbove) {
       result.check = 'valueAbove';
-    } else if (
-      !isEmpty(valueBelow) &&
-      !isEmpty(valueAbove) &&
-      value < valueBelow &&
-      value > valueAbove
-    ) {
-      result.check = 'valueBetween';
     } else if (!isEmpty(valueBelow) && value < valueBelow) {
       result.check = 'valueBelow';
     } else if (!isEmpty(valueEqual) && value === valueEqual) {
@@ -46,6 +46,18 @@ export const assessValue = (value, config) => {
     if (valueRegex.test(value)) {
       result.check = 'regexMatch';
     }
+  }
+
+  if (value === 0 && zeroHandling) {
+    result.check = 'isZero';
+  }
+
+  if (value === '' && emptyHandling) {
+    result.check = 'isEmpty';
+  }
+
+  if ((value === undefined || value === null) && nullHandling) {
+    result.check = 'isNullOrUndefined';
   }
 
   if (result.check) {

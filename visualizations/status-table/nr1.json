@@ -38,7 +38,8 @@
           "title": "Target Attribute eg. count, appName etc.",
           "description": "",
           "type": "string"
-        },{
+        },
+        {
           "name": "keyLabel",
           "title": "Key Label (Used when show key is used)",
           "description": "",
@@ -67,6 +68,24 @@
           "title": "Value below <",
           "description": "",
           "type": "number"
+        },
+        {
+          "name": "nullHandling",
+          "title": "Trigger if undefined or null",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "zeroHandling",
+          "title": "Trigger if zero",
+          "description": "",
+          "type": "boolean"
+        },
+        {
+          "name": "emptyHandling",
+          "title": "Trigger if empty string",
+          "description": "",
+          "type": "boolean"
         },
         {
           "name": "bgColor",
