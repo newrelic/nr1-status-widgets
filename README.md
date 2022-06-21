@@ -8,7 +8,6 @@ This nerdpack contains three status widget custom visualizations to be used with
 - NRQL Status Table Widget
 - Entity Status Widget (2 modes: Summary & Table)
 
-## NRQL Status Widget
 
 ![NRQL Status Widget](screenshots/nrql-status-widget-1.png)
 <img src="screenshots/nrql-status-widget-2.png" alt="statuswidget2" width="300"/>
@@ -25,9 +24,11 @@ This nerdpack contains three status widget custom visualizations to be used with
 - Toggle flash/pulse effect
 - Define bottom left and right metrics
 ---
+## NRQL Status Table Widget
 
+![NRQL Status Table Widget](screenshots/nrql-status-table-widget-2.png)
+![NRQL Status Table Widget](screenshots/nrql-status-table-widget-1.png)
 ## NRQL Status Table Widget Features
-
 - Custom thresholds
   - Configurable background and font colors
   - Highlight just the cell or the full row
@@ -38,10 +39,6 @@ This nerdpack contains three status widget custom visualizations to be used with
   - Headers
   - Metric cells
 ---
-
-![NRQL Status Table Widget](screenshots/nrql-status-table-widget-1.png)
-
-
 ## NRQL Status Timeline Widget
 
 ![NRQL Status Widget](screenshots/nrql-status-timeline-widget-1.png)
