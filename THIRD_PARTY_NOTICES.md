@@ -16,9 +16,13 @@ code, the source code can be found at [https://github.com/newrelic/nr1-status-wi
 
 * [@newrelic/nr1-community](#newrelicnr1-community)
 * [async](#async)
+* [lodash.groupby](#lodashgroupby)
 * [prop-types](#prop-types)
 * [react-dom](#react-dom)
+* [react-json-to-csv](#react-json-to-csv)
+* [react-select](#react-select)
 * [react](#react)
+* [recharts](#recharts)
 
 **[devDependencies](#devDependencies)**
 
@@ -28,6 +32,7 @@ code, the source code can be found at [https://github.com/newrelic/nr1-status-wi
 * [babel-eslint](#babel-eslint)
 * [eslint](#eslint)
 * [prettier](#prettier)
+
 
 ## dependencies
 
@@ -267,6 +272,61 @@ THE SOFTWARE.
 
 ```
 
+### lodash.groupby
+
+This product includes source derived from [lodash.groupby](https://github.com/lodash/lodash) ([v4.6.0](https://github.com/lodash/lodash/tree/v4.6.0)), distributed under the [MIT License](https://github.com/lodash/lodash/blob/v4.6.0/LICENSE):
+
+```
+Copyright jQuery Foundation and other contributors <https://jquery.org/>
+
+Based on Underscore.js, copyright Jeremy Ashkenas,
+DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
+
+This software consists of voluntary contributions made by many
+individuals. For exact contribution history, see the revision history
+available at https://github.com/lodash/lodash
+
+The following license applies to all parts of this software except as
+documented below:
+
+====
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====
+
+Copyright and related rights for sample code are waived via CC0. Sample
+code is defined as all source code displayed within the prose of the
+documentation.
+
+CC0: http://creativecommons.org/publicdomain/zero/1.0/
+
+====
+
+Files located in the node_modules and vendor directories are externally
+maintained libraries used by this software which have their own
+licenses; we recommend you read them, as their terms may differ from the
+terms above.
+
+```
+
 ### prop-types
 
 This product includes source derived from [prop-types](https://github.com/facebook/prop-types) ([v15.7.2](https://github.com/facebook/prop-types/tree/v15.7.2)), distributed under the [MIT License](https://github.com/facebook/prop-types/blob/v15.7.2/LICENSE):
@@ -298,7 +358,7 @@ SOFTWARE.
 
 ### react-dom
 
-This product includes source derived from [react-dom](https://github.com/facebook/react) ([v16.14.0](https://github.com/facebook/react/tree/v16.14.0)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.14.0/LICENSE):
+This product includes source derived from [react-dom](https://github.com/facebook/react) ([v17.0.2](https://github.com/facebook/react/tree/v17.0.2)), distributed under the [MIT License](https://github.com/facebook/react/blob/v17.0.2/LICENSE):
 
 ```
 MIT License
@@ -323,11 +383,55 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+```
+
+### react-json-to-csv
+
+This product includes source derived from [react-json-to-csv](https://github.com/coston/react-json-to-csv) ([v1.0.4](https://github.com/coston/react-json-to-csv/tree/v1.0.4)), distributed under the [MIT License](https://github.com/coston/react-json-to-csv/blob/v1.0.4/LICENSE):
+
+```
+MIT License
+
+Copyright (c) 2019 Coston Perkins
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### react-select
+
+This product includes source derived from [react-select](https://github.com/JedWatson/react-select/tree/master/packages/react-select) ([v3.2.0](https://github.com/JedWatson/react-select/tree/master/packages/react-select/tree/v3.2.0)), distributed under the [MIT License](https://github.com/JedWatson/react-select/tree/master/packages/react-select/blob/v3.2.0/README.md):
+
+```
+MIT License
+
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 ### react
 
-This product includes source derived from [react](https://github.com/facebook/react) ([v16.14.0](https://github.com/facebook/react/tree/v16.14.0)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.14.0/LICENSE):
+This product includes source derived from [react](https://github.com/facebook/react) ([v17.0.2](https://github.com/facebook/react/tree/v17.0.2)), distributed under the [MIT License](https://github.com/facebook/react/blob/v17.0.2/LICENSE):
 
 ```
 MIT License
@@ -351,6 +455,36 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+```
+
+### recharts
+
+This product includes source derived from [recharts](https://github.com/recharts/recharts) ([v2.1.10](https://github.com/recharts/recharts/tree/v2.1.10)), distributed under the [MIT License](https://github.com/recharts/recharts/blob/v2.1.10/LICENSE):
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2015 recharts
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 
 ```
 
