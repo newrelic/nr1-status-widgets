@@ -1,3 +1,10 @@
+## [2.27.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.27.0...v2.27.1) (2022-07-06)
+
+
+### Bug Fixes
+
+* timestamp formatting ([d16fcc2](https://github.com/newrelic/nr1-status-widgets/commit/d16fcc2d21d3cbf98fc66cd1b82a6674986a3269))
+
 # [2.27.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.26.0...v2.27.0) (2022-06-21)
 
 
