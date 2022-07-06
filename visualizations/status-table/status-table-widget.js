@@ -274,7 +274,7 @@ function StatusTableWidget(props) {
                     return (
                       <TableRow>
                         {headers.map(h => {
-                          let value =
+                          const value =
                             item[h] ||
                             (item?.groups || []).find(g => g.name === h)?.value;
 
@@ -298,7 +298,7 @@ function StatusTableWidget(props) {
                           }
 
                           if (headerConfig?.valueType) {
-                            if (headerConfig?.valueType == 'TIMESTAMP') {
+                            if (headerConfig?.valueType === 'TIMESTAMP') {
                               return (
                                 <TableRowCell
                                   key={`${h}_${value}`}
