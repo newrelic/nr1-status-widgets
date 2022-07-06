@@ -298,18 +298,34 @@ function StatusTableWidget(props) {
                           }
 
                           if (headerConfig?.valueType) {
-                            return (
-                              <MetricTableRowCell
-                                key={`${h}_${value}`}
-                                type={
-                                  MetricTableRowCell.TYPE[
-                                    headerConfig?.valueType || 'UNKNOWN'
-                                  ]
-                                }
-                                value={value}
-                                style={style}
-                              />
-                            );
+                            if (headerConfig?.valueType === 'TIMESTAMP') {
+                              return (
+                                <TableRowCell
+                                  key={`${h}_${value}`}
+                                  alignmentType={
+                                    TableRowCell.ALIGNMENT_TYPE[
+                                      cellConfig?.alignmentType || 'LEFT'
+                                    ]
+                                  }
+                                  style={style}
+                                >
+                                  {new Date(value).toLocaleString()}
+                                </TableRowCell>
+                              );
+                            } else {
+                              return (
+                                <MetricTableRowCell
+                                  key={`${h}_${value}`}
+                                  type={
+                                    MetricTableRowCell.TYPE[
+                                      headerConfig?.valueType || 'UNKNOWN'
+                                    ]
+                                  }
+                                  value={value}
+                                  style={style}
+                                />
+                              );
+                            }
                           }
 
                           return (
