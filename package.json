@@ -11,6 +11,9 @@
   "nr1": {
     "uuid": "fb1ced43-0b2a-4d67-80ba-c7156646af33"
   },
+  "uuids":{
+    "o":"b40f1ed2-b49a-409f-895a-1cc5964731c1"
+  },
   "dependencies": {
     "@newrelic/nr1-community": "^1.2.0",
     "async": "^3.2.0",

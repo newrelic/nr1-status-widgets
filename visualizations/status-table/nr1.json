@@ -23,6 +23,32 @@
       "type": "boolean"
     },
     {
+      "name": "defaultSortNo",
+      "title": "Sort column number (refresh to take effect, starts from 0)",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "name": "defaultSortDir",
+      "title": "Sort column direction (refresh to take effect, requires sort column number)",
+      "description": "",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Select",
+          "value": null
+        },
+        {
+          "title": "ASCENDING",
+          "value": "ASCENDING"
+        },
+        {
+          "title": "DESCENDING",
+          "value": "DESCENDING"
+        }
+      ]
+    },
+    {
       "name": "cellConfigs",
       "title": "Cell Configuration",
       "type": "collection",

@@ -44,6 +44,8 @@ function StatusTableWidget(props) {
     accountId,
     useTimeRange,
     platformContext,
+    defaultSortNo,
+    defaultSortDir,
     query,
     cellConfigs = [],
     headerConfigs = [],
@@ -67,9 +69,11 @@ function StatusTableWidget(props) {
     finalQuery += ` ${timeRangeToNrql(timeRange)}`;
   }
 
-  const [column, setColumn] = useState(0);
+  const [column, setColumn] = useState(parseInt(defaultSortNo || 0));
   const [sortingType, setSortingType] = useState(
-    TableHeaderCell.SORTING_TYPE.NONE
+    TableHeaderCell.SORTING_TYPE[
+      defaultSortNo ? defaultSortDir || 'NONE' : 'NONE'
+    ]
   );
 
   const onClickTableHeaderCell = (nextColumn, { nextSortingType }) => {
