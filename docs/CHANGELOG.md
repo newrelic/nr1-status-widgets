@@ -1,3 +1,10 @@
+# [2.28.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.27.1...v2.28.0) (2022-07-28)
+
+
+### Features
+
+* add sort column capability ([35623b6](https://github.com/newrelic/nr1-status-widgets/commit/35623b6cdc9eacd34dfec5ef80bb1539d0e52cb2))
+
 ## [2.27.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.27.0...v2.27.1) (2022-07-06)
 
 
