@@ -1,3 +1,10 @@
+## [2.29.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.0...v2.29.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* column order ([1e95bcb](https://github.com/newrelic/nr1-status-widgets/commit/1e95bcb0799e271fc5cbe6bed8bda71d8e22f1a2))
+
 # [2.29.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.28.0...v2.29.0) (2022-07-28)
 
 
