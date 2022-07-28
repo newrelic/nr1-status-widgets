@@ -113,30 +113,35 @@ function StatusTableWidget(props) {
 
             let headers = [];
 
-            headers = [
-              ...new Set([
-                ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
-                ...(Array.isArray(metadata?.facet) ? metadata?.facet : []),
-                ...(Array.isArray(metadata?.contents) ? metadata?.contents : [])
-                  .map(
-                    c =>
-                      c.alias ||
-                      (c.attribute
-                        ? `${c.function}.${c.attribute}`
-                        : c.function)
+            if (!columnSort || columnSort === 'FIRST') {
+              headers = [
+                ...new Set([
+                  ...(Array.isArray(metadata?.facet) ? metadata?.facet : []),
+                  ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
+                  ...(Array.isArray(metadata?.contents)
+                    ? metadata?.contents
+                    : []
                   )
-                  .flat(),
-                ...(metadata?.contents?.contents || [])
-                  .map(
-                    c =>
-                      c.alias ||
-                      (c.attribute
-                        ? `${c.function}.${c.attribute}`
-                        : c.function)
-                  )
-                  .flat()
-              ])
-            ].filter(f => !ignoreKeys.includes(f));
+                    .map(
+                      c =>
+                        c.alias ||
+                        (c.attribute
+                          ? `${c.function}.${c.attribute}`
+                          : c.function)
+                    )
+                    .flat(),
+                  ...(metadata?.contents?.contents || [])
+                    .map(
+                      c =>
+                        c.alias ||
+                        (c.attribute
+                          ? `${c.function}.${c.attribute}`
+                          : c.function)
+                    )
+                    .flat()
+                ])
+              ].filter(f => !ignoreKeys.includes(f));
+            }
 
             if (columnSort === 'LAST') {
               headers = [
@@ -171,7 +176,11 @@ function StatusTableWidget(props) {
             let singleFacet = false;
             let multiFacet = false;
             if (typeof workingData?.metadata?.facet === 'string') {
-              headers.push(workingData?.metadata?.facet);
+              if (!columnSort || columnSort === 'FIRST') {
+                headers.unshift(workingData?.metadata?.facet);
+              } else if (columnSort === 'LAST') {
+                headers.push(workingData?.metadata?.facet);
+              }
               singleFacet = workingData?.metadata?.facet;
             } else {
               multiFacet = workingData?.metadata?.facet || [];
