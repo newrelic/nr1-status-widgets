@@ -49,6 +49,26 @@
       ]
     },
     {
+      "name": "columnSort",
+      "title": "Column sort (refresh to take effect)",
+      "description": "",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Select",
+          "value": null
+        },
+        {
+          "title": "Facets first",
+          "value": "FIRST"
+        },
+        {
+          "title": "Facets last",
+          "value": "LAST"
+        }
+      ]
+    },
+    {
       "name": "cellConfigs",
       "title": "Cell Configuration",
       "type": "collection",

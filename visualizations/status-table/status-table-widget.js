@@ -44,6 +44,7 @@ function StatusTableWidget(props) {
     accountId,
     useTimeRange,
     platformContext,
+    columnSort,
     defaultSortNo,
     defaultSortDir,
     query,
@@ -109,7 +110,10 @@ function StatusTableWidget(props) {
             const workingData = JSON.parse(JSON.stringify(data));
 
             const { metadata } = workingData;
-            const headers = [
+
+            let headers = [];
+
+            headers = [
               ...new Set([
                 ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
                 ...(Array.isArray(metadata?.facet) ? metadata?.facet : []),
@@ -133,6 +137,36 @@ function StatusTableWidget(props) {
                   .flat()
               ])
             ].filter(f => !ignoreKeys.includes(f));
+
+            if (columnSort === 'LAST') {
+              headers = [
+                ...new Set([
+                  ...Object.keys(workingData?.results?.[0]?.events?.[0] || {}),
+                  ...(Array.isArray(metadata?.contents)
+                    ? metadata?.contents
+                    : []
+                  )
+                    .map(
+                      c =>
+                        c.alias ||
+                        (c.attribute
+                          ? `${c.function}.${c.attribute}`
+                          : c.function)
+                    )
+                    .flat(),
+                  ...(metadata?.contents?.contents || [])
+                    .map(
+                      c =>
+                        c.alias ||
+                        (c.attribute
+                          ? `${c.function}.${c.attribute}`
+                          : c.function)
+                    )
+                    .flat(),
+                  ...(Array.isArray(metadata?.facet) ? metadata?.facet : [])
+                ])
+              ].filter(f => !ignoreKeys.includes(f));
+            }
 
             let singleFacet = false;
             let multiFacet = false;
