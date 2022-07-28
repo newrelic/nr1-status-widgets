@@ -1,3 +1,10 @@
+# [2.29.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.28.0...v2.29.0) (2022-07-28)
+
+
+### Features
+
+* add facet order ([c3fbbbc](https://github.com/newrelic/nr1-status-widgets/commit/c3fbbbcc1ecf680717bbb6bcf59146c44700158f))
+
 # [2.28.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.27.1...v2.28.0) (2022-07-28)
 
 
