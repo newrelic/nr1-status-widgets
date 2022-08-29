@@ -1,3 +1,10 @@
+## [2.29.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.1...v2.29.2) (2022-08-29)
+
+
+### Bug Fixes
+
+* display 0 values ([7660f5d](https://github.com/newrelic/nr1-status-widgets/commit/7660f5d5f83cf1a7d8cecd42264694b92fc58af5))
+
 ## [2.29.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.0...v2.29.1) (2022-07-28)
 
 
