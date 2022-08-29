@@ -250,9 +250,11 @@ function StatusTableWidget(props) {
 
               items.forEach(item => {
                 const value =
-                  item[targetAttribute] ||
-                  (item?.groups || []).find(g => g.name === targetAttribute)
-                    ?.value;
+                  item[targetAttribute] !== null &&
+                  item[targetAttribute] !== undefined
+                    ? item[targetAttribute]
+                    : (item?.groups || []).find(g => g.name === targetAttribute)
+                        ?.value;
 
                 const assessment = assessValue(value, config);
 
@@ -322,8 +324,10 @@ function StatusTableWidget(props) {
                       <TableRow>
                         {headers.map(h => {
                           const value =
-                            item[h] ||
-                            (item?.groups || []).find(g => g.name === h)?.value;
+                            item[h] !== undefined && item[h] !== null
+                              ? item[h]
+                              : (item?.groups || []).find(g => g.name === h)
+                                  ?.value;
 
                           const headerConfig = headerConfigs.find(
                             c => c.targetAttribute === h
