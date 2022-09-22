@@ -47,7 +47,7 @@ export default class StatusWidget extends React.Component {
       const { query, accountId } = this.props;
       const nrqlResult = await NrqlQuery.query({
         query,
-        accountId: [accountId],
+        accountIds: [accountId],
         timeRange: incomingTimeRange
       });
       stateUpdate.timeRangeResult = nrqlResult?.data?.[0]?.data?.[0]?.y || null;
