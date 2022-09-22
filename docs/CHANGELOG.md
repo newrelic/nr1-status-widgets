@@ -1,3 +1,10 @@
+# [2.30.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.2...v2.30.0) (2022-09-22)
+
+
+### Features
+
+* bump release ([0376c18](https://github.com/newrelic/nr1-status-widgets/commit/0376c18b70ef0f67cc5b966ff56cc4200efe68c5))
+
 ## [2.29.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.1...v2.29.2) (2022-08-29)
 
 
