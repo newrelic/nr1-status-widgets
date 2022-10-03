@@ -1,3 +1,12 @@
+# [2.31.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.30.0...v2.31.0) (2022-10-03)
+
+
+### Features
+
+* revert package-lock ([8476ceb](https://github.com/newrelic/nr1-status-widgets/commit/8476ceb769ddb435d17e3d6605f1615a8c4f7432))
+* revert package-lock ([a56dd70](https://github.com/newrelic/nr1-status-widgets/commit/a56dd7096539e5a2a751e4f756381c60fa24e091))
+* status-table allow filters ([e75e871](https://github.com/newrelic/nr1-status-widgets/commit/e75e871dd0ad1cb5b5e4603cf405d11d4f798913))
+
 # [2.30.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.29.2...v2.30.0) (2022-09-22)
 
 
