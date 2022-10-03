@@ -23,6 +23,12 @@
       "type": "boolean"
     },
     {
+      "name": "enableFilters",
+      "title": "Enable dashboard filters",
+      "description": "Allows the use of dashboard filters",
+      "type": "boolean"
+    },
+    {
       "name": "defaultSortNo",
       "title": "Sort column number (refresh to take effect, starts from 0)",
       "description": "",

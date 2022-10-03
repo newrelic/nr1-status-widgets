@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   NrqlQuery,
   Spinner,
@@ -7,7 +7,8 @@ import {
   TableHeaderCell,
   TableRow,
   TableRowCell,
-  MetricTableRowCell
+  MetricTableRowCell,
+  NerdletStateContext
 } from 'nr1';
 import ErrorState from '../shared/errorState';
 import { assessValue, discoverErrors, isEmpty } from './utils';
@@ -43,6 +44,7 @@ function StatusTableWidget(props) {
     height,
     accountId,
     useTimeRange,
+    enableFilters,
     platformContext,
     columnSort,
     defaultSortNo,
@@ -53,6 +55,7 @@ function StatusTableWidget(props) {
     showKey
   } = props;
   const { timeRange } = platformContext;
+  const { filters } = useContext(NerdletStateContext);
 
   const errors = discoverErrors(props);
   if (errors.length > 0) {
@@ -65,9 +68,15 @@ function StatusTableWidget(props) {
     return parseInt(aNo) - parseInt(bNo);
   });
 
+  const filterClause = filters ? `WHERE ${filters}` : '';
+
   let finalQuery = query;
   if (useTimeRange) {
     finalQuery += ` ${timeRangeToNrql(timeRange)}`;
+  }
+
+  if (enableFilters) {
+    finalQuery += ` ${filterClause}`;
   }
 
   const [column, setColumn] = useState(parseInt(defaultSortNo || 0));
