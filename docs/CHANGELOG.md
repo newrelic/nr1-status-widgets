@@ -1,3 +1,10 @@
+## [2.32.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.32.0...v2.32.1) (2022-10-19)
+
+
+### Bug Fixes
+
+* allow outside ([8a6e948](https://github.com/newrelic/nr1-status-widgets/commit/8a6e9484a8dc5d5d7365d7d3b6448ce309348d72))
+
 # [2.32.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.31.0...v2.32.0) (2022-10-19)
 
 
