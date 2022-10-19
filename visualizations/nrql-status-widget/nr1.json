@@ -59,8 +59,8 @@
     },
     {
       "name": "thresholdDirection",
-      "title": "Threshold Direction: above or below (default: above)",
-      "description": "Threshold Direction: above or below (default: above)",
+      "title": "Threshold Direction: above, below, between or outside (default: above)",
+      "description": "Threshold Direction: above, below, between or outside (default: above)",
       "type": "enum",
       "items": [
         {
@@ -70,12 +70,20 @@
         {
           "title": "below",
           "value": "below"
+        },
+        {
+          "title": "between",
+          "value": "between"
+        },
+        {
+          "title": "outside",
+          "value": "outside"
         }
       ]
     },
     {
       "name": "criticalThreshold",
-      "title": "Critical Threshold",
+      "title": "Critical Threshold (upper value when used with between or outside)",
       "description": "If above this value critical will be rendered",
       "type": "string"
     },
@@ -87,7 +95,7 @@
     },
     {
       "name": "warningThreshold",
-      "title": "Warning Threshold",
+      "title": "Warning Threshold (lower value when used with between or outside)",
       "description": "If above this value warning will be rendered",
       "type": "string"
     },
