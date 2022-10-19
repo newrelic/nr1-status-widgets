@@ -218,7 +218,7 @@ export const generateErrorsAndConfig = (
   }
 
   if (configuration.thresholdType === 'numeric') {
-    if (['above', 'below', 'between'].includes(thresholdDirection)) {
+    if (['above', 'below', 'between', 'outside'].includes(thresholdDirection)) {
       configuration.thresholdDirection = thresholdDirection;
     } else {
       configuration.thresholdDirection = 'above';
