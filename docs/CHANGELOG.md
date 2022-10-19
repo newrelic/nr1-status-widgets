@@ -1,3 +1,10 @@
+# [2.32.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.31.0...v2.32.0) (2022-10-19)
+
+
+### Features
+
+* add between and outside as options ([915b98a](https://github.com/newrelic/nr1-status-widgets/commit/915b98a3455b5aaaffd480fd5677d6e074d90424))
+
 # [2.31.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.30.0...v2.31.0) (2022-10-03)
 
 
