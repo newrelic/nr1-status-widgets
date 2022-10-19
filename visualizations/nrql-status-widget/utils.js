@@ -90,6 +90,26 @@ export const assessValue = (value, config) => {
       }
     }
 
+    if (config.thresholdDirection === 'between') {
+      if (
+        value.value > config.warningThreshold &&
+        value.value < config.criticalThreshold
+      ) {
+        value.status = 'critical';
+        value.statusLabel = config.criticalLabel;
+      }
+    }
+
+    if (config.thresholdDirection === 'outside') {
+      if (
+        value.value < config.warningThreshold ||
+        value.value > config.criticalThreshold
+      ) {
+        value.status = 'critical';
+        value.statusLabel = config.criticalLabel;
+      }
+    }
+
     if (config.thresholdEmptyHandling) {
       switch (config.thresholdEmptyHandling) {
         case 'critIfZero': {
@@ -198,7 +218,7 @@ export const generateErrorsAndConfig = (
   }
 
   if (configuration.thresholdType === 'numeric') {
-    if (['above', 'below'].includes(thresholdDirection)) {
+    if (['above', 'below', 'between'].includes(thresholdDirection)) {
       configuration.thresholdDirection = thresholdDirection;
     } else {
       configuration.thresholdDirection = 'above';
