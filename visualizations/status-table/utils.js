@@ -70,30 +70,30 @@ export const assessValue = (value, config) => {
 
     // massage status levels and colors
     if (bgColor === 'healthy' || bgColor === 'green') {
-      result.bgColor = '#01b076';
+      result.bgColor = '#3a845e';
       result.fontColor = 'white';
     }
 
     if (fontColor === 'healthy' || fontColor === 'green') {
-      result.fontColor = '#01b076';
+      result.fontColor = '#3a845e';
     }
 
     if (bgColor === 'critical' || bgColor === 'red') {
-      result.bgColor = '#f5554b';
+      result.bgColor = '#a1251a';
       result.fontColor = 'white';
     }
 
     if (fontColor === 'critical' || fontColor === 'red') {
-      result.fontColor = '#f5554b';
+      result.fontColor = '#a1251a';
     }
 
     if (bgColor === 'warning' || bgColor === 'orange') {
-      result.bgColor = '#f0b400';
-      result.fontColor = 'white';
+      result.bgColor = '#f8d45c';
+      result.fontColor = 'black';
     }
 
     if (fontColor === 'warning' || fontColor === 'orange') {
-      result.fontColor = '#f0b400';
+      result.fontColor = '#f8d45c';
     }
 
     if (bgColor === 'unknown' || bgColor === 'grey') {
