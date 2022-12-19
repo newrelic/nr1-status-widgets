@@ -416,30 +416,30 @@ function StatusTableWidget(props) {
                       );
 
                       if (bgColor === 'healthy' || bgColor === 'green') {
-                        value.bgColor = '#01b076';
+                        value.bgColor = '#3a845e';
                         value.fontColor = 'white';
                       }
 
                       if (fontColor === 'healthy' || fontColor === 'green') {
-                        value.fontColor = '#01b076';
+                        value.fontColor = '#3a845e';
                       }
 
                       if (bgColor === 'critical' || bgColor === 'red') {
-                        value.bgColor = '#f5554b';
+                        value.bgColor = '#a1251a';
                         value.fontColor = 'white';
                       }
 
                       if (fontColor === 'critical' || fontColor === 'red') {
-                        value.fontColor = '#f5554b';
+                        value.fontColor = '#a1251a';
                       }
 
                       if (bgColor === 'warning' || bgColor === 'orange') {
-                        value.bgColor = '#f0b400';
-                        value.fontColor = 'white';
+                        value.bgColor = '#f8d45c';
+                        value.fontColor = 'black';
                       }
 
                       if (fontColor === 'warning' || fontColor === 'orange') {
-                        value.fontColor = '#f0b400';
+                        value.fontColor = '#f8d45c';
                       }
 
                       if (bgColor === 'unknown' || bgColor === 'grey') {
