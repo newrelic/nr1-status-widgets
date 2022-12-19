@@ -1,3 +1,10 @@
+# [2.33.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.32.1...v2.33.0) (2022-12-19)
+
+
+### Features
+
+* color match to dashboard widgets [#41](https://github.com/newrelic/nr1-status-widgets/issues/41) ([01c56af](https://github.com/newrelic/nr1-status-widgets/commit/01c56af665a34cba8bd11dc0589e5943d3b784b2))
+
 ## [2.32.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.32.0...v2.32.1) (2022-10-19)
 
 
