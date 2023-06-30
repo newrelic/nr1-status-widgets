@@ -17,11 +17,52 @@
       "type": "nrql"
     },
     {
+      "name": "pollInterval",
+      "title": "Optional Poll Interval (seconds)",
+      "description": "",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Default - auto",
+          "value": null
+        },
+        {
+          "title": "5s",
+          "value": 5000
+        },
+        {
+          "title": "10s",
+          "value": 10000
+        },
+        {
+          "title": "15s",
+          "value": 15000
+        },
+        {
+          "title": "30s",
+          "value": 30000
+        },
+        {
+          "title": "45s",
+          "value": 45000
+        },
+        {
+          "title": "1m",
+          "value": 60000
+        },
+        {
+          "title": "5m",
+          "value": 300000
+        }
+      ]
+    },
+    {
       "name": "enableFlash",
       "title": "Enable flash/pulse effect when not healthy",
       "description": "",
       "type": "boolean"
-    },    {
+    },
+    {
       "name": "fontMultiplier",
       "title": "Font multiplier - increase the font size (default: 1)",
       "description": "",

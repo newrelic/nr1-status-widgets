@@ -1,5 +1,9 @@
+// crit #f5554b
+// orange #f07a0e
+// yell #ffd23d
+// green #01a76a
 .healthy-bg {
-  background-color: #3a845e;
+  background-color: #01a76a;
 }
 
 .critical-bg {
@@ -14,7 +18,7 @@
     background-color: #222;
   }
   50% {
-    background-color: #a1251a;
+    background-color: #f5554b;
   }
   100% {
     background-color: #222;
@@ -33,7 +37,7 @@
     background-color: #222;
   }
   50% {
-    background-color: #f8d45c;
+    background-color: #ffd23d;
   }
   100% {
     background-color: #222;
@@ -60,15 +64,15 @@
 }
 
 .healthy-solid-bg {
-  background-color: #3a845e;
+  background-color: #01a76a;
 }
 
 .critical-solid-bg {
-  background-color: #a1251a;
+  background-color: #f5554b;
 }
 
 .warning-solid-bg {
-  background-color: #f8d45c;
+  background-color: #ffd23d;
 }
 
 .unknown-solid-bg {
