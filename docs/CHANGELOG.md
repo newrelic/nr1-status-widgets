@@ -1,3 +1,10 @@
+# [2.34.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.33.0...v2.34.0) (2023-06-30)
+
+
+### Features
+
+* nrql status std colors + custom poll ([40ef8de](https://github.com/newrelic/nr1-status-widgets/commit/40ef8ded0120d260b1191ce2115be0d08bfca3c9))
+
 # [2.33.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.32.1...v2.33.0) (2022-12-19)
 
 
