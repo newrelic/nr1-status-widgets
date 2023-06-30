@@ -101,7 +101,8 @@ export default class StatusWidget extends React.Component {
       sloBudget,
       sloBar,
       sloDaysToView,
-      fontMultiplier
+      fontMultiplier,
+      pollInterval
     } = this.props;
     let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
 
@@ -244,7 +245,9 @@ export default class StatusWidget extends React.Component {
         <NrqlQuery
           query={finalQuery}
           accountIds={[parseInt(accountId)]}
-          pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
+          pollInterval={
+            pollInterval ? parseInt(pollInterval) : NrqlQuery.AUTO_POLL_INTERVAL
+          }
         >
           {({ data, loading, error }) => {
             if (loading) {
@@ -389,6 +392,7 @@ export default class StatusWidget extends React.Component {
                   height={height}
                   mainProps={this.props}
                   fontSizeMultiplier={fontSizeMultiplier}
+                  pollInterval={pollInterval}
                 />
 
                 {displayTimeline && (

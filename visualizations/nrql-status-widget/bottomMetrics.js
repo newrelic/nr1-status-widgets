@@ -20,7 +20,8 @@ export default class BottomMetrics extends React.Component {
       mainProps,
       displayTimeline,
       hideLabels,
-      fontSizeMultiplier
+      fontSizeMultiplier,
+      pollInterval
     } = this.props;
 
     const {
@@ -93,6 +94,7 @@ export default class BottomMetrics extends React.Component {
             leftStatus={this.state.leftStatus}
             metricLabelRight={metricLabelRight}
             hideLabels={hideLabels}
+            pollInterval={pollInterval}
           />
         )}
         {queryRight && (
@@ -114,6 +116,7 @@ export default class BottomMetrics extends React.Component {
             leftStatus={this.state.leftStatus}
             metricLabelLeft={metricLabelLeft}
             hideLabels={hideLabels}
+            pollInterval={pollInterval}
           />
         )}
       </div>
