@@ -234,6 +234,11 @@ export default class StatusWidget extends React.Component {
       fontSizeMultiplier *= 1.4;
     }
 
+    const selectedAccountId = parseInt(accountId);
+    const selectedPollInterval = pollInterval
+      ? parseInt(pollInterval)
+      : NrqlQuery.AUTO_POLL_INTERVAL;
+
     return (
       <>
         <ModalCharts
@@ -243,11 +248,9 @@ export default class StatusWidget extends React.Component {
           accountId={accountId}
         />
         <NrqlQuery
-          query={finalQuery}
-          accountIds={[parseInt(accountId)]}
-          pollInterval={
-            pollInterval ? parseInt(pollInterval) : NrqlQuery.AUTO_POLL_INTERVAL
-          }
+          query={query}
+          accountIds={[selectedAccountId]}
+          pollInterval={selectedPollInterval}
         >
           {({ data, loading, error }) => {
             if (loading) {
@@ -317,9 +320,9 @@ export default class StatusWidget extends React.Component {
                   maxHeight: height,
                   overflow: 'hidden'
                 }}
-                className={`${status}${
-                  enableFlash ? '' : '-solid'
-                }-bg flex-container`}
+                // eslint-disable-next-line
+                className={`${status}${enableFlash ? '' : '-solid'
+                  }-bg flex-container`} // eslint-disable-line
               >
                 <div className="flex-col">
                   {displayMetric && (
@@ -397,6 +400,12 @@ export default class StatusWidget extends React.Component {
 
                 {displayTimeline && (
                   <Timeline
+                    finalQuery={finalQuery}
+                    reducedFeatureWidth={reducedFeatureWidth}
+                    timeRangeResult={timeRangeResult}
+                    configuration={configuration}
+                    selectedAccountId={selectedAccountId}
+                    selectedPollInterval={selectedPollInterval}
                     displayMetric={displayMetric}
                     timeseries={timeseries}
                     width={width}
