@@ -1,3 +1,10 @@
+# [2.35.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.34.0...v2.35.0) (2023-08-29)
+
+
+### Features
+
+* independent nrql query for main chart ([d270dd5](https://github.com/newrelic/nr1-status-widgets/commit/d270dd5b0559672ef1b436a9fd449c28e2580205))
+
 # [2.34.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.33.0...v2.34.0) (2023-06-30)
 
 
