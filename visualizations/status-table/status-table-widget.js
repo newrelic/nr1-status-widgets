@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   NrqlQuery,
   Spinner,
@@ -38,7 +38,7 @@ const timeRangeToNrql = timeRange => {
   }
 };
 
-function StatusTableWidget(props) {
+export default function StatusTableWidget(props) {
   // console.log(props);
   const {
     width,
@@ -58,6 +58,22 @@ function StatusTableWidget(props) {
   const { timeRange } = platformContext;
   const nerdletContext = useContext(NerdletStateContext);
   const { filters, selectedVariables } = nerdletContext;
+  const [finalQuery, setQuery] = useState(query);
+  const filterClause = filters ? `WHERE ${filters}` : '';
+
+  useEffect(() => {
+    let tempQuery = subVariables(query, selectedVariables);
+
+    if (useTimeRange) {
+      tempQuery += ` ${timeRangeToNrql(timeRange)}`;
+    }
+
+    if (enableFilters) {
+      tempQuery += ` ${filterClause}`;
+    }
+
+    setQuery(tempQuery);
+  }, [selectedVariables, query]);
 
   const errors = discoverErrors(props);
   if (errors.length > 0) {
@@ -69,17 +85,6 @@ function StatusTableWidget(props) {
     const bNo = !isEmpty(b.priority) ? b.priority : 99999;
     return parseInt(aNo) - parseInt(bNo);
   });
-
-  const filterClause = filters ? `WHERE ${filters}` : '';
-
-  let finalQuery = subVariables(query, selectedVariables);
-  if (useTimeRange) {
-    finalQuery += ` ${timeRangeToNrql(timeRange)}`;
-  }
-
-  if (enableFilters) {
-    finalQuery += ` ${filterClause}`;
-  }
 
   const [column, setColumn] = useState(parseInt(defaultSortNo || 0));
   const [sortingType, setSortingType] = useState(
@@ -511,5 +516,3 @@ function StatusTableWidget(props) {
     </div>
   );
 }
-
-export default StatusTableWidget;
