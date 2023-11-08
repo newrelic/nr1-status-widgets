@@ -224,7 +224,13 @@ function StatusTableWidget(props) {
                 const contents =
                   metadata?.contents?.contents || metadata?.contents || [];
                 f.results.forEach((r, i) => {
-                  const firstValue = r[Object.keys(r)[0]];
+                  let firstValue = r[Object.keys(r)[0]];
+
+                  // handle nested percentiles and values that are returned as json and not a flat number
+                  // eg.{ "90": 5600 }
+                  if (Object.keys(firstValue).length > 0) {
+                    firstValue = firstValue[Object.keys(firstValue)[0]];
+                  }
 
                   if (contents[i]) {
                     const { alias, attribute } = contents[i];
