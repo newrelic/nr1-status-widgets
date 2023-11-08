@@ -1,3 +1,10 @@
+# [2.36.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.35.0...v2.36.0) (2023-11-08)
+
+
+### Features
+
+* percentile support in status table ([9d34608](https://github.com/newrelic/nr1-status-widgets/commit/9d34608b86c15ae8fa555562eabdc85abf0b20ae))
+
 # [2.35.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.34.0...v2.35.0) (2023-08-29)
 
 
