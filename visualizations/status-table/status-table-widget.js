@@ -12,6 +12,7 @@ import {
 } from 'nr1';
 import ErrorState from '../shared/errorState';
 import { assessValue, discoverErrors, isEmpty } from './utils';
+import { subVariables } from '../shared/utils';
 
 const ignoreKeys = ['begin_time', 'end_time', 'x', 'y', 'events'];
 
@@ -55,7 +56,8 @@ function StatusTableWidget(props) {
     showKey
   } = props;
   const { timeRange } = platformContext;
-  const { filters } = useContext(NerdletStateContext);
+  const nerdletContext = useContext(NerdletStateContext);
+  const { filters, selectedVariables } = nerdletContext;
 
   const errors = discoverErrors(props);
   if (errors.length > 0) {
@@ -70,7 +72,7 @@ function StatusTableWidget(props) {
 
   const filterClause = filters ? `WHERE ${filters}` : '';
 
-  let finalQuery = query;
+  let finalQuery = subVariables(query, selectedVariables);
   if (useTimeRange) {
     finalQuery += ` ${timeRangeToNrql(timeRange)}`;
   }
