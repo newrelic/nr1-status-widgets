@@ -1,3 +1,10 @@
+## [2.38.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.38.0...v2.38.1) (2023-11-08)
+
+
+### Bug Fixes
+
+* handle unready tmpl vars ([847a3b9](https://github.com/newrelic/nr1-status-widgets/commit/847a3b981344e0b476e07c70f35150e8dc203a53))
+
 # [2.38.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.37.0...v2.38.0) (2023-11-08)
 
 
