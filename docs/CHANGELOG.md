@@ -1,3 +1,10 @@
+# [2.37.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.36.0...v2.37.0) (2023-11-08)
+
+
+### Features
+
+* improve header width handling ([4569b0e](https://github.com/newrelic/nr1-status-widgets/commit/4569b0e12daa2676e13dac932f74b2f3636ab0f0))
+
 # [2.36.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.35.0...v2.36.0) (2023-11-08)
 
 
