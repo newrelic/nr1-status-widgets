@@ -191,6 +191,12 @@
           "type": "string"
         },
         {
+          "name": "hideHeader",
+          "title": "Hide Header",
+          "description": "",
+          "type": "boolean"
+        },
+        {
           "name": "renameHeader",
           "title": "Rename Header",
           "description": "",

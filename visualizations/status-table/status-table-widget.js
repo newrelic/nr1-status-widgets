@@ -297,117 +297,134 @@ function StatusTableWidget(props) {
                   }}
                 >
                   <TableHeader>
-                    {headers.map((h, i) => {
-                      const headerConfig = headerConfigs.find(
-                        c => c.targetAttribute === h
-                      );
+                    {headers
+                      .filter(
+                        h =>
+                          !headerConfigs.find(c => c.targetAttribute === h)
+                            ?.hideHeader === true
+                      )
+                      .map((h, i) => {
+                        const headerConfig = headerConfigs.find(
+                          c => c.targetAttribute === h
+                        );
 
-                      let headerWidth = headerConfig?.headerWidth;
-                      if (headerWidth && !isNaN(headerWidth)) {
-                        headerWidth += 'px';
-                      }
+                        let headerWidth = headerConfig?.headerWidth || 0;
+                        if (headerWidth) {
+                          const parsedHw = parseFloat(headerWidth);
+                          if (!isNaN(parsedHw)) {
+                            headerWidth = `${parsedHw}px`;
+                          } else {
+                            headerWidth = 0;
+                          }
+                        }
 
-                      return (
-                        <TableHeaderCell
-                          key={h}
-                          value={({ item }) => item[h]}
-                          alignmentType={
-                            TableHeaderCell.ALIGNMENT_TYPE[
-                              headerConfig?.alignmentType || 'LEFT'
-                            ]
-                          }
-                          width={headerWidth || '1fr'}
-                          sortable
-                          sortingType={
-                            column === i
-                              ? sortingType
-                              : TableHeaderCell.SORTING_TYPE.NONE
-                          }
-                          onClick={(event, data) =>
-                            onClickTableHeaderCell(i, data)
-                          }
-                        >
-                          {headerConfig?.renameHeader || h}
-                        </TableHeaderCell>
-                      );
-                    })}
+                        return (
+                          <TableHeaderCell
+                            key={h}
+                            value={({ item }) => item[h]}
+                            alignmentType={
+                              TableHeaderCell.ALIGNMENT_TYPE[
+                                headerConfig?.alignmentType || 'LEFT'
+                              ]
+                            }
+                            width={headerWidth || '1fr'}
+                            sortable
+                            sortingType={
+                              column === i
+                                ? sortingType
+                                : TableHeaderCell.SORTING_TYPE.NONE
+                            }
+                            onClick={(event, data) =>
+                              onClickTableHeaderCell(i, data)
+                            }
+                          >
+                            {headerConfig?.renameHeader || h}
+                          </TableHeaderCell>
+                        );
+                      })}
                   </TableHeader>
                   {({ item }) => {
                     const { rowStyle, cellStyles } = item || {};
 
                     return (
                       <TableRow>
-                        {headers.map(h => {
-                          const value =
-                            item[h] !== undefined && item[h] !== null
-                              ? item[h]
-                              : (item?.groups || []).find(g => g.name === h)
-                                  ?.value;
+                        {headers
+                          .filter(
+                            h =>
+                              !headerConfigs.find(c => c.targetAttribute === h)
+                                ?.hideHeader === true
+                          )
+                          .map(h => {
+                            const value =
+                              item[h] !== undefined && item[h] !== null
+                                ? item[h]
+                                : (item?.groups || []).find(g => g.name === h)
+                                    ?.value;
 
-                          const headerConfig = headerConfigs.find(
-                            c => c.targetAttribute === h
-                          );
+                            const headerConfig = headerConfigs.find(
+                              c => c.targetAttribute === h
+                            );
 
-                          const cellConfig = cellConfigs.find(
-                            c => c.targetAttribute === h
-                          );
+                            const cellConfig = cellConfigs.find(
+                              c => c.targetAttribute === h
+                            );
 
-                          const style = {};
-                          if (rowStyle) {
-                            style.color = rowStyle?.fontColor;
-                            style.backgroundColor = rowStyle?.bgColor;
-                          }
-
-                          if (Object.keys(cellStyles?.[h] || {}).length > 0) {
-                            style.color = cellStyles[h]?.fontColor;
-                            style.backgroundColor = cellStyles[h]?.bgColor;
-                          }
-
-                          if (headerConfig?.valueType) {
-                            if (headerConfig?.valueType === 'TIMESTAMP') {
-                              return (
-                                <TableRowCell
-                                  key={`${h}_${value}`}
-                                  alignmentType={
-                                    TableRowCell.ALIGNMENT_TYPE[
-                                      cellConfig?.alignmentType || 'LEFT'
-                                    ]
-                                  }
-                                  style={style}
-                                >
-                                  {new Date(value).toLocaleString()}
-                                </TableRowCell>
-                              );
-                            } else {
-                              return (
-                                <MetricTableRowCell
-                                  key={`${h}_${value}`}
-                                  type={
-                                    MetricTableRowCell.TYPE[
-                                      headerConfig?.valueType || 'UNKNOWN'
-                                    ]
-                                  }
-                                  value={value}
-                                  style={style}
-                                />
-                              );
+                            const style = {};
+                            if (rowStyle) {
+                              style.color = rowStyle?.fontColor;
+                              style.backgroundColor = rowStyle?.bgColor;
                             }
-                          }
 
-                          return (
-                            <TableRowCell
-                              key={`${h}_${value}`}
-                              alignmentType={
-                                TableRowCell.ALIGNMENT_TYPE[
-                                  cellConfig?.alignmentType || 'LEFT'
-                                ]
+                            if (Object.keys(cellStyles?.[h] || {}).length > 0) {
+                              style.color = cellStyles[h]?.fontColor;
+                              style.backgroundColor = cellStyles[h]?.bgColor;
+                            }
+
+                            if (headerConfig?.valueType) {
+                              if (headerConfig?.valueType === 'TIMESTAMP') {
+                                return (
+                                  <TableRowCell
+                                    key={`${h}_${value}`}
+                                    alignmentType={
+                                      TableRowCell.ALIGNMENT_TYPE[
+                                        cellConfig?.alignmentType || 'LEFT'
+                                      ]
+                                    }
+                                    style={style}
+                                  >
+                                    {new Date(value).toLocaleString()}
+                                  </TableRowCell>
+                                );
+                              } else {
+                                return (
+                                  <MetricTableRowCell
+                                    key={`${h}_${value}`}
+                                    type={
+                                      MetricTableRowCell.TYPE[
+                                        headerConfig?.valueType || 'UNKNOWN'
+                                      ]
+                                    }
+                                    value={value}
+                                    style={style}
+                                  />
+                                );
                               }
-                              style={style}
-                            >
-                              {value}
-                            </TableRowCell>
-                          );
-                        })}
+                            }
+
+                            return (
+                              <TableRowCell
+                                key={`${h}_${value}`}
+                                alignmentType={
+                                  TableRowCell.ALIGNMENT_TYPE[
+                                    cellConfig?.alignmentType || 'LEFT'
+                                  ]
+                                }
+                                style={style}
+                              >
+                                {value}
+                              </TableRowCell>
+                            );
+                          })}
                       </TableRow>
                     );
                   }}
