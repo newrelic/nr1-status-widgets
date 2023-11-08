@@ -1,3 +1,10 @@
+# [2.38.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.37.0...v2.38.0) (2023-11-08)
+
+
+### Features
+
+* status table tmpl vars ([8c11b44](https://github.com/newrelic/nr1-status-widgets/commit/8c11b448f0384a9942106b24478c0a48171ada64))
+
 # [2.37.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.36.0...v2.37.0) (2023-11-08)
 
 
