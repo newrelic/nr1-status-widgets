@@ -1,5 +1,6 @@
 export const discoverErrors = props => {
-  const { accountId, query } = props;
+  const { accountId, query, useTimeRange } = props;
+  const lowerQuery = (query || '').toLowerCase();
 
   const errors = [];
 
@@ -9,8 +10,14 @@ export const discoverErrors = props => {
 
   if (!query) {
     errors.push('Query required');
-  } else if (query.toLowerCase().includes('timeseries')) {
+  } else if (lowerQuery.includes('timeseries')) {
     errors.push('Remove timeseries from query');
+  }
+
+  if (lowerQuery.includes('since') && useTimeRange) {
+    errors.push(
+      'If time range is enabled the SINCE clause should be removed from your query'
+    );
   }
 
   return errors;

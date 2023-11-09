@@ -15,8 +15,9 @@ export default class ErrorState extends React.Component {
           >
             Oops! Something went wrong.
           </HeadingText>
-          {errors.map(error => (
+          {errors.map((error, i) => (
             <HeadingText
+              key={i}
               spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
               type={HeadingText.TYPE.HEADING_4}
             >

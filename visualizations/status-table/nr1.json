@@ -5,6 +5,46 @@
   "description": "",
   "configuration": [
     {
+      "name": "pollInterval",
+      "title": "Poll Interval (default: 60s)",
+      "description": "Frequency at which data is refreshed.",
+      "type": "enum",
+      "items": [
+        {
+          "title": "Select",
+          "value": 60
+        },
+        {
+          "title": "5s",
+          "value": 5
+        },
+        {
+          "title": "10s",
+          "value": 10
+        },
+        {
+          "title": "15s",
+          "value": 15
+        },
+        {
+          "title": "30s",
+          "value": 30
+        },
+        {
+          "title": "45s",
+          "value": 45
+        },
+        {
+          "title": "1m",
+          "value": 60
+        },
+        {
+          "title": "5m",
+          "value": 300
+        }
+      ]
+    },
+    {
       "name": "accountId",
       "title": "Account ID",
       "description": "Account ID to be associated with the query",
