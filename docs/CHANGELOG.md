@@ -1,3 +1,15 @@
+# [2.39.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.38.1...v2.39.0) (2023-11-09)
+
+
+### Bug Fixes
+
+* add missing dep @mantine/hooks ([3a2cb36](https://github.com/newrelic/nr1-status-widgets/commit/3a2cb36777ca2fb4de0322fdae76d86cae0616ec))
+
+
+### Features
+
+* poll interval, better state handling ([1dfa96b](https://github.com/newrelic/nr1-status-widgets/commit/1dfa96b6be8a20cfa7224cb6f00b9c11911867cd))
+
 ## [2.38.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.38.0...v2.38.1) (2023-11-08)
 
 
