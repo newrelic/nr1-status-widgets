@@ -60,7 +60,7 @@ export default function StatusTableWidget(props) {
   const nerdletContext = useContext(NerdletStateContext);
   const { filters, selectedVariables } = nerdletContext;
   const [nrdbResult, setNrdbResult] = useSetState(null);
-  const [finalQuery, setQuery] = useState('');
+  const [finalQuery, setQuery] = useState(null);
   const [inputErrors, setInputErrors] = useState([]);
   const filterClause = filters ? `WHERE ${filters}` : '';
 
@@ -83,19 +83,14 @@ export default function StatusTableWidget(props) {
 
     const inputErrors = discoverErrors(props);
     setInputErrors(inputErrors);
+  }, [query, selectedVariables, enableFilters, filterClause, timeRange]);
 
+  useEffect(() => {
     fetchData();
     interval.stop();
     interval.start();
     return interval.stop;
-  }, [
-    pollInterval,
-    query,
-    selectedVariables,
-    enableFilters,
-    filterClause,
-    timeRange
-  ]);
+  }, [finalQuery, pollInterval]);
 
   const interval = useInterval(() => {
     fetchData();
@@ -251,7 +246,10 @@ export default function StatusTableWidget(props) {
 
           // handle nested percentiles and values that are returned as json and not a flat number
           // eg.{ "90": 5600 }
-          if (Object.keys(firstValue).length > 0) {
+          if (
+            typeof firstValue === 'object' &&
+            Object.keys(firstValue || {}).length > 0
+          ) {
             firstValue = firstValue[Object.keys(firstValue)[0]];
           }
 

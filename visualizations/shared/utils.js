@@ -1,5 +1,5 @@
 export const subVariables = (query, variables) => {
-  if (Object.keys(variables).length > 0) {
+  if (variables && Object.keys(variables || {}).length > 0) {
     let newQuery = query;
 
     Object.keys(variables).forEach(varKey => {
