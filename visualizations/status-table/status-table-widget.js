@@ -247,6 +247,7 @@ export default function StatusTableWidget(props) {
           // handle nested percentiles and values that are returned as json and not a flat number
           // eg.{ "90": 5600 }
           if (
+            firstValue &&
             typeof firstValue === 'object' &&
             Object.keys(firstValue || {}).length > 0
           ) {
