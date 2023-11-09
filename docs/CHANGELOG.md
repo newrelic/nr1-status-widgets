@@ -1,3 +1,11 @@
+## [2.39.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.0...v2.39.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* unhandled tmpl variables ([356f99c](https://github.com/newrelic/nr1-status-widgets/commit/356f99c881ec7fdbf5b421493eb4876dd5c989e0))
+* unhandled tmpl variables ([72b025c](https://github.com/newrelic/nr1-status-widgets/commit/72b025c5581797d5a7bed6a8d0158874c4203d1e))
+
 # [2.39.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.38.1...v2.39.0) (2023-11-09)
 
 
