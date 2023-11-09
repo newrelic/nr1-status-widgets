@@ -139,6 +139,8 @@ export default function StatusTableWidget(props) {
   }
 
   if (nrdbResult?.error) {
+    // eslint-disable-next-line
+    console.log('nrdb error ->', nrdbResult);
     return (
       <ErrorState
         errors={[nrdbResult?.error?.message || '']}
@@ -515,6 +517,8 @@ export default function StatusTableWidget(props) {
       </>
     );
   } else {
+    // eslint-disable-next-line
+    console.log('unhandled case', nrdbResult, props);
     return <></>;
   }
 }
