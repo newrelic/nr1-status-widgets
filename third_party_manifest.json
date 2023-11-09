@@ -1,10 +1,23 @@
 {
-  "lastUpdated": "Thu Jul 28 2022 02:43:00 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Thu Nov 09 2023 10:39:57 GMT+0000 (Coordinated Universal Time)",
   "projectName": "Status Widgets",
   "projectUrl": "https://github.com/newrelic/nr1-status-widgets",
   "includeOptDeps": false,
   "includeDev": true,
   "dependencies": {
+    "@mantine/hooks@7.2.1": {
+      "name": "@mantine/hooks",
+      "version": "7.2.1",
+      "range": "^7.2.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/mantinedev/mantine",
+      "versionedRepoUrl": "https://github.com/mantinedev/mantine/tree/v7.2.1",
+      "licenseFile": "node_modules/@mantine/hooks/README.md",
+      "licenseUrl": "https://github.com/mantinedev/mantine/blob/v7.2.1/README.md",
+      "licenseTextSource": "spdx",
+      "publisher": "Vitaly Rtishchev",
+      "email": "rtivital@gmail.com"
+    },
     "@newrelic/nr1-community@1.2.0": {
       "name": "@newrelic/nr1-community",
       "version": "1.2.0",
