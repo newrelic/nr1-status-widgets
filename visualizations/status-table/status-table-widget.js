@@ -63,41 +63,45 @@ export default function StatusTableWidget(props) {
   const [finalQuery, setQuery] = useState(null);
   const [inputErrors, setInputErrors] = useState([]);
   const filterClause = filters ? `WHERE ${filters}` : '';
-
-  if (inputErrors.length > 0) {
-    return <ErrorState errors={inputErrors} />;
-  }
+  const [column, setColumn] = useState(parseInt(defaultSortNo || 0));
+  const [sortedCellConfigs, setCellConfigs] = useState([]);
+  const [sortingType, setSortingType] = useState(
+    TableHeaderCell.SORTING_TYPE[
+      defaultSortNo ? defaultSortDir || 'NONE' : 'NONE'
+    ]
+  );
 
   useEffect(() => {
-    let tempQuery = subVariables(query, selectedVariables);
+    if (query) {
+      let tempQuery = subVariables(query, selectedVariables);
 
-    if (useTimeRange) {
-      tempQuery += ` ${timeRangeToNrql(timeRange)}`;
+      if (useTimeRange) {
+        tempQuery += ` ${timeRangeToNrql(timeRange)}`;
+      }
+
+      if (enableFilters) {
+        tempQuery += ` ${filterClause}`;
+      }
+
+      setQuery(tempQuery);
     }
-
-    if (enableFilters) {
-      tempQuery += ` ${filterClause}`;
-    }
-
-    setQuery(tempQuery);
 
     const inputErrors = discoverErrors(props);
     setInputErrors(inputErrors);
   }, [query, selectedVariables, enableFilters, filterClause, timeRange]);
 
   useEffect(() => {
-    fetchData();
-    interval.stop();
-    interval.start();
-    return interval.stop;
-  }, [finalQuery, pollInterval]);
+    const configs = (cellConfigs || []).sort((a, b) => {
+      const aNo = !isEmpty(a.priority) ? a.priority : 99999;
+      const bNo = !isEmpty(b.priority) ? b.priority : 99999;
+      return parseInt(aNo) - parseInt(bNo);
+    });
 
-  const interval = useInterval(() => {
-    fetchData();
-  }, (pollInterval || 60) * 1000);
+    setCellConfigs(configs);
+  }, [cellConfigs]);
 
   const fetchData = async () => {
-    if (finalQuery) {
+    if (finalQuery && accountId) {
       const result = await NrqlQuery.query({
         query: finalQuery,
         accountIds: [parseInt(accountId)],
@@ -107,18 +111,20 @@ export default function StatusTableWidget(props) {
     }
   };
 
-  const sortedCellConfigs = (cellConfigs || []).sort((a, b) => {
-    const aNo = !isEmpty(a.priority) ? a.priority : 99999;
-    const bNo = !isEmpty(b.priority) ? b.priority : 99999;
-    return parseInt(aNo) - parseInt(bNo);
-  });
+  const interval = useInterval(() => {
+    fetchData();
+  }, (pollInterval || 60) * 1000);
 
-  const [column, setColumn] = useState(parseInt(defaultSortNo || 0));
-  const [sortingType, setSortingType] = useState(
-    TableHeaderCell.SORTING_TYPE[
-      defaultSortNo ? defaultSortDir || 'NONE' : 'NONE'
-    ]
-  );
+  useEffect(() => {
+    fetchData();
+    interval.stop();
+    interval.start();
+    return interval.stop;
+  }, [finalQuery, accountId, pollInterval]);
+
+  if (inputErrors.length > 0) {
+    return <ErrorState errors={inputErrors} />;
+  }
 
   const onClickTableHeaderCell = (nextColumn, { nextSortingType }) => {
     if (nextColumn === column) {
