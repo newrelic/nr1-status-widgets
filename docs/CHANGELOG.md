@@ -1,3 +1,10 @@
+## [2.39.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.1...v2.39.2) (2023-12-06)
+
+
+### Bug Fixes
+
+* status table crash ([29e3c04](https://github.com/newrelic/nr1-status-widgets/commit/29e3c0408383670d2b462a03a9dbd96a9992ba37))
+
 ## [2.39.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.0...v2.39.1) (2023-11-09)
 
 
