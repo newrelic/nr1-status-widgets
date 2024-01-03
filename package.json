@@ -25,7 +25,7 @@
     "react-dom": "^17.0.2",
     "react-json-to-csv": "^1.0.4",
     "react-select": "^3.1.1",
-    "recharts": "^2.1.10"
+    "recharts": "^2.10.3"
   },
   "devDependencies": {
     "@newrelic/eslint-plugin-newrelic": "^0.3.1",
