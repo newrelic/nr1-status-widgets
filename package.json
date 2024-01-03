@@ -18,7 +18,7 @@
   "dependencies": {
     "@mantine/hooks": "^7.2.1",
     "@newrelic/nr1-community": "^1.2.0",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "lodash.groupby": "^4.6.0",
     "prop-types": "^15.6.2",
     "react": "^17.0.2",
