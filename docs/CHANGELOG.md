@@ -1,3 +1,10 @@
+# [2.41.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.40.0...v2.41.0) (2024-01-08)
+
+
+### Features
+
+* dummy commit ([726d463](https://github.com/newrelic/nr1-status-widgets/commit/726d46360905023fd14ca85669b827259e964607))
+
 # [2.40.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.2...v2.40.0) (2024-01-03)
 
 
