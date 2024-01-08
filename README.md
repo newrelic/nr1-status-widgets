@@ -8,7 +8,6 @@ This nerdpack contains three status widget custom visualizations to be used with
 - NRQL Status Table Widget
 - Entity Status Widget (2 modes: Summary & Table)
 
-
 ![NRQL Status Widget](screenshots/nrql-status-widget-1.png)
 <img src="screenshots/nrql-status-widget-2.png" alt="statuswidget2" width="300"/>
 
