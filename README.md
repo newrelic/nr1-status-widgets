@@ -2,6 +2,7 @@
 
 # Status Widget Pack
 
+
 This nerdpack contains three status widget custom visualizations to be used with dashboards.
 - NRQL Status Widget (Configurable variations)
 - NRQL Status Timeline Widget
