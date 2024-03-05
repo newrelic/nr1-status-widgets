@@ -1,3 +1,16 @@
+# [2.43.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.42.0...v2.43.0) (2024-03-05)
+
+
+### Bug Fixes
+
+* package deps ([23e8a90](https://github.com/newrelic/nr1-status-widgets/commit/23e8a90fa7926ebd2a6b17f7260c375d3425a4bc))
+
+
+### Features
+
+* add timerange support to timeline widget ([bbc5f6d](https://github.com/newrelic/nr1-status-widgets/commit/bbc5f6d0fc9177140afabc149c10c7a06c5fed51))
+* add timerange support to timeline widget ([89264c1](https://github.com/newrelic/nr1-status-widgets/commit/89264c1b4aa91a6612b164d45ffa1c0512f2622a))
+
 # [2.42.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.41.0...v2.42.0) (2024-01-08)
 
 
