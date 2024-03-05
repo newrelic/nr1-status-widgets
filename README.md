@@ -1,14 +1,13 @@
 [![New Relic One Catalog Project header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/New_Relic_One_Catalog_Project.png)](https://opensource.newrelic.com/oss-category/#new-relic-one-catalog-project)
 
-
 # Status Widget Pack
+
 
 This nerdpack contains three status widget custom visualizations to be used with dashboards.
 - NRQL Status Widget (Configurable variations)
 - NRQL Status Timeline Widget
 - NRQL Status Table Widget
 - Entity Status Widget (2 modes: Summary & Table)
-
 
 ![NRQL Status Widget](screenshots/nrql-status-widget-1.png)
 <img src="screenshots/nrql-status-widget-2.png" alt="statuswidget2" width="300"/>

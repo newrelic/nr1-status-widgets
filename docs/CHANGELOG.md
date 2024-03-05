@@ -1,3 +1,31 @@
+# [2.42.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.41.0...v2.42.0) (2024-01-08)
+
+
+### Features
+
+* dummy commit ([71619b4](https://github.com/newrelic/nr1-status-widgets/commit/71619b4913fbc471c476498be53fbe5a52227c7b))
+
+# [2.41.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.40.0...v2.41.0) (2024-01-08)
+
+
+### Features
+
+* dummy commit ([726d463](https://github.com/newrelic/nr1-status-widgets/commit/726d46360905023fd14ca85669b827259e964607))
+
+# [2.40.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.2...v2.40.0) (2024-01-03)
+
+
+### Features
+
+* dummy commit ([5f6f0a3](https://github.com/newrelic/nr1-status-widgets/commit/5f6f0a32aa30b8735739573b152754031c10ec2c))
+
+## [2.39.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.1...v2.39.2) (2023-12-06)
+
+
+### Bug Fixes
+
+* status table crash ([29e3c04](https://github.com/newrelic/nr1-status-widgets/commit/29e3c0408383670d2b462a03a9dbd96a9992ba37))
+
 ## [2.39.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.39.0...v2.39.1) (2023-11-09)
 
 

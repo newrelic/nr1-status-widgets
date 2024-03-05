@@ -3,8 +3,6 @@ import { Card, CardBody, HeadingText } from 'nr1';
 
 export default class ErrorState extends React.Component {
   render() {
-    const { errors } = this.props;
-
     return (
       <Card className="ErrorState">
         <CardBody className="ErrorState-cardBody">
@@ -15,7 +13,7 @@ export default class ErrorState extends React.Component {
           >
             Oops! Something went wrong.
           </HeadingText>
-          {(errors || []).map((error, i) => (
+          {(this.props?.errors || []).map((error, i) => (
             <HeadingText
               key={i}
               spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
