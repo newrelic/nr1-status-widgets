@@ -17,6 +17,12 @@
       "type": "nrql"
     },
     {
+      "name": "useTimeRange",
+      "title": "Use Time Range Picker",
+      "description": "Respects the time range picker",
+      "type": "boolean"
+    },
+    {
       "name": "thresholds",
       "title": "Thresholds (at least one value parameter required)",
       "type": "collection",
@@ -32,7 +38,7 @@
           "title": "Name (label)",
           "description": "",
           "type": "string"
-        }, 
+        },
         {
           "name": "valueEqual",
           "title": "Value equal =",

@@ -80,7 +80,8 @@ export const generateErrorsAndConfig = (
   accountId,
   query,
   onClickUrl,
-  modalQueries
+  modalQueries,
+  useTimeRange
 ) => {
   const errors = [];
   const sortedThresholds = thresholds.sort((a, b) => {
@@ -89,6 +90,12 @@ export const generateErrorsAndConfig = (
 
     return parseInt(aNo) - parseInt(bNo);
   });
+
+  if ((useTimeRange && query.includes('since')) || query.includes('until')) {
+    errors.push(
+      'You have the time range enabled, remove the SINCE and UNTIL clauses from your query'
+    );
+  }
 
   if (
     onClickUrl &&

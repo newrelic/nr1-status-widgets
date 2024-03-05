@@ -8,6 +8,28 @@ import ModalCharts from './modalCharts';
 // if the width is below this figure particular features will be disable
 export const reducedFeatureWidth = 175;
 
+const MINUTE = 60000;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+const timeRangeToNrql = timeRange => {
+  if (!timeRange) {
+    return 'SINCE 30 minutes ago';
+  }
+
+  if (timeRange.beginTime && timeRange.endTime) {
+    return `SINCE ${timeRange.beginTime} UNTIL ${timeRange.endTime}`;
+  } else if (timeRange.begin_time && timeRange.end_time) {
+    return `SINCE ${timeRange.begin_time} UNTIL ${timeRange.end_time}`;
+  } else if (timeRange.duration <= HOUR) {
+    return `SINCE ${timeRange.duration / MINUTE} MINUTES AGO`;
+  } else if (timeRange.duration <= DAY) {
+    return `SINCE ${timeRange.duration / HOUR} HOURS AGO`;
+  } else {
+    return `SINCE ${timeRange.duration / DAY} DAYS AGO`;
+  }
+};
+
 export default class StatusWidget extends React.Component {
   constructor(props) {
     super(props);
@@ -65,7 +87,9 @@ export default class StatusWidget extends React.Component {
       modalQueries,
       hideMetrics,
       decimalPlaces,
-      hideKey
+      hideKey,
+      timeRange,
+      useTimeRange
     } = this.props;
     const validModalQueries = (modalQueries || []).filter(
       q => q.query && q.chartType && q.query.length > 5
@@ -74,9 +98,10 @@ export default class StatusWidget extends React.Component {
     const { errors, sortedThresholds } = generateErrorsAndConfig(
       thresholds,
       accountId,
-      query,
+      (query || '').toLowerCase(),
       onClickUrl,
-      validModalQueries
+      validModalQueries,
+      useTimeRange
     );
 
     if (errors.length > 0) {
@@ -95,7 +120,9 @@ export default class StatusWidget extends React.Component {
     // // eslint-disable-next-line
     // console.log(`Query: ${finalQuery}`);
 
-    if (
+    if (useTimeRange) {
+      finalQuery += ` ${timeRangeToNrql(timeRange)}`;
+    } else if (
       !query.toLowerCase().includes('since') &&
       !query.toLowerCase().includes('until')
     ) {
