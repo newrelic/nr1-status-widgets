@@ -16,8 +16,7 @@
     "dv2": "2ca7b314-05f7-4618-894a-54981539975f"
   },
   "dependencies": {
-    "@mantine/hooks": "^7.2.1",
-    "@newrelic/nr1-community": "^1.2.0",
+    "@mantine/hooks": "^6.0.0",
     "async": "^3.2.0",
     "lodash.groupby": "^4.6.0",
     "prop-types": "^15.6.2",
