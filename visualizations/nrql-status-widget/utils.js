@@ -297,3 +297,62 @@ export const generateSloErrors = sloConfig => {
 
   return errors;
 };
+
+export const getLatest24MinuteBucket = timeRange => {
+  if (timeRange) {
+    let endTime;
+    let beginTime;
+
+    if (timeRange.duration !== null) {
+      endTime = Date.now();
+      beginTime = endTime - timeRange.duration;
+    } else if (timeRange.begin_time !== null && timeRange.end_time !== null) {
+      beginTime = timeRange.begin_time;
+      endTime = timeRange.end_time;
+    } else {
+      return { durationInMinutes: null, timestampPast24Minutes: null };
+    }
+
+    // Calculate duration in minutes
+    const durationInMinutes = (endTime - beginTime) / (1000 * 60);
+    // Calculate the timestamp 24 minutes in the past from the end time
+    const timestampPast24Minutes = endTime - 24 * 60 * 1000;
+
+    return { durationInMinutes, timestampPast24Minutes };
+  } else {
+    return null;
+  }
+};
+
+export const calculateDurationAndAdjustTime = timeRange => {
+  if (timeRange) {
+    let beginTime;
+    let endTime;
+
+    if (timeRange.duration !== null) {
+      // If duration is provided, calculate times based on the current time
+      endTime = Date.now();
+      beginTime = endTime - timeRange.duration;
+    } else if (timeRange.begin_time !== null && timeRange.end_time !== null) {
+      // If explicit begin_time and end_time are provided, use them
+      beginTime = timeRange.begin_time;
+      endTime = timeRange.end_time;
+    } else {
+      // Handle case where neither duration nor valid begin/end times are provided
+      throw new Error('Invalid time range provided.');
+    }
+
+    // Calculate the duration in minutes
+    const duration = (endTime - beginTime) / 60000;
+
+    // Multiply duration in minutes by 24 and subtract from end time
+    const adjustedEndTime = endTime - duration * 24 * 60000;
+
+    return {
+      durationInMinutes: duration,
+      adjustedEndTime: adjustedEndTime
+    };
+  } else {
+    return null;
+  }
+};

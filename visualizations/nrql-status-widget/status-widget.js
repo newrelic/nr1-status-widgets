@@ -1,6 +1,7 @@
 import React from 'react';
 import { NrqlQuery, Spinner, navigation } from 'nr1';
 import {
+  calculateDurationAndAdjustTime,
   deriveValues,
   generateErrorsAndConfig,
   generateSloErrors
@@ -20,47 +21,17 @@ export default class StatusWidget extends React.Component {
     this.state = {
       modalOpen: false,
       initialized: false,
-      timeRange: undefined,
       timeRangeResult: null
     };
   }
-
-  componentDidMount() {
-    this.handleTime(this.props.timeRange);
-  }
-
-  componentDidUpdate() {
-    this.handleTime(this.props.timeRange);
-  }
-
-  handleTime = async incomingTimeRange => {
-    const currentTimeRange = this.state.timeRange;
-    const currentTimeRangeStr = JSON.stringify(currentTimeRange);
-    const incomingTimeRangeStr = JSON.stringify(incomingTimeRange);
-
-    if (!incomingTimeRange && incomingTimeRangeStr !== currentTimeRangeStr) {
-      this.setState({ timeRange: undefined, timeRangeResult: null });
-    } else if (
-      JSON.stringify(currentTimeRange) !== JSON.stringify(incomingTimeRange)
-    ) {
-      const stateUpdate = { timeRange: incomingTimeRange };
-      const { query, accountId } = this.props;
-      const nrqlResult = await NrqlQuery.query({
-        query,
-        accountIds: [accountId],
-        timeRange: incomingTimeRange
-      });
-      stateUpdate.timeRangeResult = nrqlResult?.data?.[0]?.data?.[0]?.y || null;
-      this.setState(stateUpdate);
-    }
-  };
 
   modalClose = () => {
     this.setState({ modalOpen: false });
   };
 
   render() {
-    const { modalOpen, initialized, timeRange, timeRangeResult } = this.state;
+    const { timeRange } = this.props;
+    const { modalOpen, initialized, timeRangeResult } = this.state;
     const {
       width,
       height,
@@ -182,11 +153,16 @@ export default class StatusWidget extends React.Component {
       );
     }
 
+    const result = calculateDurationAndAdjustTime(timeRange);
     const bucketValue =
       !isNaN(timelineBucket) && timelineBucket > 0 ? timelineBucket : 1;
-    const timeseriesValue = `TIMESERIES ${bucketValue} minute`;
-    const untilValue = untilClause || '';
-    const sinceClause = `SINCE ${bucketValue * 24} minutes ago`;
+    const timeseriesValue = `TIMESERIES ${result?.durationInMinutes ||
+      bucketValue} minutes`;
+    const untilValue = result?.adjustedEndTime
+      ? `UNTIL ${result?.durationInMinutes} minutes ago`
+      : untilClause || '';
+    const sinceClause = `SINCE ${result?.durationInMinutes * 24 ||
+      bucketValue * 24} minutes ago`;
 
     let finalQuery = `${query} ${timeseriesValue} `;
 
@@ -248,7 +224,7 @@ export default class StatusWidget extends React.Component {
           accountId={accountId}
         />
         <NrqlQuery
-          query={query}
+          query={`${query} ${sinceClause || ''}`}
           accountIds={[selectedAccountId]}
           pollInterval={selectedPollInterval}
         >
@@ -283,8 +259,19 @@ export default class StatusWidget extends React.Component {
               }, 5000);
             }
 
+            // console.log(
+            //   new Date().toLocaleTimeString(),
+            //   'nrqlQueryComponent query=>',
+            //   query
+            // );
+            // console.log(
+            //   new Date().toLocaleTimeString(),
+            //   'nrqlQueryComponent data=>',
+            //   JSON.stringify(data)
+            // );
+
             const derivedValues = deriveValues(
-              data,
+              JSON.parse(JSON.stringify(data)),
               configuration,
               timeRangeResult
             );
@@ -311,6 +298,8 @@ export default class StatusWidget extends React.Component {
               metricValue = 'null';
             }
 
+            // console.log('METRIC VALUE =>', metricValue, timeRangeResult);
+
             return (
               <div
                 style={{
@@ -320,9 +309,9 @@ export default class StatusWidget extends React.Component {
                   maxHeight: height,
                   overflow: 'hidden'
                 }}
-                // eslint-disable-next-line
-                className={`${status}${enableFlash ? '' : '-solid'
-                  }-bg flex-container`} // eslint-disable-line
+                className={`${status}${
+                  enableFlash ? '' : '-solid'
+                }-bg flex-container`}
               >
                 <div className="flex-col">
                   {displayMetric && (
