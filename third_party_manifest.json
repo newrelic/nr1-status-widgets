@@ -1,34 +1,22 @@
 {
-  "lastUpdated": "Thu Nov 09 2023 10:39:57 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Tue Mar 05 2024 04:38:07 GMT+0000 (Coordinated Universal Time)",
   "projectName": "Status Widgets",
   "projectUrl": "https://github.com/newrelic/nr1-status-widgets",
   "includeOptDeps": false,
   "includeDev": true,
   "dependencies": {
-    "@mantine/hooks@7.2.1": {
+    "@mantine/hooks@6.0.21": {
       "name": "@mantine/hooks",
-      "version": "7.2.1",
-      "range": "^7.2.1",
+      "version": "6.0.21",
+      "range": "^6.0.0",
       "licenses": "MIT",
       "repoUrl": "https://github.com/mantinedev/mantine",
-      "versionedRepoUrl": "https://github.com/mantinedev/mantine/tree/v7.2.1",
+      "versionedRepoUrl": "https://github.com/mantinedev/mantine/tree/v6.0.21",
       "licenseFile": "node_modules/@mantine/hooks/README.md",
-      "licenseUrl": "https://github.com/mantinedev/mantine/blob/v7.2.1/README.md",
+      "licenseUrl": "https://github.com/mantinedev/mantine/blob/v6.0.21/README.md",
       "licenseTextSource": "spdx",
       "publisher": "Vitaly Rtishchev",
       "email": "rtivital@gmail.com"
-    },
-    "@newrelic/nr1-community@1.2.0": {
-      "name": "@newrelic/nr1-community",
-      "version": "1.2.0",
-      "range": "^1.2.0",
-      "licenses": "Apache-2.0",
-      "repoUrl": "https://github.com/newrelic/nr1-community",
-      "versionedRepoUrl": "https://github.com/newrelic/nr1-community/tree/v1.2.0",
-      "licenseFile": "node_modules/@newrelic/nr1-community/LICENSE",
-      "licenseUrl": "https://github.com/newrelic/nr1-community/blob/v1.2.0/LICENSE",
-      "licenseTextSource": "file",
-      "publisher": "newrelic"
     },
     "async@3.2.0": {
       "name": "async",
