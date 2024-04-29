@@ -1,3 +1,10 @@
+## [2.43.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.0...v2.43.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* status widget refresh ([ba7b16b](https://github.com/newrelic/nr1-status-widgets/commit/ba7b16b4a3c91940a68682f8b3e7b4af679bde1b))
+
 # [2.43.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.42.0...v2.43.0) (2024-03-05)
 
 
