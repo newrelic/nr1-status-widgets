@@ -1,3 +1,10 @@
+## [2.43.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.1...v2.43.2) (2024-05-16)
+
+
+### Bug Fixes
+
+* relationship query ([8afcc29](https://github.com/newrelic/nr1-status-widgets/commit/8afcc29aca7cea5450d5921af5ce3fb6900f127f))
+
 ## [2.43.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.0...v2.43.1) (2024-04-29)
 
 
