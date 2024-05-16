@@ -11,7 +11,7 @@ import queue from 'async/queue';
 import Summarized from './views/summarized';
 import EntityTable from './views/entity-table';
 
-const relationshipQuery = (guids, end_time) => {
+const relationshipQuery = guids => {
   return ngql`{
     actor {
       entities(guids: [${guids}]) {
@@ -28,26 +28,26 @@ const relationshipQuery = (guids, end_time) => {
         ... on AlertableEntity {
           alertSeverity
         }
-        relationships(endTime: ${end_time})  {
-          source {
-            entity {
-              name
-              guid
-              entityType
-              type
-              ... on AlertableEntityOutline {
-                alertSeverity
+        relatedEntities {
+          results {
+            source {
+              entity {
+                name
+                guid
+                entityType
+                ... on AlertableEntityOutline {
+                  alertSeverity
+                }
               }
             }
-          }
-          target {
-            entity {
-              name
-              guid
-              entityType
-              type
-              ... on AlertableEntityOutline {
-                alertSeverity
+            target {
+              entity {
+                name
+                guid
+                entityType
+                ... on AlertableEntityOutline {
+                  alertSeverity
+                }
               }
             }
           }
