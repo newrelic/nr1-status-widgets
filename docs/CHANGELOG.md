@@ -1,3 +1,10 @@
+# [2.44.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.2...v2.44.0) (2024-07-08)
+
+
+### Features
+
+* add onClick to statusLabel ([17e7f97](https://github.com/newrelic/nr1-status-widgets/commit/17e7f97b503307fa9dba67425649a9896df48c0e))
+
 ## [2.43.2](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.1...v2.43.2) (2024-05-16)
 
 
