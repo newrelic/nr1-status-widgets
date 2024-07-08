@@ -362,12 +362,14 @@ export default class StatusWidget extends React.Component {
                   )}
                   {statusLabel && (
                     <div
+                      onClick={chartOnClick}
                       className="flex-item"
                       style={{
                         color: 'white',
                         fontSize: displayMetric ? '13vh' : '20vh',
                         textOverflow: 'ellipsis',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        cursor: chartOnClick ? 'pointer' : 'default'
                       }}
                     >
                       {statusLabel}
