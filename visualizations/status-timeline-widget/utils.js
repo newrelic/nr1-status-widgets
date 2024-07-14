@@ -189,7 +189,6 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
 
     if (metricName) {
       const value = d?.data?.[0]?.[metricName] || 0;
-
       const y = d.metadata.groups[1].value;
       const x = d.metadata.groups[2].value;
       xLabels.push(x);
@@ -206,14 +205,15 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
 
   xLabels = [...new Set(xLabels)];
 
-  // allow additional sorting for hourOf and dateOf
   if (query) {
     if (query.includes('hourOf(')) {
-      xLabels = xLabels.sort((a, b) => a.split(':')[0] - b.split(':')[0]);
+      xLabels.sort((a, b) => {
+        const hourA = parseInt(a.split(':')[0], 10);
+        const hourB = parseInt(b.split(':')[0], 10);
+        return hourA - hourB;
+      });
     } else if (query.includes('dateOf(')) {
-      xLabels = xLabels.sort(
-        (a, b) => new Date(a).getTime() - new Date(b).getTime()
-      );
+      xLabels.sort((a, b) => new Date(a) - new Date(b));
     }
   }
 
@@ -221,25 +221,12 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
   Object.keys(unorderedHeatMapData)
     .sort()
     .forEach(key => {
-      orderedHeatMapData[key] = unorderedHeatMapData[key];
+      const metricData = unorderedHeatMapData[key];
+      orderedHeatMapData[key] = {};
+      xLabels.forEach(label => {
+        orderedHeatMapData[key][label] = label in metricData ? metricData[label] : 0;
+      });
     });
-
-  const heatmapData = [];
-  const yLabels = [];
-
-  Object.keys(orderedHeatMapData).forEach(key => {
-    yLabels.push(key);
-    const metricData = orderedHeatMapData[key];
-    const dataArr = [];
-    xLabels.forEach(label => {
-      if (label in metricData) {
-        dataArr.push(metricData[label]);
-      } else {
-        dataArr.push(0);
-      }
-    });
-    heatmapData.push(dataArr);
-  });
 
   return { orderedData: orderedHeatMapData, xLabels };
 };
