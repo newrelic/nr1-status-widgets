@@ -1,3 +1,10 @@
+## [2.44.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.44.0...v2.44.1) (2024-07-14)
+
+
+### Bug Fixes
+
+* status timeline widget gaps ([205e030](https://github.com/newrelic/nr1-status-widgets/commit/205e0306cd41406eab9214385234a321baff8874))
+
 # [2.44.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.43.2...v2.44.0) (2024-07-08)
 
 
