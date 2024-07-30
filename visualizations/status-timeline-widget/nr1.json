@@ -88,6 +88,31 @@
       "title": "Decimal Places",
       "description": "Set decimal places on metric",
       "type": "number"
+    },
+    {
+      "name": "emptyHandling",
+      "title": "Empty Field Handling",
+      "type": "namespace",
+      "items": [
+        {
+          "name": "text",
+          "title": "Replacement text",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "fontColor",
+          "title": "Font Color",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "name": "bgColor",
+          "title": "Background Color",
+          "description": "",
+          "type": "string"
+        }
+      ]
     }
   ]
 }

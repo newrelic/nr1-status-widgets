@@ -224,7 +224,8 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
       const metricData = unorderedHeatMapData[key];
       orderedHeatMapData[key] = {};
       xLabels.forEach(label => {
-        orderedHeatMapData[key][label] = label in metricData ? metricData[label] : 0;
+        orderedHeatMapData[key][label] =
+          label in metricData ? metricData[label] : 0;
       });
     });
 

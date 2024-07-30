@@ -89,7 +89,8 @@ export default class StatusWidget extends React.Component {
       decimalPlaces,
       hideKey,
       timeRange,
-      useTimeRange
+      useTimeRange,
+      emptyHandling
     } = this.props;
     const validModalQueries = (modalQueries || []).filter(
       q => q.query && q.chartType && q.query.length > 5
@@ -187,7 +188,8 @@ export default class StatusWidget extends React.Component {
             const { orderedData, xLabels } = buildOrderedData(
               data,
               query,
-              sortedThresholds
+              sortedThresholds,
+              emptyHandling
             );
 
             return (
@@ -211,13 +213,22 @@ export default class StatusWidget extends React.Component {
                       <tr key={key}>
                         <td>{key === 'undefined' ? 'Other' : key}</td>
                         {Object.keys(data).map(key2 => {
-                          const { bgColor, fontColor } = data[key2];
+                          let { bgColor, fontColor } = data[key2];
                           let value = data[key2].value;
                           if (
                             decimalPlaces !== null &&
                             decimalPlaces !== undefined
                           ) {
                             value = value.toFixed(parseInt(decimalPlaces));
+                          }
+
+                          if (
+                            (value === undefined || value === null) &&
+                            emptyHandling
+                          ) {
+                            value = emptyHandling.text;
+                            bgColor = emptyHandling?.bgColor || bgColor;
+                            fontColor = emptyHandling?.fontColor || fontColor;
                           }
 
                           return (
