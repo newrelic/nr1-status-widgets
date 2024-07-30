@@ -1,3 +1,10 @@
+# [2.45.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.44.1...v2.45.0) (2024-07-30)
+
+
+### Features
+
+* add empty field handling ([80d1b81](https://github.com/newrelic/nr1-status-widgets/commit/80d1b81f4a6eaefa297fa8b26838438554fc9d9b))
+
 ## [2.44.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.44.0...v2.44.1) (2024-07-14)
 
 
