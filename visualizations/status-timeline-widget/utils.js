@@ -212,8 +212,16 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
         const hourB = parseInt(b.split(':')[0], 10);
         return hourA - hourB;
       });
+    } else if (query.includes('minuteOf(')) {
+      xLabels.sort((a, b) => {
+        const minA = parseInt(a);
+        const minB = parseInt(b);
+        return minA - minB;
+      });
     } else if (query.includes('dateOf(')) {
       xLabels.sort((a, b) => new Date(a) - new Date(b));
+    } else {
+      xLabels = sortMixedArray(xLabels);
     }
   }
 
@@ -241,3 +249,26 @@ export const buildOrderedData = (data, nrqlQuery, thresholds) => {
 function isEmpty(value) {
   return [null, undefined, ''].includes(value);
 }
+
+export const sortMixedArray = arr => {
+  return arr.slice().sort((a, b) => {
+    const isTimestamp = value => !isNaN(Date.parse(value));
+    const isNumber = value => typeof value === 'number';
+    const isString = value => typeof value === 'string';
+
+    if (isTimestamp(a) && isTimestamp(b)) {
+      return new Date(a) - new Date(b); // Sort timestamps
+    } else if (isNumber(a) && isNumber(b)) {
+      return a - b; // Sort numbers
+    } else if (isString(a) && isString(b)) {
+      return a.localeCompare(b); // Sort strings alphabetically
+    } else {
+      // Default case: separate different types
+      if (isTimestamp(a)) return -1;
+      if (isTimestamp(b)) return 1;
+      if (isNumber(a)) return -1;
+      if (isNumber(b)) return 1;
+      return 0;
+    }
+  });
+};
