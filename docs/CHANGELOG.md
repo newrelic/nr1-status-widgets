@@ -1,3 +1,17 @@
+# [2.46.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.45.0...v2.46.0) (2024-11-18)
+
+
+### Bug Fixes
+
+* sorting fallbacks [#73](https://github.com/newrelic/nr1-status-widgets/issues/73) [#68](https://github.com/newrelic/nr1-status-widgets/issues/68) ([3874110](https://github.com/newrelic/nr1-status-widgets/commit/3874110fdfcc596c894b6d69aa68363d34a60731))
+
+
+### Features
+
+* dummy commit ([07c1093](https://github.com/newrelic/nr1-status-widgets/commit/07c10936996ced4a0932a6ae3c8bf18a06f13178))
+* dummy commit ([a092568](https://github.com/newrelic/nr1-status-widgets/commit/a0925685ba6d56722c2bec1347497a10b83475b7))
+* update WFs ([0ff2457](https://github.com/newrelic/nr1-status-widgets/commit/0ff24574c665a130aa1ae498079eaec984fec4b1))
+
 # [2.45.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.44.1...v2.45.0) (2024-07-30)
 
 
