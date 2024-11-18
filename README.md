@@ -98,7 +98,6 @@ nr1 nerdpack:serve
 Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local) to launch your app locally.
 
 ## Deploying this Nerdpack manually
-
 Open a command prompt in the app's directory and run the following commands.
 
 ```bash
