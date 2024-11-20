@@ -23,7 +23,7 @@ const DAY = 24 * HOUR;
 
 const timeRangeToNrql = timeRange => {
   if (!timeRange) {
-    return 'SINCE 30 minutes ago';
+    return 'SINCE 1 minute ago';
   }
 
   if (timeRange.beginTime && timeRange.endTime) {
