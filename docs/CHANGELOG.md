@@ -1,3 +1,10 @@
+# [2.48.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.47.0...v2.48.0) (2024-11-29)
+
+
+### Features
+
+* add extra opt. chains ([c358546](https://github.com/newrelic/nr1-status-widgets/commit/c358546e739ea9a5e0a75ff9cdbbae193fd142df))
+
 # [2.47.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.46.0...v2.47.0) (2024-11-18)
 
 
