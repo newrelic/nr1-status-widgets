@@ -219,7 +219,12 @@ export default class StatusWidget extends React.Component {
                             decimalPlaces !== null &&
                             decimalPlaces !== undefined
                           ) {
-                            value = value.toFixed(parseInt(decimalPlaces));
+                            // this is intentional otherwise zeroes can populate rather then leaving it blank when no data exists for the given period
+                            if (value !== undefined) {
+                              value = (value || 0).toFixed(
+                                parseInt(decimalPlaces)
+                              );
+                            }
                           }
 
                           if (
