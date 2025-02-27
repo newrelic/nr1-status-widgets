@@ -1,3 +1,10 @@
+## [2.48.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.48.0...v2.48.1) (2025-02-27)
+
+
+### Bug Fixes
+
+* status table widget undef decimal bug ([ceb719e](https://github.com/newrelic/nr1-status-widgets/commit/ceb719eac35657c85101d3f9bacaf20d15c3353e))
+
 # [2.48.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.47.0...v2.48.0) (2024-11-29)
 
 
