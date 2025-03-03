@@ -112,7 +112,7 @@ Visit [https://one.newrelic.com](https://one.newrelic.com), and launch your app 
 
 ## Manual dashboard deployment
 
-https://developer.newrelic.com/build-apps/build-visualization#deploy-and-use-your-visualization
+https://docs.newrelic.com/docs/new-relic-solutions/build-nr-ui/custom-visualizations/build-visualization/#publish-and-use-your-visualization
 
 ```
 This needs to be deployed into your account so that the custom visualizations can be added to dashboards.
