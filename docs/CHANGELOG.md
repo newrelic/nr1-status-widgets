@@ -1,3 +1,10 @@
+# [2.49.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.48.1...v2.49.0) (2025-03-06)
+
+
+### Features
+
+* update actions/cache to v4 ([5cdaf07](https://github.com/newrelic/nr1-status-widgets/commit/5cdaf07f171defbc3b3f005f168309763ffea8ed))
+
 ## [2.48.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.48.0...v2.48.1) (2025-02-27)
 
 
