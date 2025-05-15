@@ -164,6 +164,10 @@ export default class StatusWidget extends React.Component {
     const sinceClause = `SINCE ${result?.durationInMinutes * 24 ||
       bucketValue * 24} minutes ago`;
 
+    // main result should always use a fixed window: 6 minutes ago until 60 seconds ago
+    const mainResultClause = 'SINCE 6 minutes ago UNTIL 60 seconds ago';
+    const mainQuery = `${query} ${mainResultClause}`;
+
     let finalQuery = `${query} ${timeseriesValue} `;
 
     // // eslint-disable-next-line
@@ -224,7 +228,8 @@ export default class StatusWidget extends React.Component {
           accountId={accountId}
         />
         <NrqlQuery
-          query={`${query} ${sinceClause || ''}`}
+          // use fixed time window for main result, timeline will still use finalQuery
+          query={mainQuery}
           accountIds={[selectedAccountId]}
           pollInterval={selectedPollInterval}
         >
