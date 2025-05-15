@@ -1,3 +1,10 @@
+## [2.49.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.49.0...v2.49.1) (2025-05-15)
+
+
+### Bug Fixes
+
+* time range handling for modal charts ([d0f93d7](https://github.com/newrelic/nr1-status-widgets/commit/d0f93d7ccd5abb763c8cbdc36db9021663e51e9d))
+
 # [2.49.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.48.1...v2.49.0) (2025-03-06)
 
 
