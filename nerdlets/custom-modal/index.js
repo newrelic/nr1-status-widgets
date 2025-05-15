@@ -27,8 +27,8 @@ const DAY = 24 * HOUR;
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
 const timeRangeToNrql = timeRange => {
-  if (!timeRange) {
-    return 'SINCE 30 minutes ago';
+  if (!timeRange || Object.keys(timeRange).length === 0) {
+    return 'SINCE 60 minutes ago';
   }
 
   if (timeRange.beginTime && timeRange.endTime) {
