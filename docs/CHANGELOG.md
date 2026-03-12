@@ -1,3 +1,10 @@
+# [2.50.0](https://github.com/newrelic/nr1-status-widgets/compare/v2.49.1...v2.50.0) (2026-03-12)
+
+
+### Features
+
+* add wall status compat flag ([a2a57c1](https://github.com/newrelic/nr1-status-widgets/commit/a2a57c18f29d657e570e25e3e74b66235b499397))
+
 ## [2.49.1](https://github.com/newrelic/nr1-status-widgets/compare/v2.49.0...v2.49.1) (2025-05-15)
 
 
