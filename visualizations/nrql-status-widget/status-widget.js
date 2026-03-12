@@ -73,7 +73,8 @@ export default class StatusWidget extends React.Component {
       sloBar,
       sloDaysToView,
       fontMultiplier,
-      pollInterval
+      pollInterval,
+      wallStatusCompat
     } = this.props;
     let { displayTimeline, metricLabel, queryLeft, queryRight } = this.props;
 
@@ -215,6 +216,11 @@ export default class StatusWidget extends React.Component {
       ? parseInt(pollInterval)
       : NrqlQuery.AUTO_POLL_INTERVAL;
 
+    let mainQuery = `${query} ${sinceClause || ''}`;
+    if (wallStatusCompat) {
+      mainQuery = `${query} SINCE 6 minutes ago UNTIL 60 seconds ago`;
+    }
+
     return (
       <>
         <ModalCharts
@@ -224,7 +230,7 @@ export default class StatusWidget extends React.Component {
           accountId={accountId}
         />
         <NrqlQuery
-          query={`${query} ${sinceClause || ''}`}
+          query={mainQuery}
           accountIds={[selectedAccountId]}
           pollInterval={selectedPollInterval}
         >

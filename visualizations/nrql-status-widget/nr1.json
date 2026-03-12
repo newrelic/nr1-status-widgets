@@ -17,6 +17,12 @@
       "type": "nrql"
     },
     {
+      "name": "wallStatusCompat",
+      "title": "Enable compatibility for nr1-wall-status-board",
+      "description": "This will cause the main query result to use a fixed window with 'SINCE 6 minutes ago UNTIL 60 seconds ago'",
+      "type": "boolean"
+    },
+    {
       "name": "pollInterval",
       "title": "Optional Poll Interval (seconds)",
       "description": "",
